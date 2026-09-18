@@ -1,0 +1,49 @@
+plugins {
+    id 'fabric-loom' version '1.14.10'
+}
+
+version = '1.0.0-recon'
+group = 'dev.ambience'
+base { archivesName = 'ambience-recon' }
+
+repositories {
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    implementation 'org.joml:joml:1.10.8'
+    implementation 'org.lwjgl:lwjgl-glfw:3.3.3'
+    // MixinInject API compiled from source (reversed from AmbienceInjector.exe)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/ambience.accesswidener")
+}
+
+jar {
+    manifest {
+        attributes(
+            'Premain-Class': 'com.mixininject.agent.MixinAgent',
+            'Agent-Class': 'com.mixininject.agent.MixinAgent',
+            'Can-Retransform-Classes': 'true',
+            'Can-Redefine-Classes': 'true'
+        )
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+    // reconstructed code — many warnings expected; just get it to compile
+    options.compilerArgs += ['-proc:none', '-Xlint:none']
+}

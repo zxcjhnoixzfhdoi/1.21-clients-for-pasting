@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "ambience",
+  "version": "1.0.0",
+  "name": "Ambience",
+  "description": "A Fabric PvP client.",
+  "authors": [
+    "Ambience"
+  ],
+  "license": "AGPL-3.0-or-later",
+  "environment": "client",
+  "accessWidener": "ambience.accesswidener",
+  "entrypoints": {
+    "client": [
+      "dev.ambience.Ambience"
+    ],
+    "main": [
+      "dev.ambience.Ambience"
+    ]
+  },
+  "mixins": [
+    "ambience.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "fabric": "*",
+    "minecraft": "1.21.11"
+  }
+}

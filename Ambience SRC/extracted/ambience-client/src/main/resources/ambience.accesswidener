@@ -1,0 +1,18 @@
+accessWidener	v2	named
+accessible	field	net/minecraft/client/gui/DrawContext	state	Lnet/minecraft/client/gui/render/state/GuiRenderState;
+accessible	field	net/minecraft/client/gui/DrawContext	scissorStack	Lnet/minecraft/client/gui/DrawContext$ScissorStack;
+accessible	method	net/minecraft/client/gui/DrawContext$ScissorStack	peekLast	()Lnet/minecraft/client/gui/ScreenRect;
+accessible	field	net/minecraft/client/MinecraftClient	itemUseCooldown	I
+accessible	field	net/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket	entityId	I
+accessible	method	net/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket$InteractTypeHandler	getType	()Lnet/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket$InteractType;
+accessible	class	net/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket$InteractType
+accessible	field	net/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket	type	Lnet/minecraft/network/packet/c2s/play/PlayerInteractEntityC2SPacket$InteractTypeHandler;
+accessible	method	net/minecraft/client/MinecraftClient	doAttack	()Z
+accessible	method	net/minecraft/client/network/ClientPlayerInteractionManager	syncSelectedSlot	()V
+accessible	field	net/minecraft/entity/LivingEntity	jumping	Z
+accessible	field	net/minecraft/client/input/Input	movementVector	Lnet/minecraft/util/math/Vec2f;
+accessible	field	net/minecraft/entity/LivingEntity	jumpingCooldown	I
+accessible	class	net/minecraft/client/render/RenderSetup$TextureSpec
+accessible	field	com/mojang/blaze3d/pipeline/RenderPipeline$UniformDescription	name	Ljava/lang/String;
+accessible	field	com/mojang/blaze3d/pipeline/RenderPipeline$UniformDescription	type	Lnet/minecraft/client/gl/UniformType;
+accessible	field	com/mojang/blaze3d/pipeline/RenderPipeline$UniformDescription	textureFormat	Lcom/mojang/blaze3d/textures/TextureFormat;

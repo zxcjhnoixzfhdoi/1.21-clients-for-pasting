@@ -1,0 +1,8 @@
+{
+  "pack": {
+    "description": "Ambience Low Fire — 1px world fire",
+    "pack_format": 75,
+    "min_format": [75, 0],
+    "max_format": [99, 0]
+  }
+}

@@ -1,0 +1,1 @@
+package dev.ambience.util.render.font; @SuppressWarnings("all") public class Fonts { public static FontRenderer get(String n){return new FontRenderer();} public static FontRenderer active(){return new FontRenderer();} public static void reload(){} }

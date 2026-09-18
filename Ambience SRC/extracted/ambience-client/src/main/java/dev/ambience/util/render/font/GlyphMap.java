@@ -1,0 +1,1 @@
+package dev.ambience.util.render.font; @SuppressWarnings("all") public class GlyphMap { public GlyphMap() {} public static GlyphMap load(Object... args) { return new GlyphMap(); } public void render(Object ctx, float x, float y, String text, int color) {} public float getWidth(String t) { return t.length()*6f; } public float getLineHeight() { return 12f; } }

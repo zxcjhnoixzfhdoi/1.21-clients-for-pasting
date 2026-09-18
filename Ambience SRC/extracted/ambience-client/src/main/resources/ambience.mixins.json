@@ -1,0 +1,41 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.ambience.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+        "client.MixinSkyRenderer",
+        "client.MixinFont",
+        "client.MixinClientLevel",
+        "client.MixinParticleEngine",
+        "client.MixinScreenEffectRenderer",
+        "client.ScreenEffectRendererAccessor",
+        "client.MixinItemInHandRenderer",
+        "client.MixinCamera",
+        "client.MixinLightTexture",
+        "client.MixinBlock",
+        "client.MixinBlockStateBase",
+        "client.MixinLiquidBlockRenderer",
+        "client.MixinMultiPlayerGameMode",
+        "client.MixinClientPacketListener",
+        "client.MixinGameRenderer",
+        "client.MixinLevelRenderer",
+        "client.MixinChatComponent",
+        "client.MixinOptions",
+    "entity.MixinClientPlayerEntity",
+    "entity.MixinEntityNoInvis",
+    "entity.MixinLivingEntityEffects",
+    "entity.MixinSilentRotation",
+    "entity.EntityRotationAccessor",
+    "entity.EntityRotationFieldsAccessor",
+    "entity.EntityPrevRotationAccessor",
+    "entity.LivingEntityHeadRotationAccessor",
+    "entity.MobEffectInstanceAccessor",
+    "input.MixinKeyboard",
+    "input.MixinKeyboardInput",
+    "input.MixinMouseHandler"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,1 @@
+package dev.ambience.util.render.font; @SuppressWarnings("all") public class FontRenderer { public FontRenderer() {} public static FontRenderer load(Object... args) { return new FontRenderer(); } public void render(Object ctx, float x, float y, String text, int color) {} public float getWidth(String t) { return t.length()*6f; } public float getLineHeight() { return 12f; } }
