@@ -1,0 +1,50 @@
+---
+sidebar_position: 6
+sidebar_label: Auto Pickaxe Ability
+title: Auto Pickaxe Ability
+---
+
+# Auto Pickaxe Ability
+
+Uses your mining ability with an optional rod swap.
+
+---
+
+The module temporarily pauses **Click Lock**, performs the configured item
+swaps, uses the ability, restores your previous slot, and resumes mining.
+
+### Activation
+
+Controls when the mining ability is used.
+
+- **AS_SOON_AS_READY**: uses the ability when the tab list reports that it is ready
+- **INTERVAL**: uses the ability after the configured interval
+- **MANUAL**: only uses the ability when the activate key is pressed
+
+### Mining tool slot
+
+Sets the hotbar slot containing the mining tool.
+
+### Rod swap
+
+Uses the item in the configured rod slot before switching to the mining tool.
+
+### Rod slot
+
+Sets the hotbar slot used for the optional rod swap.
+
+### Action delay ticks
+
+Sets the delay between selecting and using each item.
+
+### Interval seconds
+
+Sets the time between ability uses in **INTERVAL** mode.
+
+### Activate key
+
+Manually requests an ability use. This can also override the automatic modes.
+
+### Pause key
+
+Pauses or resumes automatic ability use without disabling the module.

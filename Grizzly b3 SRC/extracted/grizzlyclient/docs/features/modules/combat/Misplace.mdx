@@ -1,0 +1,60 @@
+---
+sidebar_position: 21
+---
+
+# Misplace
+
+Pulls players toward you so you can hit from further away
+
+---
+
+### Mode
+
+Normal misplace will flag the same as a server's reach checks.
+Understand [AntiCheat safety](/guides/anticheat-safety#risk-labels)
+before configuring this module.
+
+- **NORMAL**: drags nearby players toward you for the moment the crosshair is picked, so a
+  target out past your reach is picked as though it were in range
+- **LAG**: holds your own outgoing packets for a moment after you land a hit, so the server sees
+  the hit before it sees you moving away from it
+
+### Only players
+
+Ignore mobs and other entities.
+
+---
+
+## Normal
+
+### Amount
+
+How much closer to pull them, in blocks. This is your extra reach, so 0.1 means you hit at 3.1 reach.
+
+### Max range
+
+Players beyond this are left alone.
+
+### Disadvantage
+
+Pushes them away instead of pulling them in, costing you reach rather than giving it. The offset
+is wound down as a player closes on you either way, so it can never drag a hitbox through you.
+
+---
+
+## Lag
+
+### Lag window
+
+Low end is the window a single hit opens. Each hit after that adds 50ms until the high end.
+
+### Min distance
+
+Never lag for a target nearer than this. The default of 3.1 keeps it out of normal reach
+entirely.
+
+### Drain per tick
+
+How many held packets to release each tick once the window closes. Releasing the whole backlog
+at once puts several moves into one server tick. Higher catches back up sooner and flags
+more, 1 is the safest and takes the longest to resync.

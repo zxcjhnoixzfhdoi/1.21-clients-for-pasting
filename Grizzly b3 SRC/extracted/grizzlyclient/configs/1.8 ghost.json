@@ -1,0 +1,2175 @@
+{
+  "__meta": {
+    "description": "A 1.8.9 ghost config for combat",
+    "anticheat": "",
+    "servers": [],
+    "categories": [
+      "COMBAT",
+      "ANARCHY",
+      "MOVEMENT",
+      "RENDER",
+      "PLAYER",
+      "WORLD",
+      "UTILITY",
+      "MINIGAMES",
+      "SKYBLOCK",
+      "HUD",
+      "OTHER",
+      "EXPLOITS"
+    ],
+    "overwriteUnbound": true,
+    "disableUnaffected": false
+  },
+  "Silent Aura": {
+    "enabled": false,
+    "keybind": 70,
+    "mode": "CPS",
+    "targeting": "SWITCH",
+    "rotations": "SMOOTH",
+    "hit range": 1.0,
+    "swing range": 1.0,
+    "aim range": 8.0,
+    "fov": 360.0,
+    "cps": [
+      13.5,
+      15.4
+    ],
+    "extra delay": [
+      -2,
+      1
+    ],
+    "smoothness": 30.0,
+    "sort": "HEALTH",
+    "aim point": "NEAREST",
+    "switch delay (ms)": 200,
+    "max targets": 10,
+    "raycast": true,
+    "visibility check": true,
+    "players only": true,
+    "require mouse down": false,
+    "weapon only": false,
+    "not while using item": false,
+    "not while mining": false,
+    "auto block": false,
+    "auto rod": false,
+    "auto weapon": true
+  },
+  "Trigger Bot": {
+    "enabled": false,
+    "keybind": -1,
+    "extra delay": [
+      -2,
+      2
+    ],
+    "players only": true,
+    "only weapon": true,
+    "require mouse down": true,
+    "shield check": false,
+    "air crits": false
+  },
+  "Aim Assist": {
+    "enabled": true,
+    "keybind": -1,
+    "range": 3.9477127,
+    "fov": 69.05229,
+    "strength": 0.14771244,
+    "visibility check": true,
+    "only when attacking": true,
+    "players only": true,
+    "fov circle": false,
+    "color": {
+      "value": "#509900FF",
+      "mode": "THEME",
+      "custom": "#50FF0000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Left Clicker": {
+    "enabled": true,
+    "keybind": -1,
+    "cps": [
+      12.5,
+      14.5
+    ],
+    "jitter": 0.0,
+    "only when targeting": false,
+    "break blocks": false,
+    "weapon only": false
+  },
+  "Right Clicker": {
+    "enabled": true,
+    "keybind": -1,
+    "cps": [
+      13.0,
+      16.5
+    ],
+    "jitter": 0.0,
+    "Item Whitelist": {
+      "mode": "WHITELIST",
+      "filter": "NONE",
+      "items": [
+        "blue_terracotta",
+        "red_terracotta",
+        "wool_category",
+        "end_crystal",
+        "experience_bottle"
+      ]
+    },
+    "allow bow": true,
+    "allow eat": true,
+    "allow shield": false
+  },
+  "No Hit Delay": {
+    "enabled": true,
+    "keybind": -1
+  },
+  "Auto Block": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "MANUAL",
+    "block chance (%)": 80.0,
+    "block cps": 8.0,
+    "range": 6.5,
+    "max hold (ms)": 100,
+    "check left click": true,
+    "check right click": false,
+    "check took damage": false,
+    "damage window (ms)": 3000,
+    "release (ms)": [
+      1,
+      40
+    ],
+    "lag": false,
+    "lag chance (%)": 100.0,
+    "lag duration (ms)": [
+      150,
+      250
+    ],
+    "prevent delaying attacks": false,
+    "block again immediately": true,
+    "slow down": true
+  },
+  "Hit Select": {
+    "enabled": true,
+    "keybind": -1,
+    "mode": "ACTIVE",
+    "preference": "BURST",
+    "delay (ms)": [
+      350,
+      450
+    ],
+    "wait for first hit (ms)": 0,
+    "hit later in trades (ms)": 0,
+    "disable during knockback": false,
+    "only while damaged": false,
+    "cancel rate (in combat) %": 80,
+    "cancel rate (missed) %": 80,
+    "fake swing": false
+  },
+  "Velocity": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "MODIFY",
+    "modify %": 50.0,
+    "modify y %": 0.0,
+    "attack count": [
+      3,
+      3
+    ],
+    "range": 4.2352943,
+    "horizontal": 0.0,
+    "vertical": 1.0,
+    "reverse %": 49.673203,
+    "reverse delay (ticks)": 2,
+    "ground delay (ms)": [
+      27,
+      41
+    ],
+    "air delay (ms)": [
+      27,
+      41
+    ]
+  },
+  "Jump Reset": {
+    "enabled": true,
+    "keybind": -1,
+    "chance %": 100,
+    "accuracy %": [
+      40,
+      60
+    ],
+    "only when targeting": false,
+    "water check": false
+  },
+  "Refill": {
+    "enabled": false,
+    "keybind": -1,
+    "Vertical": false,
+    "Scatter": true,
+    "Hotbar Clear": false,
+    "Non Junk Items": {
+      "mode": "WHITELIST",
+      "filter": "NONE",
+      "items": [
+        "swords_category",
+        "pickaxes_category",
+        "axes_category",
+        "bow",
+        "arrow",
+        "pearl",
+        "food_category"
+      ]
+    },
+    "Delay (ms)": [
+      62,
+      110
+    ],
+    "Type": "BOTH",
+    "Mode": "ALWAYS"
+  },
+  "Combo Tap": {
+    "enabled": true,
+    "keybind": -1,
+    "method": "W_TAP",
+    "tap duration (ms)": [
+      70,
+      101
+    ],
+    "cooldown (ms)": [
+      130,
+      195
+    ],
+    "stop sprint": false,
+    "on ground only": true
+  },
+  "Kb Delay": {
+    "enabled": false,
+    "keybind": -1,
+    "delay (ms)": [
+      10,
+      50
+    ],
+    "chance %": 100
+  },
+  "Reach": {
+    "enabled": false,
+    "keybind": -1,
+    "range": [
+      3.0,
+      3.0
+    ],
+    "hit through walls": false,
+    "chance %": 100
+  },
+  "Hit Flick": {
+    "enabled": false,
+    "keybind": 90,
+    "flick mode": "VOID",
+    "flick angle": [
+      85.0,
+      139.7
+    ],
+    "void check distance": 2.0,
+    "void depth": 6,
+    "require sprint": true,
+    "cooldown (ms)": 205,
+    "auto kb": false
+  },
+  "Backtrack": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "LAG",
+    "delay (ms)": 350,
+    "lag window (ms)": [
+      45,
+      65
+    ],
+    "only players": true,
+    "show esp": true,
+    "esp color": {
+      "value": "#14FF0050",
+      "mode": "CUSTOM",
+      "custom": "#14FF0050",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "line color": {
+      "value": "#FFFFFF50",
+      "mode": "CUSTOM",
+      "custom": "#FFFFFF50",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Misplace": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "LAG",
+    "amount": 1.0,
+    "max range": 6.0,
+    "disadvantage": false,
+    "lag window (ms)": [
+      200,
+      300
+    ],
+    "min distance": 3.1,
+    "drain per tick": 2,
+    "only players": true
+  },
+  "Criticals": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "NO_GROUND",
+    "packet mode": "GRIM",
+    "maximum delay (ms)": 150,
+    "timer speed": 0.6043624,
+    "chance (%)": 100.0,
+    "holding weapon": true,
+    "mouse pressed": true,
+    "jump range": 3.9738564
+  },
+  "Auto Rod": {
+    "enabled": false,
+    "keybind": -1,
+    "retract speed (ms)": [
+      200,
+      300
+    ],
+    "action delay (ms)": [
+      50,
+      100
+    ],
+    "randomize delays": true,
+    "switch to weapon": true,
+    "cast fov": 12.040268,
+    "hitbox expand": 0.05033557,
+    "predict ticks": 1.5,
+    "max hook ticks": 21,
+    "recast cooldown (ms)": [
+      116,
+      201
+    ],
+    "allow throwables": false,
+    "throw speed (ms)": [
+      100,
+      200
+    ],
+    "not within melee range": 3.0
+  },
+  "Hit Swap": {
+    "enabled": false,
+    "keybind": -1,
+    "maces": true,
+    "smash only": true,
+    "require breach": true,
+    "require density": false,
+    "stun slam": false,
+    "spears": false,
+    "require lunge": true,
+    "axes": true,
+    "shield only": true,
+    "swords": true,
+    "require fire aspect": true
+  },
+  "Auto Crystal": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "MANUAL",
+    "target mode": "DISTANCE",
+    "range": 4.0,
+    "max angle": 180.0,
+    "aim speed": 30.0,
+    "blast delay": [
+      0,
+      2
+    ],
+    "anti-suicide": true,
+    "max self damage": 4.0,
+    "crystal optimization": "NONE",
+    "crystal min efficiency": 6.0,
+    "auto obsidian": false,
+    "only players": true
+  },
+  "Keep Sprint": {
+    "enabled": false,
+    "keybind": -1,
+    "retain factor": 0.0,
+    "reset sprint": false
+  },
+  "Auto Mace": {
+    "enabled": false,
+    "keybind": -1,
+    "selection": "AUTO",
+    "mace type": "DENSITY",
+    "smash only": true,
+    "auto swap": true,
+    "reach": 3.0,
+    "aim": true,
+    "aim range": 6.0,
+    "aim speed": 45.0,
+    "attack": true,
+    "extra delay": 0,
+    "stun slam": false,
+    "ignore target filter": false,
+    "unequip elytra": true,
+    "re-equip elytra": true,
+    "open inventory": true,
+    "armor delay (ms)": [
+      42,
+      54
+    ]
+  },
+  "Auto Anchor": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "ON_PLACE",
+    "double anchor": true,
+    "safe anchor": false,
+    "explosion item swap": false,
+    "Explosion Item": {
+      "mode": "WHITELIST",
+      "filter": "NONE",
+      "items": [
+        "totem_of_undying"
+      ]
+    },
+    "aim assist": true,
+    "aim speed": 15.0,
+    "delay (ms)": [
+      0,
+      0
+    ]
+  },
+  "Disabler": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "NORULES"
+  },
+  "Regen": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "TICK",
+    "packets": 100,
+    "health": 18.0,
+    "food": 17,
+    "delay (ms)": 160
+  },
+  "Anti Cactus": {
+    "enabled": false,
+    "keybind": -1
+  },
+  "Anti Hunger": {
+    "enabled": false,
+    "keybind": -1
+  },
+  "Portal Godmode": {
+    "enabled": false,
+    "keybind": -1
+  },
+  "No Swing": {
+    "enabled": false,
+    "keybind": -1
+  },
+  "Anti Aura": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "LEGIT",
+    "delay (ms)": 50,
+    "distance": 2.0,
+    "only while attacking": true
+  },
+  "Combo One Hit": {
+    "enabled": false,
+    "keybind": -1,
+    "attack packets": 50
+  },
+  "Reset VL": {
+    "enabled": false,
+    "keybind": -1,
+    "hops": 25
+  },
+  "Chat Bypass": {
+    "enabled": false,
+    "keybind": -1
+  },
+  "Auto HvH Gapple": {
+    "enabled": false,
+    "keybind": -1,
+    "health": 14.0,
+    "enchanted only": true,
+    "silent swap": true,
+    "packets": 32,
+    "delay": 250
+  },
+  "Kill Aura": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "APS",
+    "targeting": "SINGLE",
+    "range": 4.0653596,
+    "aps": 20,
+    "rotate": false,
+    "players only": true,
+    "auto weapon": false,
+    "auto block": true
+  },
+  "Crystal Aura": {
+    "enabled": false,
+    "keybind": -1,
+    "target mode": "DISTANCE",
+    "range": 8.0,
+    "anti-suicide": false,
+    "max self damage": 4.301676,
+    "crystal optimization": "RAPID_FIRE",
+    "crystal min efficiency": 17.908497,
+    "auto obsidian": true,
+    "only players": false
+  },
+  "Sprint": {
+    "enabled": true,
+    "keybind": -1,
+    "omnisprint": false
+  },
+  "Speed": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "BHOP",
+    "multiplier": 1.0,
+    "pull down": true,
+    "pull down multiplier": 1.0157046,
+    "pull down tick": 5,
+    "hurt pull down": true,
+    "boost": true,
+    "boost multiplier": 1.9208388,
+    "timer": true,
+    "damage boost": true,
+    "low hop": true,
+    "air strafe": true
+  },
+  "Step": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "NCP",
+    "height": 1.0,
+    "on ground only": true,
+    "delay (ms)": 0
+  },
+  "Phase": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "NORULES",
+    "norules offset": 2.4391026,
+    "norules delay (ms)": 45
+  },
+  "Spin": {
+    "enabled": false,
+    "keybind": 89,
+    "speed": 619.80396,
+    "direction": "RIGHT",
+    "pitch": 90.0,
+    "movement correction": true,
+    "jump timing": true,
+    "jump window": 35.0
+  },
+  "Move Fix": {
+    "enabled": true,
+    "keybind": -1
+  },
+  "Stasis": {
+    "enabled": false,
+    "keybind": -1
+  },
+  "Inv Move": {
+    "enabled": false,
+    "keybind": -1,
+    "inventory": "HYPIXEL",
+    "chests and others": "DISABLED",
+    "motion": 1.0,
+    "modify motion after click": true,
+    "slow when necessary": false,
+    "allow jumping": true,
+    "allow sprinting": true,
+    "allow rotating": true
+  },
+  "Flight": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "VANILLA",
+    "speed": 0.9967321,
+    "ncp mode": "MOSPIXEL",
+    "ncp speed": 1.88,
+    "damage": false,
+    "anti-kick": false,
+    "norules speed": 0.5990384,
+    "norules fly ticks": 15,
+    "norules rest ticks": 30,
+    "anti-kick mode": "LEGACY",
+    "interval": 30,
+    "distance": 0.035
+  },
+  "Timer": {
+    "enabled": false,
+    "keybind": -1,
+    "speed": 0.1
+  },
+  "No Fall": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "PACKET"
+  },
+  "Anti Void": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "SETBACK",
+    "fall distance": 3.0,
+    "rewind ticks": 3,
+    "bounce motion": 0.8,
+    "cooldown": 10,
+    "disable after": false
+  },
+  "No Jump Delay": {
+    "enabled": true,
+    "keybind": -1
+  },
+  "No Push": {
+    "enabled": true,
+    "keybind": -1
+  },
+  "Parkour": {
+    "enabled": false,
+    "keybind": -1
+  },
+  "Animations": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "PUSHDOWN",
+    "translate y": 0.25,
+    "swing scale": 0.9,
+    "visual block": false,
+    "visual block swords": true,
+    "main hand": true,
+    "main hand scale": -0.25,
+    "main hand x": 0.25,
+    "main hand y": 0.0,
+    "main hand rot x": 0.0,
+    "main hand rot y": 0.0,
+    "main hand rot z": 0.0,
+    "off hand": false,
+    "off hand scale": 0.0,
+    "off hand x": 0.0,
+    "off hand y": 0.0,
+    "off hand rot x": 0.0,
+    "off hand rot y": 0.0,
+    "off hand rot z": 0.0,
+    "swing duration": 6,
+    "cancel equip progress": true
+  },
+  "3D ESP": {
+    "enabled": false,
+    "keybind": -1,
+    "color mode": "TEAM",
+    "render mode": "BOX",
+    "ignore target filter": false,
+    "color": {
+      "value": "#FF9900FF",
+      "mode": "THEME",
+      "custom": "#FF280080",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "rotate": true,
+    "team only": false,
+    "fill alpha": 0.09673202633857728,
+    "outline alpha": 0.09803921729326248,
+    "line width": 1.5980392545461655,
+    "expand": 0.0,
+    "corner size": 0.25
+  },
+  "2D ESP": {
+    "enabled": false,
+    "keybind": -1,
+    "max distance": 256.0,
+    "ignore target filter": false,
+    "box style": "FULL",
+    "border mode": "CUSTOM",
+    "stat side": "RIGHT",
+    "box": true,
+    "health bar": true,
+    "health side": "LEFT",
+    "health text": false,
+    "absorption": false,
+    "distance": false,
+    "armor": false,
+    "held item": false,
+    "ping": false,
+    "equipment icons": false,
+    "border color": {
+      "value": "#64000000",
+      "mode": "CUSTOM",
+      "custom": "#64000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "infill color": {
+      "value": "#3C000000",
+      "mode": "CUSTOM",
+      "custom": "#3C000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "text color": {
+      "value": "#FFEBEBF5",
+      "mode": "CUSTOM",
+      "custom": "#FFEBEBF5",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "health bg": {
+      "value": "#AA202020",
+      "mode": "CUSTOM",
+      "custom": "#AA202020",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "line width": 2,
+    "box padding": 2,
+    "health width": 4,
+    "text scale": 0.7777777828276158,
+    "text shadow": true,
+    "font": "DEFAULT"
+  },
+  "Target ESP": {
+    "enabled": false,
+    "keybind": -1,
+    "color": {
+      "value": "#FF9900FF",
+      "mode": "THEME",
+      "custom": "#FF300054",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "ignore target filter": false,
+    "speed": 0.25,
+    "line width": 6.0,
+    "expand": 0.2516339883208275,
+    "glow rings": 8,
+    "linger ms": 700,
+    "smoothness": 160
+  },
+  "Chams": {
+    "enabled": false,
+    "keybind": -1,
+    "style": "SHADER",
+    "ignore target filter": false,
+    "shader": "VOID",
+    "shader color": {
+      "value": "#1000FF87",
+      "mode": "CUSTOM",
+      "custom": "#1000FF87",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Nametags": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "EXPLICIT_B9",
+    "max distance": 64.0,
+    "ignore target filter": false,
+    "scale": 1.0,
+    "y offset": 0.35,
+    "health": true,
+    "distance": true,
+    "health mode": "HEARTS",
+    "armor": false,
+    "durability": false,
+    "enchantments": false,
+    "background": true,
+    "bg color": {
+      "value": "#B3141414",
+      "mode": "CUSTOM",
+      "custom": "#B3141414",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "text color": {
+      "value": "#FFEBEBF5",
+      "mode": "CUSTOM",
+      "custom": "#FFEBEBF5",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "text shadow": false,
+    "font": "MINECRAFT"
+  },
+  "Rice Farmer": {
+    "enabled": true,
+    "keybind": -1,
+    "radius": 0.5,
+    "height": 0.2960784375667572,
+    "position": 0.101307213306427,
+    "rotation": 5.0,
+    "angles": 32,
+    "first person": false,
+    "shade": true,
+    "color mode": "SINGLE",
+    "color": {
+      "value": "#FF9900FF",
+      "mode": "THEME",
+      "custom": "#FF090909",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "color start": {
+      "value": "#FF9900FF",
+      "mode": "THEME",
+      "custom": "#FF000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "color end": {
+      "value": "#FF000000",
+      "mode": "CUSTOM",
+      "custom": "#FF000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Skeletons": {
+    "enabled": false,
+    "keybind": -1,
+    "color mode": "TEAM",
+    "render self": true,
+    "players only": true,
+    "ignore target filter": true,
+    "team only": false,
+    "line width": 1.0,
+    "color": {
+      "value": "#FF9900FF",
+      "mode": "THEME",
+      "custom": "#FFFFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Ambience": {
+    "enabled": false,
+    "keybind": -1,
+    "real world time": false,
+    "time": 6000
+  },
+  "Fast Mine": {
+    "enabled": false,
+    "keybind": -1,
+    "break delay (ms)": 0,
+    "break speed": 1.204698,
+    "disable in creative": true,
+    "decrease break delay": false
+  },
+  "Fast Eat": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "NCP",
+    "use ticks": 16,
+    "ncp packets": 20,
+    "instant packets": 32,
+    "timer speed": 1.1
+  },
+  "Block In": {
+    "enabled": false,
+    "keybind": -1,
+    "rotation speed": 30.0,
+    "randomization": 10,
+    "rotation tolerance": 25.0,
+    "activate key": 72,
+    "ignore blocks": false,
+    "ignored blocks": {
+      "mode": "BLACKLIST",
+      "filter": "BLOCKS_ONLY",
+      "items": []
+    }
+  },
+  "Timer Range": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "REGULAR",
+    "activation range": [
+      3.05,
+      4.3
+    ],
+    "timer speed": 0.25167784,
+    "duration (ms)": 30,
+    "re-entry time (ms)": 1000,
+    "cooldown (ms)": 168,
+    "block while frozen": false,
+    "left mouse pressed": false,
+    "holding weapon": true,
+    "not using item": false
+  },
+  "Fake Lag": {
+    "enabled": false,
+    "keybind": -1,
+    "mode": "REPEL",
+    "lag (ms)": [
+      50,
+      90
+    ],
+    "max range": [
+      3.0,
+      3.16
+    ]
+  },
+  "Blink": {
+    "enabled": false,
+    "keybind": -1,
+    "hold (ms)": [
+      815,
+      915
+    ],
+    "packet limit": false,
+    "max packets": 504,
+    "show ghost": true
+  },
+  "Client Brand": {
+    "enabled": false,
+    "keybind": -1,
+    "brand": "VANILLA",
+    "custom brand": "vanilla"
+  },
+  "Scaffold": {
+    "enabled": false,
+    "keybind": 71,
+    "Block Whitelist": {
+      "mode": "WHITELIST",
+      "filter": "BLOCKS_ONLY",
+      "items": [
+        "oak_planks",
+        "stone",
+        "red_terracotta",
+        "blue_terracotta",
+        "wool_category"
+      ]
+    },
+    "mode": "TELLY",
+    "ncp extend": 0,
+    "ncp place delay": 0,
+    "ncp swing": true,
+    "ncp safety": true,
+    "ncp restore slot": true,
+    "rot speed": 94.228195,
+    "min rot speed": 85.167786,
+    "telly mode": "NORMAL",
+    "rotation mode": "MATH",
+    "search range": 2,
+    "angle tolerance": 12.0,
+    "strafe correct": true,
+    "keep y": false,
+    "down": true,
+    "no sprint": false,
+    "intelligent picker": false,
+    "crouch delay": [
+      0,
+      8
+    ],
+    "autoclick cps": [
+      1,
+      2
+    ],
+    "disable on death": true,
+    "disable on world change": true,
+    "profiles": {
+      "1": {
+        "name": "telly",
+        "keybind": 72,
+        "values": {
+          "Block Whitelist": {
+            "mode": "WHITELIST",
+            "filter": "BLOCKS_ONLY",
+            "items": [
+              "oak_planks",
+              "stone",
+              "red_terracotta",
+              "blue_terracotta",
+              "wool_category"
+            ]
+          },
+          "mode": "TELLY",
+          "ncp extend": 0,
+          "ncp place delay": 0,
+          "ncp swing": true,
+          "ncp safety": true,
+          "ncp restore slot": true,
+          "rot speed": 94.228195,
+          "min rot speed": 85.167786,
+          "telly mode": "NORMAL",
+          "rotation mode": "MATH",
+          "search range": 2,
+          "angle tolerance": 12.0,
+          "strafe correct": true,
+          "keep y": false,
+          "down": true,
+          "no sprint": false,
+          "intelligent picker": false,
+          "crouch delay": [
+            0,
+            8
+          ],
+          "autoclick cps": [
+            1,
+            2
+          ],
+          "disable on death": true,
+          "disable on world change": true
+        }
+      },
+      "base": {
+        "Block Whitelist": {
+          "mode": "WHITELIST",
+          "filter": "BLOCKS_ONLY",
+          "items": [
+            "red_terracotta",
+            "blue_terracotta",
+            "wool_category"
+          ]
+        },
+        "mode": "NINJA",
+        "ncp extend": 0,
+        "ncp place delay": 0,
+        "ncp swing": true,
+        "ncp safety": true,
+        "ncp restore slot": true,
+        "rot speed": 100.0,
+        "min rot speed": 76.71141,
+        "telly mode": "NORMAL",
+        "rotation mode": "MATH",
+        "search range": 2,
+        "angle tolerance": 12.0,
+        "strafe correct": true,
+        "keep y": false,
+        "down": true,
+        "no sprint": false,
+        "intelligent picker": false,
+        "crouch delay": [
+          45,
+          55
+        ],
+        "autoclick cps": [
+          4,
+          6
+        ],
+        "disable on death": true,
+        "disable on world change": true
+      },
+      "active": 1
+    }
+  },
+  "Clutch": {
+    "enabled": false,
+    "keybind": -1,
+    "trigger": "ALWAYS",
+    "blocks": 4.522876,
+    "Only on combat damage": true,
+    "Damage window (ticks)": 32,
+    "Auto ladder": false,
+    "Allow staircase up": true,
+    "Search depth": 8,
+    "Search radius": 6,
+    "Validate paths": false,
+    "Limit blocks": false,
+    "Max blocks": 5,
+    "Fail delay (ms)": 0,
+    "Clutch move delay": [
+      3,
+      6
+    ],
+    "Speed": 112.09151,
+    "Reset angle": false,
+    "Reset angle delay": [
+      0,
+      1
+    ],
+    "Return to last slot": true,
+    "Return delay": [
+      0,
+      1
+    ],
+    "Blacklist": true,
+    "Block blacklist": {
+      "mode": "BLACKLIST",
+      "filter": "BLOCKS_ONLY",
+      "items": []
+    },
+    "Held whitelist": false,
+    "Held block whitelist": {
+      "mode": "WHITELIST",
+      "filter": "BLOCKS_ONLY",
+      "items": []
+    },
+    "Show block count": false
+  },
+  "Fast Place": {
+    "enabled": false,
+    "keybind": -1,
+    "delay ticks": 0,
+    "Item Whitelist": {
+      "mode": "WHITELIST",
+      "filter": "NONE",
+      "items": [
+        "red_terracotta",
+        "blue_terracotta",
+        "wool_category"
+      ]
+    }
+  },
+  "Auto Place": {
+    "enabled": false,
+    "keybind": -1,
+    "require holding": true,
+    "only air": false,
+    "Block Whitelist": {
+      "mode": "WHITELIST",
+      "filter": "BLOCKS_ONLY",
+      "items": [
+        "blue_terracotta",
+        "red_terracotta",
+        "wool_category"
+      ]
+    }
+  },
+  "Chest Stealer": {
+    "enabled": false,
+    "keybind": 88,
+    "mode": "ALL_CONTAINERS",
+    "Steal Filter": {
+      "mode": "WHITELIST",
+      "filter": "NONE",
+      "items": []
+    },
+    "Delay (ms)": [
+      151,
+      185
+    ],
+    "Start Delay (ms)": 100,
+    "Close Delay (ms)": 100,
+    "Instant Steal": false,
+    "Instant Items": -1
+  },
+  "Bed Breaker": {
+    "enabled": false,
+    "keybind": 78,
+    "mode": "LEGIT",
+    "rotations": "SERVER",
+    "range": 4.5,
+    "blatant range": 5.0588236,
+    "auto tool": true,
+    "ignore own bed": true
+  },
+  "Chest Aura": {
+    "enabled": false,
+    "keybind": -1,
+    "rotation speed": 50.0,
+    "click through walls": true,
+    "drill swap": false,
+    "drill name": "sword"
+  },
+  "Nuker": {
+    "enabled": false,
+    "keybind": -1,
+    "blocks": {
+      "mode": "WHITELIST",
+      "filter": "BLOCKS_ONLY",
+      "items": [
+        "stone",
+        "cobblestone",
+        "clay",
+        "red_sandstone",
+        "red_sand"
+      ]
+    },
+    "range": 4.5,
+    "height": 0,
+    "depth": 1,
+    "fov": 180.0,
+    "shape": "TRIGGERBOT",
+    "sideways offset": 0,
+    "forwards backwards offset": 0,
+    "rotations": "NONE",
+    "priority": "LOWEST_ROTATION",
+    "stuck timeout ticks": 80,
+    "preview": true,
+    "target color": {
+      "value": "#C8FF4646",
+      "mode": "CUSTOM",
+      "custom": "#C8FF4646",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Click Gui": {
+    "enabled": true,
+    "keybind": 344,
+    "show_descriptions": true,
+    "show_background": true,
+    "blur_background": true
+  },
+  "Font": {
+    "enabled": true,
+    "keybind": -1,
+    "font": "ROBOTO"
+  },
+  "Color": {
+    "enabled": true,
+    "keybind": -1,
+    "bg": {
+      "value": "#FF0D0D0D",
+      "mode": "CUSTOM",
+      "custom": "#FF0D0D0D",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "accent": {
+      "value": "#FD9900FF",
+      "mode": "CUSTOM",
+      "custom": "#FD9900FF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Rotations": {
+    "enabled": true,
+    "keybind": -1,
+    "aim style": "QUADRATIC",
+    "speed": [
+      0.5,
+      0.8
+    ],
+    "max counts": 80,
+    "max speed deg": 45.0,
+    "count jitter": 0.039215688,
+    "overshoot chance %": 0,
+    "overshoot amount": [
+      3.0,
+      8.0
+    ],
+    "micro jitter": 0.13725491
+  },
+  "Target Filter": {
+    "enabled": true,
+    "keybind": -1,
+    "ignore team": false,
+    "ignore color": true,
+    "ignore invisible": true,
+    "anti-bot": true,
+    "anti-bot mode": "SMART"
+  },
+  "Commands": {
+    "enabled": true,
+    "keybind": -1,
+    "client prefix": ".",
+    "public commands": true,
+    "public prefix": "!",
+    "party/guild only": false
+  },
+  "Notifications": {
+    "enabled": true,
+    "keybind": -1,
+    "font": "DEFAULT",
+    "width": 176,
+    "rounded": true,
+    "round radius": 8,
+    "background mode": "SOLID",
+    "blur strength": 6,
+    "bg color": {
+      "value": "#DE12131B",
+      "mode": "CUSTOM",
+      "custom": "#DE12131B",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "progress bar": true,
+    "drop shadow": false,
+    "drop shadow color": {
+      "value": "#96000000",
+      "mode": "CUSTOM",
+      "custom": "#96000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow softness": 6,
+    "drop shadow spread": 1,
+    "drop shadow x": 0,
+    "drop shadow y": 2
+  },
+  "Modules List": {
+    "enabled": true,
+    "keybind": -1,
+    "hud_x": 0.0052083335,
+    "hud_y": 0.010080645,
+    "hud_scale": 1.0,
+    "font": "ROBOTO",
+    "show visuals": false,
+    "border": false,
+    "border style": "DASHED",
+    "border size": 1,
+    "background": true,
+    "background mode": "SOLID",
+    "blur strength": 12,
+    "rounded": false,
+    "round radius": 2,
+    "bg color": {
+      "value": "#00000000",
+      "mode": "CUSTOM",
+      "custom": "#00000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow": true,
+    "drop shadow shape": "STEPPED",
+    "drop shadow color": {
+      "value": "#96000000",
+      "mode": "CUSTOM",
+      "custom": "#96000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow softness": 2,
+    "drop shadow spread": 0,
+    "drop shadow x": 0,
+    "drop shadow y": 0,
+    "text color": {
+      "value": "#FFA235FF",
+      "mode": "CUSTOM",
+      "custom": "#FFA235FF",
+      "chromaSpeed": 0.05,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "color effect": "WAVE",
+    "gradient color": {
+      "value": "#FF7900FF",
+      "mode": "CUSTOM",
+      "custom": "#FF7900FF",
+      "chromaSpeed": 0.05,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "wave speed": 0.35256413,
+    "wave length": 6,
+    "config text color": {
+      "value": "#FFFFFFFF",
+      "mode": "CUSTOM",
+      "custom": "#FFFFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "sort": "SIZE",
+    "reverse order": false,
+    "capitalize": "LOWER",
+    "remove spaces": false,
+    "shadow": "SOFT",
+    "shadow strength": 165,
+    "pad x": 2,
+    "pad y": 3,
+    "width snap": 1,
+    "show config": true,
+    "config format": "NONE",
+    "hidden modules": []
+  },
+  "Watermark": {
+    "enabled": false,
+    "keybind": -1,
+    "hud_x": 0.0,
+    "hud_y": 0.0,
+    "hud_scale": 1.0,
+    "font": "DEFAULT",
+    "design": "SIMPLE",
+    "version": "LEGACY",
+    "accent color": {
+      "value": "#FF9900FF",
+      "mode": "THEME",
+      "custom": "#FF78C8FF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "text color": {
+      "value": "#FFFFFFFF",
+      "mode": "CUSTOM",
+      "custom": "#FFFFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "background": false,
+    "bg color": {
+      "value": "#78FFFFFF",
+      "mode": "CUSTOM",
+      "custom": "#78FFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "background mode": "SOLID",
+    "blur strength": 6,
+    "drop shadow": false,
+    "drop shadow color": {
+      "value": "#96000000",
+      "mode": "CUSTOM",
+      "custom": "#96000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow softness": 6,
+    "drop shadow spread": 1,
+    "drop shadow x": 0,
+    "drop shadow y": 2,
+    "text shadow": true
+  },
+  "Scoreboard": {
+    "enabled": false,
+    "keybind": -1,
+    "hud_x": 0.996,
+    "hud_y": 0.35,
+    "hud_scale": 1.0,
+    "font": "DEFAULT",
+    "background": true,
+    "background mode": "SOLID",
+    "blur strength": 6,
+    "rounded": true,
+    "round radius": 4,
+    "bg color": {
+      "value": "#6E000000",
+      "mode": "CUSTOM",
+      "custom": "#6E000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "title bar": true,
+    "title bar color": {
+      "value": "#5A000000",
+      "mode": "CUSTOM",
+      "custom": "#5A000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow": false,
+    "drop shadow color": {
+      "value": "#96000000",
+      "mode": "CUSTOM",
+      "custom": "#96000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow softness": 6,
+    "drop shadow spread": 1,
+    "drop shadow x": 0,
+    "drop shadow y": 2,
+    "show title": true,
+    "show scores": true,
+    "text color": {
+      "value": "#FFFFFFFF",
+      "mode": "CUSTOM",
+      "custom": "#FFFFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "score color": {
+      "value": "#FFFF5555",
+      "mode": "CUSTOM",
+      "custom": "#FFFF5555",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "text shadow": true,
+    "pad x": 3,
+    "pad y": 2,
+    "avoid modules list": true
+  },
+  "Target HUD": {
+    "enabled": false,
+    "keybind": -1,
+    "hud_x": 0.57395834,
+    "hud_y": 0.53629035,
+    "hud_scale": 1.0,
+    "font": "DEFAULT",
+    "position": "FLOATING",
+    "design": "GRIZZLY",
+    "bg color": {
+      "value": "#A0000000",
+      "mode": "CUSTOM",
+      "custom": "#A0000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "background mode": "BLUR",
+    "drop shadow": true,
+    "drop shadow color": {
+      "value": "#3C000000",
+      "mode": "CUSTOM",
+      "custom": "#3C000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow softness": 2,
+    "drop shadow spread": 0,
+    "drop shadow x": 0,
+    "drop shadow y": -2,
+    "blur strength": 12,
+    "accent color": {
+      "value": "#FF785AFF",
+      "mode": "CUSTOM",
+      "custom": "#FF785AFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "accent color 2": {
+      "value": "#FFFF5AC8",
+      "mode": "CUSTOM",
+      "custom": "#FFFF5AC8",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "text shadow": true
+  },
+  "Block Counter": {
+    "enabled": true,
+    "keybind": -1,
+    "hud_x": 0.5,
+    "hud_y": 0.82222223,
+    "hud_scale": 1.0,
+    "font": "DEFAULT",
+    "bg color": {
+      "value": "#8C000000",
+      "mode": "CUSTOM",
+      "custom": "#8C000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "background mode": "SOLID",
+    "blur strength": 12,
+    "drop shadow": false,
+    "drop shadow color": {
+      "value": "#96000000",
+      "mode": "CUSTOM",
+      "custom": "#96000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow softness": 6,
+    "drop shadow spread": 1,
+    "drop shadow x": 0,
+    "drop shadow y": 2,
+    "text color": {
+      "value": "#FFFFFFFF",
+      "mode": "CUSTOM",
+      "custom": "#FFFFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "only on scaffold": true
+  },
+  "Bed Plates": {
+    "enabled": false,
+    "keybind": -1,
+    "hud_x": 0.0,
+    "hud_y": 0.0,
+    "hud_scale": 1.0,
+    "font": "DEFAULT",
+    "render layer": "UNDERLAY",
+    "search range": 96.0,
+    "shell radius": 6,
+    "scan interval ms": 500,
+    "background mode": "SOLID",
+    "blur strength": 6,
+    "bg color": {
+      "value": "#D00D0D16",
+      "mode": "CUSTOM",
+      "custom": "#D00D0D16",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow": false,
+    "drop shadow color": {
+      "value": "#96000000",
+      "mode": "CUSTOM",
+      "custom": "#96000000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "drop shadow softness": 6,
+    "drop shadow spread": 1,
+    "drop shadow x": 0,
+    "drop shadow y": 2,
+    "show distance": false,
+    "use bed color": true,
+    "text color": {
+      "value": "#FFFFFFFF",
+      "mode": "CUSTOM",
+      "custom": "#FFFFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Corpse Finder": {
+    "enabled": false,
+    "keybind": -1,
+    "only in mineshafts": true,
+    "lapis corpses": true,
+    "tungsten corpses": true,
+    "umber corpses": true,
+    "vanguard corpses": true,
+    "littlefoot": true,
+    "announce discoveries": true,
+    "lapis color": {
+      "value": "#D23C73FF",
+      "mode": "CUSTOM",
+      "custom": "#D23C73FF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "tungsten color": {
+      "value": "#D2AAB4BE",
+      "mode": "CUSTOM",
+      "custom": "#D2AAB4BE",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "umber color": {
+      "value": "#D2D77832",
+      "mode": "CUSTOM",
+      "custom": "#D2D77832",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "vanguard color": {
+      "value": "#DCB446FF",
+      "mode": "CUSTOM",
+      "custom": "#DCB446FF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "littlefoot color": {
+      "value": "#E6FFD750",
+      "mode": "CUSTOM",
+      "custom": "#E6FFD750",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Frozen Treasures ESP": {
+    "enabled": false,
+    "keybind": -1,
+    "color": {
+      "value": "#DC55D2FF",
+      "mode": "CUSTOM",
+      "custom": "#DC55D2FF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Mineshaft Ore Guide": {
+    "enabled": false,
+    "keybind": -1,
+    "range": 16,
+    "vertical range": 10,
+    "only in mineshafts": true,
+    "show low yield": false,
+    "tungsten clay": {
+      "value": "#BE55D2FF",
+      "mode": "CUSTOM",
+      "custom": "#BE55D2FF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "tungsten cobblestone": {
+      "value": "#786E6E6E",
+      "mode": "CUSTOM",
+      "custom": "#786E6E6E",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "umber red sand": {
+      "value": "#BEFF5F2D",
+      "mode": "CUSTOM",
+      "custom": "#BEFF5F2D",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "umber dark terracotta": {
+      "value": "#AFD78737",
+      "mode": "CUSTOM",
+      "custom": "#AFD78737",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "umber orange terracotta": {
+      "value": "#78E1A546",
+      "mode": "CUSTOM",
+      "custom": "#78E1A546",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Efficient Miner Overlay": {
+    "enabled": false,
+    "keybind": -1,
+    "blocks": {
+      "mode": "WHITELIST",
+      "filter": "BLOCKS_ONLY",
+      "items": [
+        "clay",
+        "red_sandstone"
+      ]
+    },
+    "spread blocks": 3,
+    "show bedrock risk": true,
+    "target color": {
+      "value": "#D250BEFF",
+      "mode": "CUSTOM",
+      "custom": "#D250BEFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "spread color": {
+      "value": "#BEFFCD37",
+      "mode": "CUSTOM",
+      "custom": "#BEFFCD37",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "bedrock risk color": {
+      "value": "#E1FF2D2D",
+      "mode": "CUSTOM",
+      "custom": "#E1FF2D2D",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Click Lock": {
+    "enabled": false,
+    "keybind": -1,
+    "toggle key": -100,
+    "release in menus": true
+  },
+  "Auto Pickaxe Ability": {
+    "enabled": false,
+    "keybind": -1,
+    "activation": "AS_SOON_AS_READY",
+    "mining tool slot": 1,
+    "rod swap": true,
+    "rod slot": 2,
+    "action delay ticks": 2,
+    "interval seconds": 120,
+    "activate key": -1,
+    "pause key": -1
+  },
+  "Mining Assist": {
+    "enabled": false,
+    "keybind": -1,
+    "maintain breaking progress": true,
+    "reach indicator distance": 4.5,
+    "in reach color": {
+      "value": "#B450FF78",
+      "mode": "CUSTOM",
+      "custom": "#B450FF78",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "out of reach color": {
+      "value": "#D2FF4646",
+      "mode": "CUSTOM",
+      "custom": "#D2FF4646",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Powder Chest Solver": {
+    "enabled": false,
+    "keybind": -1,
+    "legit mode": false,
+    "smooth rotations": true,
+    "rotation speed": 25.0,
+    "chest color": {
+      "value": "#BEFA9614",
+      "mode": "CUSTOM",
+      "custom": "#BEFA9614",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "particle color": {
+      "value": "#E6FF3737",
+      "mode": "CUSTOM",
+      "custom": "#E6FF3737",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Dojo Helper": {
+    "enabled": false,
+    "keybind": -1,
+    "only in dojo": true,
+    "discipline sword swap": true,
+    "discipline swap delay ms": 50,
+    "force target esp": true,
+    "block wrong force hits": true,
+    "control aimbot": false,
+    "control prediction": 2.0,
+    "mastery target esp": true,
+    "mastery lock": false,
+    "mastery aim at green": false,
+    "mastery aim at yellow": true,
+    "mastery aim at red": true,
+    "rotation speed": 35.0,
+    "force color": {
+      "value": "#B46464FF",
+      "mode": "CUSTOM",
+      "custom": "#B46464FF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "mastery color": {
+      "value": "#BEFFD232",
+      "mode": "CUSTOM",
+      "custom": "#BEFFD232",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Dance Room Helper": {
+    "enabled": false,
+    "keybind": -1,
+    "early offset ms": 50,
+    "key press ms": 75
+  },
+  "Auto Reel": {
+    "enabled": false,
+    "keybind": -1,
+    "reel delay ms": [
+      80,
+      140
+    ],
+    "use hold ms": [
+      300,
+      300
+    ],
+    "hyperion swap": true,
+    "hyperion delay ms": [
+      80,
+      140
+    ],
+    "hyperion use hold ms": [
+      50,
+      100
+    ],
+    "recast delay ms": [
+      80,
+      140
+    ],
+    "recast use hold ms": [
+      50,
+      100
+    ],
+    "look down pitch": 89.0,
+    "look speed": 30.0,
+    "look timeout ms": 2000
+  },
+  "Anti Fireball": {
+    "enabled": false,
+    "keybind": -1,
+    "angle limit": 180.0,
+    "aim speed": 30.0,
+    "stop movement": true,
+    "move on finish": true,
+    "silent aim": true
+  },
+  "Auto Eat": {
+    "enabled": false,
+    "keybind": -1,
+    "food filter": {
+      "mode": "WHITELIST",
+      "filter": "NONE",
+      "items": [
+        "food_category"
+      ]
+    },
+    "hunger": 16,
+    "restore slot": true,
+    "auto gapple": true,
+    "gapple health": 14.0,
+    "enchanted only": false,
+    "avoid players": true,
+    "player range": 6.0,
+    "damage ticks": 10
+  },
+  "Auto Totem": {
+    "enabled": false,
+    "keybind": -1,
+    "Open Inventory": true,
+    "Random Slot": true,
+    "Delay (ms)": [
+      50,
+      100
+    ]
+  },
+  "Inventory Manager": {
+    "enabled": false,
+    "keybind": -1,
+    "Mode": "INVENTORY",
+    "Activate On %": 39,
+    "Delay (ms)": [
+      158,
+      219
+    ],
+    "Auto Hotbar": true,
+    "Sword Slot": 0,
+    "Pickaxe Slot": 1,
+    "Axe Slot": 2,
+    "Bow Slot": 3,
+    "Pearl Slot": 4,
+    "Gapple Slot": 5,
+    "Block Slot": 6,
+    "Food Slot": 7,
+    "Auto Armor": true,
+    "Prioritize Blast Resistance": false,
+    "Armor Ignores %": true,
+    "Inventory Cleaner": true,
+    "Trash Extra Gear": true,
+    "Trash Blacklist": {
+      "mode": "BLACKLIST",
+      "filter": "NONE",
+      "items": [
+        "totem_of_undying",
+        "water_bucket",
+        "lava_bucket",
+        "netherite_ingot",
+        "smithing_template",
+        "experience_bottle",
+        "diamond"
+      ]
+    }
+  },
+  "Cheat Detector": {
+    "enabled": true,
+    "keybind": -1,
+    "No Slow": true,
+    "Auto Block": true,
+    "Scaffold": true,
+    "Legit Scaffold": true,
+    "Kill Aura": true,
+    "Silent Aim": true,
+    "Reach": true,
+    "Auto Clicker": true,
+    "Speed": false,
+    "Flight": false,
+    "Anti Knockback": true,
+    "Invalid Rotation": true,
+    "Sensitivity": "STRICT",
+    "Protocol": "LEGACY",
+    "Max Distance": 256,
+    "Join Grace Ticks": 60,
+    "Alert Mode": "CHAT",
+    "Alert Threshold": 5.909396,
+    "Alert Cooldown (ms)": 250,
+    "Show All Evidence": false,
+    "Warn On Join": true,
+    "Mark Suspects": true,
+    "Mark Tab List": true,
+    "Mark Chat": true,
+    "Mark Nametags": true,
+    "Warning Icon": "⚠",
+    "Record Detections": true,
+    "Detection VL": 12.0,
+    "Conviction Score": 8.0,
+    "Retention (days)": 90
+  },
+  "Party Games": {
+    "enabled": false,
+    "keybind": -1,
+    "Animal Slaughter AIO": true,
+    "Animal ESP": true,
+    "Block wrong clicks": true,
+    "Hide wrong mobs": true,
+    "Cow ESP color": {
+      "value": "#FF2D2314",
+      "mode": "CUSTOM",
+      "custom": "#FF2D2314",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "Pig ESP color": {
+      "value": "#FFFFC0CB",
+      "mode": "CUSTOM",
+      "custom": "#FFFFC0CB",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "Chicken ESP color": {
+      "value": "#FFFFFFFF",
+      "mode": "CUSTOM",
+      "custom": "#FFFFFFFF",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "Anvil ESP": true,
+    "Anvil ESP color": {
+      "value": "#FFFF0000",
+      "mode": "CUSTOM",
+      "custom": "#FFFF0000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "Avalanche ESP": true,
+    "Avalanche ESP color": {
+      "value": "#FF00FF00",
+      "mode": "CUSTOM",
+      "custom": "#FF00FF00",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "Jigsaw Rush Triggerbot": true,
+    "Spider Maze Pathfinder": true,
+    "Spider Maze color": {
+      "value": "#FFFF0000",
+      "mode": "CUSTOM",
+      "custom": "#FFFF0000",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    }
+  },
+  "Quakecraft Rage": {
+    "enabled": false,
+    "keybind": -1,
+    "range": 150.0,
+    "hitbox scale": 2.3464053,
+    "prediction": true,
+    "prediction ticks": 2.0,
+    "aim speed": 720.0,
+    "fire tolerance": 2.2039216,
+    "settle ticks": 0,
+    "shoot cooldown": 10,
+    "target filter": true
+  },
+  "Bedwars": {
+    "enabled": false,
+    "keybind": -1,
+    "hud_x": 0.015,
+    "hud_y": 0.18,
+    "hud_scale": 1.0,
+    "font": "DEFAULT",
+    "only in bedwars": true,
+    "ignore teammates": true,
+    "shop helper": true,
+    "highlight affordable": true,
+    "highlight opacity": 72,
+    "middle click purchases": true,
+    "prevent duplicates": true,
+    "anti misplace": true,
+    "misplace notification": true,
+    "alerts": true,
+    "alert sound": true,
+    "show alert distance": true,
+    "alert range": 0,
+    "alert cooldown": 6,
+    "item alerts": true,
+    "consume alerts": true,
+    "pickup alerts": true,
+    "armor alerts": true,
+    "trap and bed alerts": true,
+    "alert weapons": true,
+    "alert tools": true,
+    "alert potions": true,
+    "alert utility": true,
+    "pickup iron": false,
+    "pickup gold": false,
+    "pickup diamonds": true,
+    "pickup emeralds": true,
+    "resource tracker": true,
+    "show iron": true,
+    "show gold": true,
+    "show diamonds": true,
+    "show emeralds": true,
+    "resource change alerts": false,
+    "resource background": true,
+    "resource text color": {
+      "value": "#FFF5F5FA",
+      "mode": "CUSTOM",
+      "custom": "#FFF5F5FA",
+      "chromaSpeed": 0.5,
+      "chromaSaturation": 1.0,
+      "chromaBrightness": 1.0
+    },
+    "bed tracker": true,
+    "show bed distance": true,
+    "enemy proximity alerts": true,
+    "bed alert range": 25,
+    "bed alert cooldown": 8,
+    "bed scan radius": 28
+  }
+}

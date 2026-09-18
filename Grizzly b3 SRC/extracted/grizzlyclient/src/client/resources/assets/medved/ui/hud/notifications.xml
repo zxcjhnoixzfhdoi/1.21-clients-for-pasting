@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui>
+    <template name="notification-toast">
+        <box x="{{toast.x}}" y="{{toast.y}}" w="{{toast.w}}" h="{{toast.h}}" bg="#00000000">
+            <panel overlay="true" relative="true"
+                   x="0" y="0" w="{{toast.w}}" h="{{toast.h}}"
+                   bg="{{toast.bg}}" radius="{{toast.radius}}" clip="true">
+                <row overlay="true" relative="true"
+                     x="11" y="7" w="{{toast.textW}}" h="10"
+                     text="{{toast.title}}" fg="{{toast.text}}" shadow="true" />
+                <row overlay="true" relative="true"
+                     x="11" y="19" w="{{toast.textW}}" h="{{toast.messageH}}"
+                     text="{{toast.message}}" fg="{{toast.messageColor}}" shadow="true" />
+                <box overlay="true" relative="true"
+                     x="9" y="{{toast.progressY}}" w="{{toast.trackW}}" h="{{toast.progressH}}"
+                     bg="{{toast.progressTrack}}" radius="1" />
+                <box overlay="true" relative="true"
+                     x="9" y="{{toast.progressY}}" w="{{toast.progressW}}" h="{{toast.progressH}}"
+                     bg="{{toast.progressColor}}" radius="1" />
+            </panel>
+        </box>
+    </template>
+</ui>

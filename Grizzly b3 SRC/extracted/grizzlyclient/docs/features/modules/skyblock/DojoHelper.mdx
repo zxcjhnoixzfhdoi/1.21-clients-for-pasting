@@ -1,0 +1,87 @@
+---
+sidebar_position: 9
+sidebar_label: Dojo Helper
+title: Dojo Helper
+---
+
+# Dojo Helper
+
+Provides helpers for the Control, Discipline, Force, and Mastery Dojo challenges.
+
+---
+
+Dojo Helper reads the scoreboard to determine which challenge is active. Each
+helper only runs during its matching challenge.
+
+### Only in dojo
+
+Requires the scoreboard to identify the Dojo arena before any challenge helper
+can run.
+
+## Discipline
+
+### Discipline sword swap
+
+Switches to the sword matching the helmet worn by the zombie under your
+crosshair.
+
+### Discipline swap delay ms
+
+Sets the minimum delay between automatic sword swaps.
+
+## Force
+
+### Force target ESP
+
+Highlights valid Force challenge zombies using their exact entity hitboxes.
+
+### Block wrong force hits
+
+Cancels attacks against incorrect Force targets. These targets are also rejected
+by the global **Target Filter**, so modules such as Kill Aura will ignore them.
+
+### Force color
+
+Sets the colour used to highlight valid Force targets.
+
+## Control
+
+### Control aimbot
+
+Uses client rotations with perspective movement to track the active Control
+target.
+
+### Control prediction
+
+Sets how far ahead of the moving target the aimbot aims.
+
+## Mastery
+
+### Mastery target ESP
+
+Highlights selected wool targets on the Mastery pillars.
+
+### Mastery lock
+
+Uses client rotations with perspective movement to lock onto a selected wool
+target.
+
+### Mastery aim at green
+
+Allows green wool to be selected by Mastery ESP and lock.
+
+### Mastery aim at yellow
+
+Allows yellow wool to be selected by Mastery ESP and lock.
+
+### Mastery aim at red
+
+Allows red wool to be selected by Mastery ESP and lock.
+
+### Mastery color
+
+Sets the colour used to highlight Mastery targets.
+
+### Rotation speed
+
+Sets how quickly Mastery lock rotates toward its target.

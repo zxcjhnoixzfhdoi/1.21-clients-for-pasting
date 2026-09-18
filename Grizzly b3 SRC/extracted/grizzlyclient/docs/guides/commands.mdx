@@ -1,0 +1,60 @@
+---
+sidebar_position: 3
+sidebar_custom_props:
+  boxicon: bxf bx-command
+---
+
+# Commands
+
+## Client commands
+
+Type a comma (`,`) in chat to run a command locally. Messages with the `,`
+prefix are executed by the client and are never sent to the server. Both
+command systems autofill like slash commands. Press Tab to complete or cycle
+through suggestions.
+
+- `,bind <module> <key>`: bind a key to a module, e.g. `,bind silentaura f`.
+  Use `none` as the key to unbind, or run `,bind silentaura` to see the current bind.
+- `,toggle <module>`: toggle a module on or off.
+- `,say <message>`: send a message beginning with the client prefix instead of
+  executing it locally. For example, with `.` as the prefix, `.say .hello`
+  sends `.hello` to server chat.
+- `,vclip <blocks>`: move vertically by a signed number of blocks. Positive
+  values move up and negative values move down.
+- `,clickgui`: open the click GUI.
+- `,cheaters`: read and edit the [Cheat Detector](/features/modules/utility/CheatDetector)
+  database. See below.
+- `,help`: list every client command.
+
+### Cheater database
+
+- `,cheaters list`: show recorded players, worst verdict first.
+- `,cheaters info <name>`: the full record for one player, including every check
+  that flagged them and the servers they were seen on.
+- `,cheaters session`: players flagged since you joined the current world,
+  including ones that never reached a recorded detection.
+- `,cheaters mark <name>` / `,cheaters suspect <name>`: set a verdict by hand.
+  Manual verdicts are never lowered or pruned automatically. The player has to
+  be online or already recorded, so their UUID can be stored.
+- `,cheaters forget <name>`: delete one record.
+- `,cheaters purge`: drop records older than the retention window.
+- `,cheaters wipe confirm`: delete every record.
+
+Module names are matched without spaces (`silentaura`, `targetfilter`, ...), and
+keys accept names like `f`, `rshift`, `lmb`, `mouse4`, or `f5`.
+
+## Public commands
+
+Public commands are sent as regular chat messages, so anyone in your chat can
+use them. When someone sends one, the client answers with a normal chat message.
+
+- `!ping`: replies with your ping to the server, e.g. `Pong! 24ms`.
+- `!tps`: replies with the server tick rate, e.g. `TPS: 19.8`.
+- `!help`: replies with the list of public commands.
+
+Each public command has a short cooldown to prevent chat spam.
+
+## Configuration
+
+Open the click GUI, then from the "Other" category, then
+go on the [Commands module](/features/modules/other/Commands).

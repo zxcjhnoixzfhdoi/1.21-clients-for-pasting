@@ -1,0 +1,81 @@
+---
+sidebar_position: 5
+---
+
+# Watermark
+
+Shows the client name in the corner
+
+---
+
+### Font
+
+Font used for this element's text. **DEFAULT** follows the client font set in **Font**, and any
+other choice overrides it for this element only.
+
+### Design
+
+Visual style of the watermark. Each design decides for itself which of the settings below apply,
+so options that a design cannot use are hidden rather than left inert. (All of these are show
+with the Minecraft font, however you can customize that too).
+
+- **SIMPLE**: the client name
+
+![Watermark screenshot](./img/simple-watermark.png)
+
+- **CAMEL**: ported from Camel Client
+
+![Watermark screenshot](./img/camel-watermark.png)
+
+- **WURST**: ported from Wurst
+
+![Watermark screenshot](./img/wurst-watermark.png)
+
+
+### Version
+
+Wording of the version string.
+
+- **GRIZZLY**: the running build and Minecraft version, for example `b2 MC26.2`
+- **LEGACY**: a fixed `v6.35.3 MC1.8`, for when you want it to read as the original
+
+### Accent color
+
+Color of the first letter in **SIMPLE** and of the name in **CAMEL**. Defaults to following your
+theme color.
+
+### Text color
+
+Color of the remainder of the name in **SIMPLE** and of the build tag in **CAMEL**.
+
+### Background
+
+Draw a panel behind the watermark. Only available in **SIMPLE**.
+
+#### BG color
+
+Panel color, with alpha support. In blur mode, alpha controls how strongly the color tints the
+blurred gameplay.
+
+#### Background mode
+
+- **SOLID**: use the configured background color normally
+- **BLUR**: blur the gameplay behind the panel and use **BG color** as a glass tint
+
+#### Blur strength
+
+Controls the Gaussian blur radius when **Background mode** is **BLUR**.
+
+### Drop shadow
+
+Draw a GPU-rendered soft shadow behind the panel. Available in **SIMPLE** when **Background** is
+on.
+
+- **Drop shadow color** controls the shadow color and opacity
+- **Drop shadow softness** controls the Gaussian falloff width
+- **Drop shadow spread** expands the solid center before the falloff begins
+- **Drop shadow X/Y** offsets the shadow from the panel
+
+### Text shadow
+
+Draw a shadow behind the watermark text.

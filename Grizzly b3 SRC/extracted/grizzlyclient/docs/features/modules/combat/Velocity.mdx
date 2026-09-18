@@ -1,0 +1,91 @@
+---
+sidebar_position: 9
+---
+import Chip from '@mui/material/Chip'
+import WarningIcon from '@mui/icons-material/Warning'
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
+
+# Velocity
+
+Modifies knockback you receive from attacks
+
+---
+
+There are multiples modes of Velocity that all work differently, some are ghost
+and some are very detected, please read the
+[anticheat safety article](/guides/anticheat-safety) for more information.
+
+Jump Reset used to be a mode here. It is its own module now, see
+[Jump Reset](/features/modules/combat/JumpReset).
+
+## Delay <sup><Chip label="Ghost" color="success" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<VerifiedUserIcon />}/></sup>
+
+Increases your ping so you can still move and attack while you've taken knockback by delaying it,
+meaning if someone hits you in a fight you can still hit them while your knockback has been delayed.
+
+![Example of how the Delay mode affects velocity](./img/velocity-delay.gif)
+
+#### Ground delay (ms)
+
+Delay before reacting while on ground
+
+#### Air delay (ms)
+
+Delay before reacting while in air
+
+## Reduce
+
+Attacks the entity you're looking at and scales a specific percent of your knockback.
+Works on some predictive anticheats but not all
+
+![Example of how the Reduce mode affects velocity](./img/velocity-reduce.gif)
+
+#### Attack count
+
+How many attacks it will perform on an entity
+
+#### Range
+
+Maximum distance an entity can attacked, this does NOT affect your reach
+
+#### Horizontal
+
+Percent of horizontal knockback to keep (0 = no kb, 1 = full kb)
+
+#### Vertical
+
+Percent of vertical knockback to keep (0 = no kb, 1 = full kb)
+
+## Modify <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Scales a specific percent of your knockback
+
+![Example of how the Modify mode affects velocity](./img/velocity-modify.gif)
+
+#### Modify %
+
+Percent of horizontal knockback to remove (0% = full kb, 100% = no kb)
+
+#### Modify y %
+
+Percent of vertical knockback to remove (0% = full kb, 100% = no kb)
+
+## Freeze <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Makes the server think your game is frozen, cancelling knockback
+
+![Example of how the Freeze mode affects velocity](./img/velocity-freeze.gif)
+
+## Reverse <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+After a set amount of ticks (or instant), you will take forwards knockback
+by a specified percent of the original knockback
+(50% = cancels out original knockback). 
+
+![Example of how Reverse mode affects velocity](./img/velocity-reverse.gif)
+
+## Cancel <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Cancels all knockback packets
+
+![Example of how the Cancel mode affects velocity](./img/velocity-cancel.gif)

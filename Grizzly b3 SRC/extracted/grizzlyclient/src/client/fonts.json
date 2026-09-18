@@ -1,0 +1,10 @@
+{
+  "arial":          { "file": "arial_bold.ttf",     "size": 11.0, "shift": [0, 1] },
+  "comic_relief":   { "file": "comic_relief.ttf",   "size": 11.0, "shift": [0, 1] },
+  "impact":         { "file": "impact.ttf",         "size": 12.0, "shift": [0, 1] },
+  "inter":          { "file": "inter.ttf",          "size": 11.0, "shift": [0, 1] },
+  "jetbrains_mono": { "file": "jetbrains_mono.ttf", "size": 11.0, "shift": [0, 1] },
+  "minecraft":      { "file": "minecraft.ttf",      "size": 12.0 },
+  "roboto":         { "file": "roboto.ttf",         "size": 11.0, "shift": [0, 1] },
+  "sanfrancisco":   { "file": "sf_bold.ttf",        "size": 11.0, "shift": [0, 1] }
+}

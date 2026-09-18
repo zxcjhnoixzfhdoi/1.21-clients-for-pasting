@@ -1,0 +1,56 @@
+---
+sidebar_position: 5
+---
+
+# Auto Eat
+
+Eats when you get hungry, and gaps when you get low
+
+Auto Eat holds use for you when your food bar drops, and reaches for a golden apple
+instead when your health drops. It only ever picks from your hotbar.
+
+---
+
+### Food filter
+
+Chooses which items count as food, using the same item picker as every other whitelist
+in the client. Defaults to the **Food** category.
+
+Switch the picker to blacklist to eat anything edible *except* the entries you list. An
+empty whitelist matches nothing; an empty blacklist matches everything.
+
+### Hunger
+
+Food level to start eating at. Eating begins once your food bar is at or below this.
+
+### Restore slot
+
+Switch back to the slot you were holding once the item is finished.
+
+## Auto Gapple
+
+### Auto gapple
+
+Reach for a golden apple when your health drops, independently of hunger. Gapples take
+priority over the food filter.
+
+### Gapple health
+
+Health to start eating a gapple at.
+
+### Enchanted only
+
+Only use enchanted golden apples. With this off it prefers enchanted ones and falls back
+to normal golden apples.
+
+### Avoid players
+
+Don't start eating while another player is nearby.
+
+### Player range
+
+How close a player has to be to block eating.
+
+### Damage ticks
+
+Don't start eating if you have lost health within this many ticks.

@@ -1,0 +1,42 @@
+---
+sidebar_position: 5
+---
+
+# Chest Stealer
+
+Silently steals filtered items from open chests
+
+---
+
+### Mode
+
+Which containers to steal from.
+
+- **ONLY CHESTS**: only steal when the container is an vanilla chest, useful for Skywars configs
+- **ALL CONTAINERS**: steal from anything the server opens as a chest interface
+
+### Steal Filter
+
+List of items or categories that would be whitelisted to steal.
+Leave empty if you want to steal everything.
+
+### Instant Steal
+
+Send a whole run of transfers in one tick instead of one per tick.
+
+#### Instant Items
+
+How many items the burst takes. `-1` empties the chest in a single tick.
+
+### Delay (ms)
+
+Delay between individual steals once the burst has been spent.
+
+### Start Delay (ms)
+
+How long to wait after the container opens before touching anything.
+
+### Close Delay (ms)
+
+How long to wait after the last item before closing the container.
+

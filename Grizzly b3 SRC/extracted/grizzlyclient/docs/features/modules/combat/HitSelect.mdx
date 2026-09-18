@@ -1,0 +1,59 @@
+---
+sidebar_position: 8
+sidebar_label: Hit Select
+title: Hit Select
+---
+import Chip from '@mui/material/Chip'
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
+
+# Hit Select <sup><Chip label="Ghost" color="success" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<VerifiedUserIcon />}/></sup>
+
+Restricts auto-clicks and attacks to the most effective moments
+
+---
+
+### Mode
+
+PAUSE keeps only good attacks by restricting the autoclicker;
+ACTIVE cancels weak ones.
+
+### Preference
+
+The priority used to decide attack timing.
+
+- **BURST**: only attack when the target is vulnerable
+- **CRIT**: prefer airborne critical hit windows
+- **COMBO**: prefer combo hits after hurtstun while moving
+- **TIMER**: attack based on a delay timer instead of hit timing
+
+### Delay (ms)
+
+Minimum wait after a canceled attack before the next one.
+
+### Wait for first hit (ms)
+
+If enabled, do not attack until you receive damage first or the timeout elapses.
+
+### Hit later in trades (ms)
+
+After you take a hit, hold off for this window before retaliating.
+
+### Disable during knockback
+
+When enabled, CRIT mode will not allow attacks while you are still being knocked back.
+
+### Only while damaged
+
+In CRIT mode, only allow attacks if you have already been damaged in the fight.
+
+### Cancel rate (in combat) %
+
+How often to cancel non-damaging attacks while aiming at a target.
+
+### Cancel rate (missed) %
+
+How often to cancel swings that are not aimed at any entity.
+
+### Fake swing
+
+When enabled, still play the swing animation even when the attack is suppressed.

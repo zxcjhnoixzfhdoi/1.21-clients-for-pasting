@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+---
+
+# Timer Range
+
+Changes game speed briefly while closing the final gap to an opponent.
+
+---
+
+### Mode
+
+- **REGULAR**: bursts forward first, then freezes for the same duration
+- **LEGIT**: freezes first, then releases the stored time as a burst
+- **RICOCHET**: runs at the configured timer speed, jumps to its mirror around `1.0x` for the configured re-entry time, then returns directly to `1.0x`
+
+### Timer speed
+
+The game speed used during the slowdown phase, from a complete `0x` freeze through `1x`.
+
+### Activation range
+
+The minimum and maximum target distance where a cycle may begin. Timer Range only activates while moving toward a visible, valid player.
+
+### Duration (ms)
+
+How long the configured timer speed remains active.
+
+### Re-entry time (ms)
+
+In Ricochet mode, controls how long the mirrored timer speed remains active before jumping directly to `1.0x`.
+
+### Cooldown (ms)
+
+The minimum time between timer bursts.
+
+### Block while frozen
+
+In Regular mode, use a held block-capable weapon while repaying the timer burst.
+
+### Conditions
+
+Timer Range can require the physical left mouse button, a weapon in the main hand, and no item currently being used.

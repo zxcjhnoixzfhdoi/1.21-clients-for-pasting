@@ -1,0 +1,33 @@
+---
+sidebar_position: 22
+sidebar_label: Jump Reset
+title: Jump Reset
+---
+import Chip from '@mui/material/Chip'
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
+
+# Jump Reset <sup><Chip label="Ghost" color="success" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<VerifiedUserIcon />}/></sup>
+
+Jumps the moment knockback lands so the ground cuts it short
+
+![Example of how Jump Reset affects velocity](./img/velocity-jumpreset.gif)
+
+---
+
+### Chance %
+
+How often to reset at all. Rolled once when the knockback arrives.
+
+### Accuracy %
+
+Once a reset is on, the chance each tick that the jump actually goes out. A missed roll does not
+cancel the jump, it delays it a tick, so a low accuracy gives you late and sloppy resets rather
+than none. Randomised inside the range every attempt.
+
+### Only when targeting
+
+Only reset while you are roughly facing the nearest player within 6 blocks.
+
+### Water check
+
+Skip the reset while you are in water.

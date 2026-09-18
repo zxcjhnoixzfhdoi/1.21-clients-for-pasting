@@ -1,0 +1,84 @@
+package onl.luka.grizzly.module.modules.player
+
+import onl.luka.grizzly.util.LagManager
+import onl.luka.grizzly.module.Module
+import onl.luka.grizzly.util.RenderUtil
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext
+import net.minecraft.client.Minecraft
+import net.minecraft.world.phys.AABB
+import net.minecraft.world.phys.Vec3
+
+object Blink : Module("Blink", "Buffers outgoing packets, making you appear frozen to the server", Category.PLAYER) {
+
+    val holdTime     = intRange("hold (ms)",    2000 to 3000, 100, 15000)
+    val packetLimit  = boolean("packet limit",  true)
+    val maxPackets   = int("max packets",       500,          10,  2000).also {
+        it.visibleWhen = { packetLimit.value }
+    }
+    val showGhost    = boolean("show ghost",    true)
+
+    @Volatile var holding  = false
+        private set
+
+    private var holdUntil = 0L
+
+    @Volatile private var ghostPos: Vec3? = null
+    private var ghostWidth  = 0.6f
+    private var ghostHeight = 1.8f
+
+    override fun onTick(client: Minecraft) {
+        if (client.player == null || client.level == null) {
+            LagManager.flushAllOutgoing()
+            holding  = false
+            ghostPos = null
+            return
+        }
+        val now = System.currentTimeMillis()
+
+        if (holding) {
+            val reachedPacketLimit = packetLimit.value &&
+                LagManager.getOutgoingQueueSize() >= maxPackets.value
+            if (now >= holdUntil || reachedPacketLimit) {
+                disable()
+                return
+            }
+        } else {
+            val player = client.player!!
+            ghostPos    = player.position()
+            ghostWidth  = player.bbWidth
+            ghostHeight = player.bbHeight
+            val (lo, hi) = holdTime.value
+            val ms = if (hi > lo) (lo + (Math.random() * (hi - lo + 1)).toInt()).toLong() else lo.toLong()
+            holdUntil = now + ms
+            holding = true
+        }
+    }
+
+    override fun onLevelRender(ctx: LevelRenderContext) {
+        if (!showGhost.value) return
+        val pos = ghostPos ?: return
+        val hw = ghostWidth / 2.0
+        val box = AABB(pos.x - hw, pos.y, pos.z - hw, pos.x + hw, pos.y + ghostHeight, pos.z + hw)
+        RenderUtil.worldContext(ctx) { pose, buf ->
+            buf.draw(RenderUtil.WORLD_FILLED) { drawPose, vc ->
+                RenderUtil.boxFilled(vc, drawPose, box, 0.2f, 0.6f, 1f, 0.4f)
+            }
+            buf.draw(RenderUtil.WORLD_LINES) { drawPose, vc ->
+                RenderUtil.boxOutline(vc, drawPose, box, 0.4f, 0.8f, 1f, 0.9f)
+            }
+        }
+    }
+
+    override fun hudInfo(): String {
+        if (!holding) return ""
+        val remaining = (holdUntil - System.currentTimeMillis()).coerceAtLeast(0L)
+        return "${remaining}ms"
+    }
+
+    override fun onDisabled() {
+        holding   = false
+        holdUntil = 0L
+        ghostPos  = null
+        LagManager.flushAllOutgoing()
+    }
+}

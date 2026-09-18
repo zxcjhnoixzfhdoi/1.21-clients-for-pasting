@@ -1,0 +1,48 @@
+---
+sidebar_position: 14
+sidebar_label: Hit Flick
+title: Hit Flick
+---
+import Chip from '@mui/material/Chip'
+import WarningIcon from '@mui/icons-material/Warning'
+
+# Hit Flick <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Silently flicks rotation on each attack to displace knockback sideways
+
+---
+
+### Flick angle
+
+The range of yaw angles used for each flick. Void mode calculates its yaw from nearby drops and does not use this setting.
+
+### Flick mode
+
+Direction selection for each hit.
+
+- **LEFT**: flick left every attack
+- **RIGHT**: flick right every attack
+- **RANDOM**: randomly choose left or right
+- **STRAFE**: flick in the direction you are strafing
+- **STRAFE INVERTED**: flip the strafe direction
+- **VOID**: trace the target's knockback paths and favor the nearest, longest, and deepest reachable drop
+
+### Void check distance
+
+How far from the target to trace possible knockback paths when using Void mode.
+
+### Void depth
+
+How many blocks below the projected path must be empty before it counts as a void-side drop.
+
+### Require sprint
+
+Only perform flicks while sprinting.
+
+### Cooldown (ms)
+
+Minimum delay between flicks.
+
+### Auto KB
+
+Use the highest-level Knockback-enchanted hotbar item for the displaced hit, then restore the previous slot. This selection takes priority over Silent Aura's Auto Weapon for that attack.

@@ -1,0 +1,249 @@
+<templates>
+    <template name="entry-row">
+        <row id="{{entry.id}}" axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 3" gap="4" radius="3">
+            <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+            <row text="{{entry.value}}" w="70" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" align="right" padding="0" />
+        </row>
+    </template>
+
+    <template name="boolean-entry">
+        <row id="{{entry.id}}" axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 3" gap="4" radius="3">
+            <row text="{{entry.label}}" w="fill" h="fill" fg="{{entry.fg}}" bg="{{theme.transparent}}" padding="0" />
+            <toggle w="22" h="11" on="{{entry.on}}" onBg="{{theme.accent}}" offBg="{{theme.sliderBg}}" knobBg="{{theme.text}}" glow="3" glowColor="{{theme.accentGlow}}" />
+        </row>
+    </template>
+
+    <template name="number-entry">
+        <box id="{{entry.id}}" w="fill" h="28" padding="0" gap="0" radius="3" hoverBg="{{theme.entryHoverBg}}">
+            <row axis="horizontal" w="fill" h="15" bg="{{theme.transparent}}" padding="5 3" gap="4">
+                <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+                <row text="{{entry.value}}" w="54" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" align="right" padding="0" />
+            </row>
+            <slider w="fill" h="13" progress="{{entry.progress}}" bg="{{theme.transparent}}" trackBg="{{theme.sliderBg}}" fillBg="{{theme.sliderFg}}" knobBg="{{theme.text}}" trackHeight="3" knobSize="7" trackInset="5" />
+        </box>
+    </template>
+
+    <template name="range-entry">
+        <box id="{{entry.id}}" w="fill" h="28" padding="0" gap="0" radius="3" hoverBg="{{theme.entryHoverBg}}">
+            <row axis="horizontal" w="fill" h="15" bg="{{theme.transparent}}" padding="5 3" gap="4">
+                <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+                <row text="{{entry.value}}" w="76" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" align="right" padding="0" />
+            </row>
+            <range-slider w="fill" h="13" low="{{entry.low}}" high="{{entry.high}}" bg="{{theme.transparent}}" trackBg="{{theme.sliderBg}}" fillBg="{{theme.sliderFg}}" knobBg="{{theme.text}}" trackHeight="3" knobSize="7" trackInset="5" />
+        </box>
+    </template>
+
+    <template name="enum-entry">
+        <box w="fill" padding="0" gap="0">
+            <row axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" gap="4" radius="3">
+                <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+                <row id="{{entry.id}}" axis="horizontal" w="{{entry.enumWidth}}" h="11" fg="{{theme.text}}" bg="{{theme.controlBg}}" hoverBg="{{theme.controlActiveBg}}" border="{{theme.borderSoft}}" borderWidth="1" padding="4 0" gap="2" radius="3">
+                    <row text="{{entry.value}}" w="fill" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" align="center" padding="0" />
+                    <dropdown-arrow w="10" h="11" fg="{{theme.textDim}}" open="{{entry.open}}" font="minecraft" />
+                </row>
+            </row>
+            <if condition="setting.enum-open">
+                <for each="entry-enum-options" w="fill" gap="1" padding="4 4" bg="{{theme.entrySelectedBg}}" radius="4">
+                    <component name="enum-option-inline" />
+                </for>
+            </if>
+        </box>
+    </template>
+
+    <template name="keybind-entry">
+        <row id="{{entry.id}}" axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" gap="4" radius="3">
+            <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+            <row text="{{entry.value}}" w="52" h="fill" fg="{{theme.text}}" bg="{{theme.controlBg}}" border="{{theme.borderSoft}}" borderWidth="1" align="center" padding="0" radius="3" />
+        </row>
+    </template>
+
+    <template name="module-profiles">
+        <box w="fill" padding="0" gap="0">
+            <box w="fill" h="1" bg="{{theme.divider}}" padding="0" gap="0" />
+            <row text="Profiles" w="fill" h="14" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="2 3" />
+            <for each="module-profiles" w="fill" gap="0">
+                <row axis="horizontal" w="fill" h="15" bg="{{profile.bg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" gap="4" radius="3">
+                    <text-input id="{{profile.nameId}}" text="{{profile.name}}" w="fill" h="11" fg="{{profile.fg}}" bg="{{profile.nameBg}}" hoverBg="{{theme.entrySelectedBg}}" padding="2 0" radius="2" active="{{profile.nameActive}}" cursor="{{profile.nameCursor}}" scroll="{{profile.nameScroll}}" />
+                    <row id="{{profile.bindId}}" text="{{profile.key}}" w="46" h="12" fg="{{theme.text}}" bg="{{theme.controlBg}}" border="{{theme.borderSoft}}" borderWidth="1" align="center" padding="0" radius="3" />
+                    <row id="{{profile.removeId}}" text="{{profile.removeSign}}" w="9" h="11" fg="{{theme.textDim}}" bg="{{theme.transparent}}" align="center" padding="0" />
+                </row>
+            </for>
+            <row id="{{module.addProfileId}}" text="+ add profile" w="fill" h="15" fg="{{theme.textDim}}" bg="{{theme.transparent}}" hoverBg="{{theme.entryHoverBg}}" align="center" padding="0" radius="3" />
+        </box>
+    </template>
+
+    <template name="string-entry">
+        <row axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" gap="4" radius="3">
+            <row text="{{entry.label}}" w="70" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" padding="0" />
+            <text-input id="{{entry.id}}" text="{{entry.value}}" w="fill" h="11" fg="{{theme.text}}" bg="{{theme.controlBg}}" hoverBg="{{theme.entrySelectedBg}}" padding="3 1" radius="2" active="{{entry.active}}" cursor="{{entry.cursor}}" scroll="{{entry.scroll}}" />
+        </row>
+    </template>
+
+    <template name="color-entry">
+        <box w="fill" padding="0" gap="0">
+            <row id="{{entry.id}}" axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" gap="4" radius="3">
+                <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" padding="0" />
+                <swatch color="{{entry.color}}" w="22" h="12" radius="3" border="{{theme.border}}" borderWidth="1" />
+            </row>
+            <if condition="setting.color-open">
+                <component name="color-picker-inline" />
+            </if>
+        </box>
+    </template>
+
+    <template name="color-picker-inline">
+        <box w="fill" padding="5 5" gap="4" bg="{{theme.entrySelectedBg}}" radius="4" border="{{theme.borderSoft}}" borderWidth="1">
+            <row id="color:mode" text="{{color.mode}}" w="fill" h="12" fg="{{theme.text}}" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" radius="2" />
+            <if condition="color.mode-open">
+                <box w="fill" padding="0" gap="0">
+                    <for each="color-modes">
+                        <row id="{{mode.id}}" text="{{mode.label}}" w="fill" h="12" fg="{{mode.fg}}" bg="{{mode.bg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" />
+                    </for>
+                </box>
+            </if>
+            <if condition="color.is-theme">
+                <box w="fill" gap="3">
+                    <row text="Using theme color" w="fill" h="9" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+                    <swatch color="{{color.preview}}" w="fill" h="14" radius="2" />
+                </box>
+            </if>
+            <if condition="color.has-map">
+                <box w="fill" gap="3">
+                    <color-map id="color:map" w="fill" h="52" hue="{{color.hue}}" saturation="{{color.saturation}}" value="{{color.value}}" />
+                    <hue-bar id="color:hue" w="fill" h="8" hue="{{color.hue}}" horizontal="true" />
+                    <if condition="color.has-alpha">
+                        <alpha-bar id="color:alpha" w="fill" h="8" color="{{color.preview}}" alpha="{{color.alpha}}" horizontal="true" />
+                    </if>
+                </box>
+            </if>
+            <if condition="color.is-chroma">
+                <box w="fill" gap="2">
+                    <row text="Speed {{color.speed}}" w="fill" h="9" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+                    <slider id="color:speed" w="fill" h="12" progress="{{color.speedProgress}}" trackBg="{{theme.sliderBg}}" fillBg="{{theme.sliderFg}}" knobBg="{{theme.text}}" />
+                </box>
+            </if>
+            <if condition="color.is-custom">
+                <box w="fill" gap="3">
+                    <for each="color-channels" axis="horizontal" w="fill" h="12" gap="3">
+                        <row id="{{channel.id}}" text="{{channel.label}} {{channel.value}}" w="fill" h="12" fg="{{theme.text}}" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" align="center" padding="1 0" />
+                    </for>
+                    <box axis="horizontal" w="fill" h="12" gap="3">
+                        <row id="color:hex" text="{{color.hex}}" w="fill" h="12" fg="{{theme.text}}" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="3 1" />
+                        <swatch color="{{color.preview}}" w="18" h="12" radius="2" />
+                    </box>
+                </box>
+            </if>
+        </box>
+    </template>
+
+    <template name="item-list-entry">
+        <box w="fill" padding="0" gap="0">
+            <row id="{{entry.id}}" axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" gap="4" radius="3">
+                <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+                <row axis="horizontal" w="42" h="12" fg="{{theme.text}}" bg="{{theme.controlBg}}" border="{{theme.borderSoft}}" borderWidth="1" align="center" padding="4 0" gap="2" radius="3">
+                    <row text="{{entry.count}}" w="fill" h="11" fg="{{theme.text}}" bg="{{theme.transparent}}" align="center" padding="0" />
+                    <dropdown-arrow w="10" h="11" fg="{{theme.textDim}}" open="{{entry.open}}" font="minecraft" />
+                </row>
+            </row>
+            <if condition="setting.item-list-open">
+                <component name="item-picker-inline" />
+            </if>
+        </box>
+    </template>
+
+    <template name="item-picker-inline">
+        <box w="fill" padding="5 5" gap="4" bg="{{theme.entrySelectedBg}}" radius="4" border="{{theme.borderSoft}}" borderWidth="1">
+            <row text="{{item.header}}" w="fill" h="9" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+            <text-input id="item-list:search" text="{{item.search}}" w="fill" h="12" fg="{{item.searchFg}}" bg="{{theme.controlBg}}" hoverBg="{{theme.controlActiveBg}}" padding="4 2" radius="3" active="{{item.searchActive}}" cursor="{{item.searchCursor}}" scroll="{{item.searchScroll}}" />
+            <if condition="item.has-added">
+                <scroll w="fill" h="21" axis="horizontal" padding="0 0 3 0" gap="0" scrollKey="item-list.added" scrollY="{{item.addedScroll}}" scrollAmount="24" scrollbarWidth="2" scrollbarInset="0" scrollbarTrackBg="{{theme.divider}}" scrollbarThumbBg="{{theme.textDim}}">
+                    <for each="item-picker-added" axis="horizontal" w="wrap" h="16" gap="4">
+                        <box id="{{added.removeId}}" w="20" h="16" padding="0" gap="0">
+                            <item-icon item="{{added.icon}}" w="16" h="16" />
+                            <row text="-" overlay="true" relative="true" x="12" y="0" w="7" h="7" fg="{{theme.text}}" bg="{{theme.accent}}" align="center" padding="0" radius="3" />
+                        </box>
+                    </for>
+                </scroll>
+            </if>
+            <scroll h="{{item.listH}}" w="fill" gap="0" scrollKey="item-list.rows" scrollY="{{item.scroll}}" scrollAmount="18" scrollbarTrackBg="{{theme.divider}}" scrollbarThumbBg="{{theme.textDim}}">
+                <box w="fill" h="{{item.leadSpace}}" padding="0" gap="0" />
+                <for each="item-picker-rows" w="fill" gap="0">
+                    <row id="{{row.id}}" axis="horizontal" w="fill" h="18" bg="{{theme.transparent}}" hoverBg="{{theme.entryHoverBg}}" radius="3" padding="2 1" gap="5">
+                        <item-icon item="{{row.icon}}" w="16" h="16" />
+                        <row text="{{row.label}}" w="fill" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" padding="0" />
+                        <row text="{{row.action}}" w="14" h="14" fg="{{theme.text}}" bg="{{row.actionBg}}" align="center" padding="0" radius="2" />
+                    </row>
+                </for>
+                <box w="fill" h="{{item.tailSpace}}" padding="0" gap="0" />
+            </scroll>
+        </box>
+    </template>
+
+    <template name="server-mapping-entry">
+        <box w="fill" padding="0" gap="1">
+            <row text="{{entry.label}}" w="fill" h="13" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="5 2" />
+            <if condition="mappings.empty">
+                <row text="(no mappings)" w="fill" h="13" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="5 2" />
+            </if>
+            <if condition="mappings.present">
+                <for each="config-mappings" w="fill" gap="1">
+                    <box axis="horizontal" w="fill" h="14" padding="0" gap="2">
+                        <text-input id="{{mapping.server.id}}" text="{{mapping.server}}" w="fill" h="14" fg="{{theme.text}}" bg="{{theme.controlBg}}" hoverBg="{{theme.controlActiveBg}}" padding="4 2" radius="3" active="{{mapping.active}}" cursor="{{meta.cursor}}" scroll="{{meta.scroll}}" />
+                        <row id="{{mapping.preset.id}}" text="{{mapping.preset}}" w="60" h="14" fg="{{theme.textDim}}" bg="{{theme.controlBg}}" hoverBg="{{theme.entryHoverBg}}" padding="4 2" radius="3" />
+                        <row id="{{mapping.remove.id}}" text="x" w="14" h="14" fg="{{theme.textDim}}" bg="{{theme.controlBg}}" hoverBg="{{theme.entryHoverBg}}" align="center" padding="0" radius="3" />
+                    </box>
+                </for>
+            </if>
+            <row id="config:mapping:add" text="+ add mapping" w="fill" h="14" fg="{{theme.textDim}}" bg="{{theme.controlBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" radius="3" />
+        </box>
+    </template>
+
+    <template name="module-list-entry">
+        <box w="fill" padding="0" gap="0">
+            <row id="{{entry.id}}" axis="horizontal" w="fill" h="15" bg="{{theme.entryBg}}" hoverBg="{{theme.entryHoverBg}}" padding="5 2" gap="4" radius="3">
+                <row text="{{entry.label}}" w="fill" h="fill" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+                <row axis="horizontal" w="42" h="12" fg="{{theme.text}}" bg="{{theme.controlBg}}" border="{{theme.borderSoft}}" borderWidth="1" align="center" padding="4 0" gap="2" radius="3">
+                    <row text="{{entry.count}}" w="fill" h="11" fg="{{theme.text}}" bg="{{theme.transparent}}" align="center" padding="0" />
+                    <dropdown-arrow w="10" h="11" fg="{{theme.textDim}}" open="{{entry.open}}" font="minecraft" />
+                </row>
+            </row>
+            <if condition="setting.module-list-open">
+                <component name="module-picker-inline" />
+            </if>
+        </box>
+    </template>
+
+    <template name="module-picker-inline">
+        <box w="fill" padding="5 5" gap="4" bg="{{theme.entrySelectedBg}}" radius="4" border="{{theme.borderSoft}}" borderWidth="1">
+            <row text="{{modules.header}}" w="fill" h="9" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="0" />
+            <text-input id="module-list:search" text="{{modules.search}}" w="fill" h="12" fg="{{modules.searchFg}}" bg="{{theme.controlBg}}" hoverBg="{{theme.controlActiveBg}}" padding="4 2" radius="3" active="{{modules.searchActive}}" cursor="{{modules.searchCursor}}" scroll="{{modules.searchScroll}}" />
+            <scroll h="{{modules.listH}}" w="fill" gap="0" scrollKey="module-list.rows" scrollY="{{modules.scroll}}" scrollAmount="18" scrollbarTrackBg="{{theme.divider}}" scrollbarThumbBg="{{theme.textDim}}">
+                <box w="fill" h="{{modules.leadSpace}}" padding="0" gap="0" />
+                <for each="module-picker-rows" w="fill" gap="0">
+                    <row id="{{modrow.id}}" axis="horizontal" w="fill" h="18" bg="{{theme.transparent}}" hoverBg="{{theme.entryHoverBg}}" radius="3" padding="2 8 2 3" gap="5">
+                        <row text="{{modrow.label}}" w="fill" h="fill" fg="{{theme.text}}" bg="{{theme.transparent}}" padding="0" />
+                        <toggle w="22" h="11" on="{{modrow.hidden}}" onBg="{{theme.accent}}" offBg="{{theme.sliderBg}}" knobBg="{{theme.text}}" glow="3" glowColor="{{theme.accentGlow}}" />
+                    </row>
+                </for>
+                <box w="fill" h="{{modules.tailSpace}}" padding="0" gap="0" />
+            </scroll>
+        </box>
+    </template>
+
+    <template name="button-entry">
+        <box w="fill" h="19" padding="0 2 0 2">
+            <row id="{{entry.id}}" text="{{entry.value}}" w="fill" h="17" fg="{{theme.text}}" bg="{{theme.controlBg}}" hoverBg="{{theme.controlActiveBg}}" border="{{theme.borderSoft}}" borderWidth="1" align="center" padding="0" radius="3" />
+        </box>
+    </template>
+
+    <template name="enum-option-inline">
+        <row id="{{enum.option.id}}" text="{{enum.option.name}}" w="fill" h="14" fg="{{enum.option.fg}}" bg="{{enum.option.bg}}" hoverBg="{{theme.entryHoverBg}}" padding="6 3" radius="3" />
+    </template>
+
+    <template name="group-header">
+        <box w="fill" padding="0 5 0 0" gap="3">
+            <box w="fill" h="1" bg="{{theme.divider}}" padding="0" gap="0" />
+            <row text="{{group.name}}" w="fill" h="11" fg="{{theme.textDim}}" bg="{{theme.transparent}}" padding="2 1" />
+        </box>
+    </template>
+</templates>

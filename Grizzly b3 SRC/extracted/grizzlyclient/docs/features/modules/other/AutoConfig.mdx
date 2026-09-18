@@ -1,0 +1,28 @@
+---
+sidebar_position: 8
+---
+
+# Auto Config
+
+Loads a saved config automatically based on the server you join.
+
+---
+
+### Mode
+
+- **AUTOMATIC**: matches against the server list stored on each config
+- **MANUAL**: uses only the mappings you write below, so a config's own server list is ignored
+
+### Prefer online configs
+
+When a local and an online config both claim the server, take the online one.
+
+### Remember per server
+
+Keeps an in-memory copy of your settings as you leave each server, and puts it back when you
+return. Rejoining restores what you actually left with, including changes made while you were
+there, rather than re-running the pick.
+
+### Notify
+
+Show a toast when a config is loaded or your own settings are handed back.

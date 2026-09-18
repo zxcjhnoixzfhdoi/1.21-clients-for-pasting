@@ -1,0 +1,75 @@
+---
+sidebar_position: 17
+sidebar_label: Auto Rod
+title: Auto Rod
+---
+import Chip from '@mui/material/Chip'
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
+
+# Auto Rod <sup><Chip label="Ghost" color="success" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<VerifiedUserIcon />}/></sup>
+
+Automatically throws your fishing rod, retracts it, or throws projectiles
+
+---
+
+When Silent Aura's **Auto rod** option is enabled, Auto Rod can run as part of Silent Aura without enabling Auto Rod separately. Silent Aura handles the target rotation before the cast.
+
+### Retract speed (ms)
+
+The fallback time before retracting a cast. The hook may be retracted earlier when it connects, reaches or passes the target, lands, or starts moving away.
+
+### Action delay (ms)
+
+Delay between switching slots, casting, retracting, and restoring the previous slot.
+
+### Randomize delays
+
+Randomize values inside each configured delay range. When disabled, the lower value of each range is used.
+
+### Switch to weapon
+
+Switch to the first sword, axe, or trident in the hotbar after the action. If no weapon is found, the original slot is restored.
+
+When disabled, Auto Rod always restores the slot that was selected before casting.
+
+### Cast FOV
+
+The maximum combined yaw and pitch difference allowed before casting. Lower values require the aim to be closer to the predicted target position.
+
+### Hitbox expand
+
+Expands the target box used to validate the cast ray and detect when the hook has reached the target.
+
+### Predict ticks
+
+Projects the target hitbox forward using its current velocity. Higher values lead moving targets by a greater distance.
+
+### Max hook ticks
+
+The maximum age of an active hook before it is retracted, even if the normal retract timer has not expired.
+
+### Recast cooldown (ms)
+
+The minimum delay after retracting a rod or throwing a projectile before another cast can begin.
+
+### Allow throwables
+
+Allow eggs or snowballs to be used when no fishing rod is available. Fishing rods are always preferred.
+
+### Throw speed (ms)
+
+Delay after throwing an egg or snowball before restoring the previous or weapon slot.
+
+### Not within melee range
+
+Prevent casts when the target is at or below this distance. Set it to `0` to disable the minimum-distance check.
+
+### Targeting
+
+Standalone Auto Rod searches for the closest valid target within `8 blocks` and roughly `45 degrees` of the camera. Targets must pass Target Filter.
+
+Before casting, Auto Rod performs a stricter check using Cast FOV, target prediction, hitbox expansion, and block collision. It will not cast merely because a target exists nearby.
+
+### Manual use
+
+Auto Rod pauses while the use-item button is physically held or the player is already using an item. This prevents it from taking control of the hotbar during manual item use.

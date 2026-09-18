@@ -1,0 +1,106 @@
+---
+sidebar_position: 2
+---
+
+# Clutch
+
+Saves yourself from falling.
+
+---
+
+### Trigger
+
+Chooses when clutching should activate. The drop is measured from where the
+simulation says you will land, not from a straight line down.
+
+- **ALWAYS**: always attempt a clutch
+- **ON VOID**: only when the simulation runs out of world without landing
+- **ON LETHAL FALL**: only when the drop would do more damage than you have
+  health, or you are heading into the void
+- **FALL DISTANCE**: only when the drop is deeper than **Blocks**, whether or
+  not it would kill you
+
+### Blocks
+
+Minimum drop depth, in blocks, for FALL DISTANCE mode.
+
+### Only on combat damage
+
+Only arm after you have been hit recently, so it stays out of the way when you jump off
+something deliberately. Ignored: fall damage, fire and lava, drowning, freezing, starving,
+the void, and standing in cactus, sweet berries, magma or powder snow.
+
+### Damage window (ticks)
+
+How long Clutch stays armed after being hit.
+
+## Behaviour
+
+### Auto ladder
+
+Fall back to a ladder rescue when a block path cannot reach in time. Needs
+ladders in your hotbar, which are then excluded from normal clutch blocks.
+
+### Allow staircase up
+
+Repeated jumps in quick succession queue a staircase, letting Clutch catch you
+one level higher than the plain fall would.
+
+### Search depth
+
+How many blocks Clutch may chain together to reach the catch spot.
+
+### Search radius
+
+How wide a ring around your predicted position Clutch sweeps for blocks to
+build off. The sweep is biased along the way you are moving.
+
+### Fail delay (ms)
+
+How long to wait before trying to find a route again after a failure.
+
+### Limit blocks
+
+Refuse a clutch that would need more than **Max blocks**.
+
+### Clutch move delay
+
+Ticks of movement freeze after a clutch completes, so you do not immediately
+walk back off the edge.
+
+## Rotations
+
+### Speed
+
+Maximum flick speed, in degrees per tick, when placing blocks.
+
+### Reset angle
+
+Look back to your original angle once the clutch is done.
+
+### Reset angle delay
+
+Ticks to wait before resetting the angle.
+
+## Items
+
+### Return to last slot
+
+Select the slot you were holding before the clutch once it completes.
+
+### Return delay
+
+Ticks to wait before restoring the slot.
+
+### Blacklist
+
+Do not clutch with these blocks.
+
+### Held whitelist
+
+Only clutch while holding a whitelisted block, and only use the held block.
+
+### Show block count
+
+Show the number of blocks left in the modules list, or the number of placements
+remaining while a clutch is running.

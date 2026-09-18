@@ -1,0 +1,169 @@
+package onl.luka.grizzly.module.modules.render
+
+import onl.luka.grizzly.module.Module
+import com.mojang.blaze3d.vertex.PoseStack
+import onl.luka.grizzly.config.entry.Color
+import onl.luka.grizzly.util.RenderUtil
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext
+import net.minecraft.client.Minecraft
+import net.minecraft.world.entity.LivingEntity
+import kotlin.math.cos
+import kotlin.math.sin
+
+object RiceFarmer : Module(
+    name = "Rice Farmer",
+    description = "Renders a conical hat above your player",
+    category = Category.RENDER
+) {
+    enum class ColorMode { RAINBOW, GRADIENT, SINGLE }
+
+    private val radiusEntry = double("radius", 0.5, 0.5, 1.0)
+    private var radius by radiusEntry
+
+    private val heightEntry = double("height", 0.3, 0.1, 0.7)
+    private var height by heightEntry
+
+    private val positionEntry = double("position", 0.1, -0.5, 0.5)
+    private var position by positionEntry
+
+    private val rotationSpeedEntry = double("rotation", 5.0, 0.0, 5.0)
+    private var rotationSpeed by rotationSpeedEntry
+
+    private val anglesEntry = int("angles", 32, 4, 90)
+    private var angles by anglesEntry
+
+    private val firstPersonEntry = boolean("first person", false)
+    private var firstPerson by firstPersonEntry
+
+    private val shadeEntry = boolean("shade", true)
+    private var shade by shadeEntry
+
+    private val colorModeEntry = enum("color mode", ColorMode.RAINBOW)
+    private var colorMode by colorModeEntry
+
+    private val singleEntry = color("color", Color(9, 9, 9), allowAlpha = false).also {
+        it.visibleWhen = { colorMode == ColorMode.SINGLE }
+    }
+    private var single by singleEntry
+
+    private val gradientStartEntry = color("color start", Color(255, 0, 255), allowAlpha = false).also {
+        it.visibleWhen = { colorMode == ColorMode.GRADIENT }
+    }
+    private var gradientStart by gradientStartEntry
+
+    private val gradientEndEntry = color("color end", Color(90, 10, 255), allowAlpha = false).also {
+        it.visibleWhen = { colorMode == ColorMode.GRADIENT }
+    }
+    private var gradientEnd by gradientEndEntry
+
+    override fun onLevelRender(ctx: LevelRenderContext) {
+        val mc = Minecraft.getInstance()
+        val player = mc.player ?: return
+
+        if (mc.options.cameraType.isFirstPerson && !firstPerson) return
+
+        val partialTick = mc.deltaTracker.getGameTimeDeltaPartialTick(true)
+
+        RenderUtil.worldContext(ctx) { _, stack, bufferSource ->
+            drawHat(player, partialTick, stack, bufferSource)
+        }
+    }
+
+    private fun drawHat(
+        entity: LivingEntity,
+        partialTick: Float,
+        stack: PoseStack,
+        bufferSource: RenderUtil.GeometrySink
+    ) {
+        val ex = entity.xOld + (entity.x - entity.xOld) * partialTick
+        val ey = entity.yOld + (entity.y - entity.yOld) * partialTick
+        val ez = entity.zOld + (entity.z - entity.zOld) * partialTick
+
+        val yOffset = entity.bbHeight + position - (if (entity.isCrouching) 0.23 else 0.0)
+
+        val yaw = ((entity.tickCount + partialTick) * rotationSpeed - 90f).toFloat()
+
+        val r = radius
+        val n = angles
+        val apex = getColor(0.0, n.toDouble(), true)
+        val rimColors = Array(n + 2) { getColor(it.toDouble(), n.toDouble(), false) }
+
+        stack.pushPose()
+        stack.translate(ex, ey + yOffset, ez)
+        stack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(yaw))
+
+        val apexAlpha = if (shade) 0.8f else 0.5f
+        val hy = height.toFloat()
+
+        bufferSource.draw(RenderUtil.WORLD_FILLED) { pose, vc ->
+            for (j in 0 until n) {
+                val angle0 = j * Math.PI / (n / 2.0)
+                val angle1 = (j + 1) * Math.PI / (n / 2.0)
+
+                val c0 = rimColors[j]
+                val c1 = rimColors[j + 1]
+
+                val rx0 = (cos(angle0) * r).toFloat()
+                val rz0 = (sin(angle0) * r).toFloat()
+                val rx1 = (cos(angle1) * r).toFloat()
+                val rz1 = (sin(angle1) * r).toFloat()
+
+                vc.addVertex(pose, 0f,  hy,  0f).setColor(apex.r / 255f, apex.g / 255f, apex.b / 255f, apexAlpha)
+                vc.addVertex(pose, rx0, 0f, rz0).setColor(c0.r / 255f,   c0.g / 255f,   c0.b / 255f,   0.3f)
+                vc.addVertex(pose, rx1, 0f, rz1).setColor(c1.r / 255f,   c1.g / 255f,   c1.b / 255f,   0.3f)
+                vc.addVertex(pose, 0f,  hy,  0f).setColor(apex.r / 255f, apex.g / 255f, apex.b / 255f, apexAlpha)
+
+                vc.addVertex(pose, 0f,  hy,  0f).setColor(apex.r / 255f, apex.g / 255f, apex.b / 255f, apexAlpha)
+                vc.addVertex(pose, rx1, 0f, rz1).setColor(c1.r / 255f,   c1.g / 255f,   c1.b / 255f,   0.3f)
+                vc.addVertex(pose, rx0, 0f, rz0).setColor(c0.r / 255f,   c0.g / 255f,   c0.b / 255f,   0.3f)
+                vc.addVertex(pose, 0f,  hy,  0f).setColor(apex.r / 255f, apex.g / 255f, apex.b / 255f, apexAlpha)
+            }
+        }
+
+        bufferSource.draw(RenderUtil.WORLD_LINES) { pose, vc ->
+            for (i in 0..n) {
+                val angle0 = i * Math.PI / (n / 2.0)
+                val angle1 = (i + 1) * Math.PI / (n / 2.0)
+                val c0 = rimColors[i]
+                val c1 = rimColors[i + 1]
+
+                val x0 = (cos(angle0) * r).toFloat()
+                val z0 = (sin(angle0) * r).toFloat()
+                val x1 = (cos(angle1) * r).toFloat()
+                val z1 = (sin(angle1) * r).toFloat()
+
+                val nx = (x1 - x0); val nz = (z1 - z0)
+                val len = kotlin.math.sqrt(nx * nx + nz * nz).coerceAtLeast(0.001f)
+
+                vc.addVertex(pose, x0, 0f, z0)
+                    .setColor(c0.r / 255f, c0.g / 255f, c0.b / 255f, 0.5f)
+                    .setNormal(pose, nx / len, 0f, nz / len)
+                    .setLineWidth(1.5f)
+
+                vc.addVertex(pose, x1, 0f, z1)
+                    .setColor(c1.r / 255f, c1.g / 255f, c1.b / 255f, 0.5f)
+                    .setNormal(pose, nx / len, 0f, nz / len)
+                    .setLineWidth(1.5f)
+            }
+        }
+
+        stack.popPose()
+    }
+
+    private fun getColor(i: Double, max: Double, first: Boolean): Color {
+        return when (colorMode) {
+            ColorMode.RAINBOW -> {
+                val hsb = java.awt.Color.getHSBColor((i / max).toFloat(), 0.65f, 1.0f)
+                Color(hsb.red, hsb.green, hsb.blue, hsb.alpha)
+            }
+
+            ColorMode.GRADIENT -> if (first) {
+                Color(gradientStart.r, gradientStart.g, gradientStart.b)
+            } else {
+                Color(gradientEnd.r, gradientEnd.g, gradientEnd.b)
+            }
+
+            ColorMode.SINGLE -> Color(single.r, single.g, single.b)
+        }
+    }
+}

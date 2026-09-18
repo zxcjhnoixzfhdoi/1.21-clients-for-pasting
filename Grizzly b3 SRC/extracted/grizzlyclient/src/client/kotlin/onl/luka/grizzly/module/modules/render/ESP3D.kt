@@ -1,0 +1,249 @@
+package onl.luka.grizzly.module.modules.render
+
+import onl.luka.grizzly.module.Module
+import com.mojang.blaze3d.vertex.PoseStack
+import com.mojang.math.Axis
+import onl.luka.grizzly.config.entry.Color
+import onl.luka.grizzly.config.entry.ColorEntry
+import onl.luka.grizzly.module.modules.other.TargetFilter
+import onl.luka.grizzly.util.RenderUtil
+import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext
+import net.minecraft.client.Minecraft
+import net.minecraft.core.component.DataComponents
+import net.minecraft.world.entity.EquipmentSlot
+import net.minecraft.world.entity.Entity
+import net.minecraft.world.entity.player.Player
+import net.minecraft.world.phys.AABB
+import kotlin.math.sqrt
+
+object ESP3D : Module(
+    name = "3D ESP",
+    description = "Highlights nearby players",
+    category = Category.RENDER
+) {
+    enum class ColorMode { TEAM, HEALTH, STATIC }
+    enum class RenderMode { BOX, CORNERS, GLOW }
+
+    private val colorMode  = enum("color mode", ColorMode.TEAM)
+    private val renderMode = enum("render mode", RenderMode.BOX)
+    private val ignoreTargetFilter = boolean("ignore target filter", false)
+
+    private val staticColor = color("color", Color(255, 80, 80), allowAlpha = false).also {
+        it.visibleWhen = { colorMode.value == ColorMode.STATIC || colorMode.value == ColorMode.TEAM }
+    }
+
+    private val rotate = boolean("rotate", false)
+
+    private val teamOnly    = boolean("team only", false).also {
+        it.visibleWhen = { colorMode.value == ColorMode.TEAM }
+    }
+
+    private val fillAlpha   = double("fill alpha",    0.1, 0.0,  0.4).also {
+        it.visibleWhen = { renderMode.value == RenderMode.BOX }
+    }
+    private val outlineAlpha = double("outline alpha", 0.8,  0.0,  1.0).also {
+        it.visibleWhen = { renderMode.value != RenderMode.GLOW }
+    }
+    private val lineWidth   = double("line width",    1.0,  0.5,  4.0)
+    private val expand      = double("expand",        0.0, 0.0,  0.3).also {
+        it.visibleWhen = { renderMode.value != RenderMode.GLOW }
+    }
+
+    private val cornerSize  = double("corner size",   0.25, 0.05, 0.5).also {
+        it.visibleWhen = { renderMode.value == RenderMode.CORNERS }
+    }
+
+    init {
+        staticColor.pickerMode = ColorEntry.PickerMode.THEME
+    }
+
+    override fun onLevelRender(ctx: LevelRenderContext) {
+        if (renderMode.value == RenderMode.GLOW) return
+
+        val mc = Minecraft.getInstance()
+        val player = mc.player ?: return
+        val level  = mc.level  ?: return
+
+        val partialTick = mc.deltaTracker.getGameTimeDeltaPartialTick(true)
+
+        RenderUtil.worldContext(ctx) { ctxPose, stack, bufferSource ->
+            for (entity in level.players()) {
+                if (entity == player) continue
+                if (!shouldRenderTarget(player, entity)) continue
+
+                val color = resolveColor(player, entity) ?: continue
+
+                val ex = entity.xOld + (entity.x - entity.xOld) * partialTick
+                val ey = entity.yOld + (entity.y - entity.yOld) * partialTick
+                val ez = entity.zOld + (entity.z - entity.zOld) * partialTick
+                val e  = expand.value
+
+                val r = color.r / 255f
+                val g = color.g / 255f
+                val b = color.b / 255f
+                val fa = fillAlpha.value.toFloat()
+                val oa = outlineAlpha.value.toFloat()
+                val lw = lineWidth.value.toFloat()
+
+                val box: AABB
+                val pose: PoseStack.Pose
+
+                if (rotate.value) {
+                    val yaw = entity.yBodyRotO + (entity.yBodyRot - entity.yBodyRotO) * partialTick
+                    stack.pushPose()
+                    stack.translate(ex, ey + entity.bbHeight / 2, ez)
+                    stack.mulPose(Axis.YN.rotationDegrees(yaw))
+                    stack.translate(-ex, -(ey + entity.bbHeight / 2), -ez)
+                    pose = stack.last()
+                    box = AABB(
+                        ex - entity.bbWidth  / 2 - e, ey - e,                   ez - entity.bbWidth  / 2 - e,
+                        ex + entity.bbWidth  / 2 + e, ey + entity.bbHeight + e, ez + entity.bbWidth  / 2 + e
+                    )
+                } else {
+                    pose = ctxPose
+                    box = AABB(
+                        ex - entity.bbWidth  / 2 - e, ey - e,                   ez - entity.bbWidth  / 2 - e,
+                        ex + entity.bbWidth  / 2 + e, ey + entity.bbHeight + e, ez + entity.bbWidth  / 2 + e
+                    )
+                }
+
+                val fillRT = RenderUtil.ESP_FILLED
+                val lineRT = RenderUtil.ESP_LINES
+
+                when (renderMode.value) {
+                    RenderMode.BOX -> {
+                        bufferSource.draw(fillRT) { drawPose, vc ->
+                            RenderUtil.boxFilledBothSides(vc, drawPose, box, r, g, b, fa)
+                        }
+
+                        bufferSource.draw(lineRT) { drawPose, vc ->
+                            RenderUtil.boxOutline(vc, drawPose, box, r, g, b, oa, lw)
+                        }
+                    }
+                    RenderMode.CORNERS -> {
+                        bufferSource.draw(lineRT) { drawPose, vc ->
+                            drawCorners(vc, drawPose, box, r, g, b, oa, lw)
+                        }
+                    }
+                    RenderMode.GLOW -> Unit
+                }
+
+                if (rotate.value) stack.popPose()
+            }
+        }
+    }
+
+    @JvmStatic
+    fun usesGlowOutline(): Boolean {
+        return isEnabled() && renderMode.value == RenderMode.GLOW
+    }
+
+    @JvmStatic
+    fun glowOutlineColor(entity: Entity): Int {
+        if (!usesGlowOutline()) return 0
+        val target = entity as? Player ?: return 0
+        val viewer = Minecraft.getInstance().player ?: return 0
+        if (target === viewer) return 0
+        if (!shouldRenderTarget(viewer, target)) return 0
+
+        val color = resolveColor(viewer, target) ?: return 0
+        return 0xFF000000.toInt() or
+                ((color.r and 0xFF) shl 16) or
+                ((color.g and 0xFF) shl 8) or
+                (color.b and 0xFF)
+    }
+
+    @JvmStatic
+    fun glowLineWidth(): Float {
+        if (!usesGlowOutline()) return 1f
+        return lineWidth.value.toFloat().coerceIn(0.5f, 4.0f)
+    }
+
+    @JvmStatic
+    fun glowPostRadius(): Float {
+        if (!usesGlowOutline()) return -1f
+        val baseRadius = (lineWidth.value * 2.0).toFloat().coerceIn(1f, 8f)
+        return (baseRadius * glowDistanceScale()).coerceIn(0.5f, 8f)
+    }
+
+    private fun glowDistanceScale(): Float {
+        val mc = Minecraft.getInstance()
+        val viewer = mc.player ?: return 1f
+        val level = mc.level ?: return 1f
+
+        val nearestDistance = level.players()
+            .asSequence()
+            .filter { it !== viewer && shouldRenderTarget(viewer, it) }
+            .map { viewer.distanceTo(it).coerceAtLeast(1f) }
+            .minOrNull() ?: return 1f
+
+        return sqrt(4f / nearestDistance).coerceIn(0.45f, 1f)
+    }
+
+    private fun shouldRenderTarget(viewer: Player, target: Player): Boolean =
+        ignoreTargetFilter.value || TargetFilter.isValidTarget(viewer, target)
+
+    private fun resolveColor(viewer: Player, target: Player): Color? {
+        return when (colorMode.value) {
+            ColorMode.STATIC -> {
+                val live = staticColor.liveColor(staticColor.value)
+                Color(live.r, live.g, live.b)
+            }
+
+            ColorMode.HEALTH -> {
+                val ratio = (target.health / target.maxHealth).coerceIn(0f, 1f)
+                
+                val red   = if (ratio < 0.5f) 1f else 2f * (1f - ratio)
+                val green = if (ratio > 0.5f) 1f else 2f * ratio
+                Color((red * 255).toInt(), (green * 255).toInt(), 0)
+            }
+
+            ColorMode.TEAM -> {
+                val helmet = target.getItemBySlot(EquipmentSlot.HEAD)
+                val rgb = helmet.get(DataComponents.DYED_COLOR)?.rgb()
+
+                if (rgb == null) {
+                    if (teamOnly.value) return null
+                    // fallback to theme if teamOnly is off and they have no helmet colour
+                    val live = staticColor.liveColor(staticColor.value)
+                    Color(live.r, live.g, live.b)
+                } else {
+                    Color((rgb shr 16) and 0xFF, (rgb shr 8) and 0xFF, rgb and 0xFF)
+                }
+            }
+        }
+    }
+
+    private fun drawCorners(
+        vc: com.mojang.blaze3d.vertex.VertexConsumer,
+        pose: PoseStack.Pose,
+        box: AABB,
+        r: Float, g: Float, b: Float, a: Float,
+        lw: Float
+    ) {
+        val x0 = box.minX.toFloat(); val y0 = box.minY.toFloat(); val z0 = box.minZ.toFloat()
+        val x1 = box.maxX.toFloat(); val y1 = box.maxY.toFloat(); val z1 = box.maxZ.toFloat()
+        val cx = ((x1 - x0) * cornerSize.value).toFloat()
+        val cy = ((y1 - y0) * cornerSize.value).toFloat()
+        val cz = ((z1 - z0) * cornerSize.value).toFloat()
+
+        fun seg(ax: Float, ay: Float, az: Float, bx: Float, by: Float, bz: Float) {
+            RenderUtil.line(vc, pose, ax, ay, az, bx, by, bz, r, g, b, a, lw)
+        }
+
+        // 8 corners × 3 axes each
+        for ((px, py, pz) in listOf(
+            Triple(x0, y0, z0), Triple(x1, y0, z0),
+            Triple(x0, y1, z0), Triple(x1, y1, z0),
+            Triple(x0, y0, z1), Triple(x1, y0, z1),
+            Triple(x0, y1, z1), Triple(x1, y1, z1)
+        )) {
+            val sx = if (px == x0) 1f else -1f
+            val sy = if (py == y0) 1f else -1f
+            val sz = if (pz == z0) 1f else -1f
+            seg(px, py, pz, px + sx * cx, py,          pz)
+            seg(px, py, pz, px,          py + sy * cy, pz)
+            seg(px, py, pz, px,          py,           pz + sz * cz)
+        }
+    }
+}

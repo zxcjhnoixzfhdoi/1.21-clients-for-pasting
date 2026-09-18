@@ -1,0 +1,54 @@
+---
+sidebar_position: 7
+---
+
+# Notifications
+
+Style the client's toast popups.
+
+---
+
+### Font
+
+Font used for the toast title and message. **DEFAULT** follows the client font set in
+**Font**.
+
+### Width
+
+Width of the toast panel in pixels. The text and progress bar follow it.
+
+### Rounded
+
+Round the toast's corners.
+
+#### Round Radius
+
+Corner radius in pixels when **Rounded** is enabled.
+
+### Background Mode
+
+- **SOLID**: use **BG Color** normally
+- **BLUR**: blur the gameplay behind the toast and use **BG Color** as a glass tint
+
+### Blur Strength
+
+Gaussian blur radius when **Background Mode** is **BLUR**.
+
+### BG Color
+
+Background colour for the toast, with alpha support. In blur mode the alpha controls how strongly
+the colour tints the blurred gameplay. The toast's own fade in and out is applied on top, so it
+still slides in cleanly.
+
+### Progress Bar
+
+Show the bar along the bottom counting down the toast's remaining time.
+
+### Drop Shadow
+
+Draw a GPU-rendered soft shadow behind the toast, following its rounded-corner setting.
+
+- **Drop shadow color** controls the shadow colour and opacity
+- **Drop shadow softness** controls the Gaussian falloff width
+- **Drop shadow spread** expands the solid centre before the falloff begins
+- **Drop shadow X/Y** offsets the shadow from the toast

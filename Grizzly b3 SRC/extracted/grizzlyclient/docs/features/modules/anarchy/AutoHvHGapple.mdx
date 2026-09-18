@@ -1,0 +1,39 @@
+---
+sidebar_position: 3
+sidebar_label: Auto HvH Gapple
+title: Auto HvH Gapple
+---
+import Chip from '@mui/material/Chip'
+import WarningIcon from '@mui/icons-material/Warning'
+
+# Auto HvH Gapple <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+This is for vanilla 1.8 servers that allow you to insta eat gapples without even
+holding them.
+
+For a normal, safe version of this module, use [Auto Eat](../utility/AutoEat),
+which has the same gapple trigger with combat checks in front of it.
+
+---
+
+### Health
+
+Health to eat at. Eating starts once your health is at or below this.
+
+### Enchanted only
+
+Only use enchanted golden apples. With this off it prefers enchanted ones and falls back
+to normal golden apples.
+
+### Silent swap
+
+Send the slot change, the use and the release as packets instead of moving your held slot.
+
+### Packets
+
+How many use ticks to send at once. The apple needs its full use duration to land, so
+lowering this below the item's eat time will fail to consume it.
+
+### Delay
+
+Minimum time between attempts, in milliseconds.

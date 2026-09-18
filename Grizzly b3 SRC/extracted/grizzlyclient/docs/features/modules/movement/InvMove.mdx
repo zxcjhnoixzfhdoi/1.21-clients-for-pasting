@@ -1,0 +1,55 @@
+---
+sidebar_position: 5
+sidebar_label: Inv Move
+title: Inv Move
+---
+
+# Inv Move
+
+Allows normal movement input while inventory and container screens are open.
+
+---
+
+### Inventory
+
+Controls movement behavior in the player inventory.
+
+- **Disabled** leaves movement disabled.
+- **Vanilla** mirrors physical movement keys directly.
+- **Blink** buffers inventory-click packets until the inventory closes.
+- **Close** closes the server-side inventory while keeping the client screen open.
+- **Hypixel** briefly stops movement after an inventory click.
+
+### Chests And Others
+
+Controls movement in chests and other non-chat screens. It supports **Disabled**,
+**Vanilla**, **Blink**, and **Hypixel** modes.
+
+### Motion
+
+Scales horizontal motion after a click when **Modify Motion After Click** is enabled.
+
+### Modify Motion After Click
+
+Briefly stops movement after a container click and applies the configured horizontal motion multiplier.
+
+### Slow When Necessary
+
+Uses a conservative temporary motion multiplier after clicks, adjusted for Speed effects.
+
+### Allow Jumping
+
+Allows jump input while a supported screen is open.
+
+### Allow Sprinting
+
+Allows sprint input and preserves automatic sprinting while moving through a screen.
+
+### Allow Rotating
+
+Allows the arrow keys to rotate the camera while a supported screen is open.
+
+:::warning
+Blink, Close, and Hypixel modes change packet timing or container state. Their behavior
+depends on the server and may be detected or rejected by anticheat systems.
+:::

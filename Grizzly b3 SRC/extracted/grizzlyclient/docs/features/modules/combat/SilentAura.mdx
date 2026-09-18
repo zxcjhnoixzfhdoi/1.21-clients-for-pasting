@@ -1,0 +1,145 @@
+---
+sidebar_position: 1
+sidebar_label: Silent Aura
+title: Silent Aura
+---
+import Chip from '@mui/material/Chip'
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
+
+# Silent Aura <sup><Chip label="Ghost" color="success" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<VerifiedUserIcon />}/></sup>
+
+Silently aims and attacks enemies when they enter your range
+
+---
+
+### Mode
+
+Which attack pacing method Silent Aura uses.
+
+- **CPS**: clicks per second mode
+- **SEQUENTIAL**: attack after an attack cooldown ends
+
+### Targeting
+
+- **SINGLE**: stays on one target until it leaves range
+- **SWITCH**: cycles through up to **Max targets**, holding each for **Switch delay**
+- **MULTI**: attacks everything in range on the same click
+
+### Rotations
+
+How the aim reaches the target.
+
+- **SMOOTH**: eases toward it over several ticks, capped by **Smoothness**
+- **SNAP**: covers the whole angle in a single tick
+
+### Range
+
+Attack range. Measured from your eyes to the closest point on the target's hitbox,
+the same way the server measures reach, so this is not the same as the distance
+between the two of you.
+
+### Swing range
+
+How far out the arm keeps swinging. Between this and **Range** you click without
+attacking, which keeps the click pattern unbroken as a target drifts in and out.
+
+### Aim range
+
+How far out the rotation starts tracking. Anything already inside **Range** is
+still preferred, so this only pulls the aim onto someone early.
+
+### FOV
+
+Field of view for automatic targeting.
+
+### CPS
+
+Clicks per second when in CPS mode. Clicks are scheduled in real milliseconds with a
+small random offset rather than being locked to the tick, so the interval between them
+varies the way a hand does.
+
+### Extra delay
+
+Additional tick delay when using SEQUENTIAL mode.
+
+### Smoothness
+
+How quickly the aim rotates toward the target, in degrees per tick. Only used
+by SMOOTH.
+
+---
+
+## Targeting
+
+### Sort
+
+Which target wins when several are in range.
+
+- **ANGLE**: the one closest to where you are already looking
+- **DISTANCE**: the closest
+- **HEALTH**: the weakest
+- **HURT TIME**: whoever is furthest out of hit cooldown
+
+### Aim point
+
+- **NEAREST**: aims at the part of the hitbox closest to your crosshair, pulled slightly
+  inside it. Turns less at close range and lands more hits at the edge of reach
+- **CENTER**: aims at the middle of the target
+
+### Switch delay
+
+How long to stay on one target before moving to the next. SWITCH only.
+
+### Max targets
+
+How many targets to cycle through in SWITCH, or how many to hit at once in MULTI.
+
+### Raycast
+
+Only attack when the silent rotation actually lands on the target. Turning this off
+attacks on distance alone, which hits more but is far more obvious.
+
+### Visibility check
+
+Ignore targets behind walls.
+
+### Players only
+
+Restrict attacks to players.
+
+---
+
+## Conditions
+
+### Require mouse down
+
+Only run while you are holding left click.
+
+### Weapon only
+
+Only run while holding a sword, axe or trident.
+
+### Not while using item
+
+Stop while eating, drinking or drawing a bow.
+
+### Not while mining
+
+Stop while breaking a block.
+
+---
+
+### Auto Block
+
+Uses the [Auto Block](/features/modules/combat/AutoBlock) module's configuration to
+auto block while engaging.
+
+### Auto Rod
+
+Uses the [Auto Rod](/features/modules/combat/AutoRod) module's configuration on targets
+up to 8 blocks away.
+
+### Auto weapon
+
+Switches to the best hotbar weapon when a target is found. Swords are always preferred
+over axes and tridents, and attack damage only decides between weapons of the same kind.

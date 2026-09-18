@@ -1,0 +1,64 @@
+---
+sidebar_position: 11
+sidebar_label: Auto Reel
+title: Auto Reel
+---
+
+# Auto Reel
+
+Automatically reels in a SkyBlock fishing hook when a catch is ready, with an
+optional Hyperion swap before recasting.
+
+---
+
+When **Hyperion swap** is enabled, Auto Reel searches the hotbar for a Hyperion
+after reeling. It smoothly looks down using client perspective rotations, uses
+the Hyperion, returns to the original fishing rod slot, and casts the rod again.
+If no Hyperion is found, the normal reel still completes without changing slots
+or rotations.
+
+### Reel delay ms
+
+Sets the randomized delay in milliseconds between detecting `!!!` and
+right-clicking to reel.
+
+### Use hold ms
+
+Sets how long Auto Reel holds the use key after the randomized reel delay.
+
+### Hyperion swap
+
+Enables the optional Hyperion use and automatic rod recast sequence.
+
+### Hyperion delay ms
+
+Sets the randomized delay between reeling and using the Hyperion. Auto Reel
+smoothly rotates downward during this delay.
+
+### Hyperion use hold ms
+
+Sets how long Auto Reel holds the use key while the Hyperion is selected.
+
+### Recast delay ms
+
+Sets the randomized delay between using the Hyperion and returning to the
+original fishing rod.
+
+### Recast use hold ms
+
+Sets how long Auto Reel holds the use key when casting the fishing rod again.
+
+### Look down pitch
+
+Sets the downward pitch used for the Hyperion activation.
+
+### Look speed
+
+Sets how quickly the client perspective rotation moves toward the configured
+downward pitch.
+
+### Look timeout ms
+
+Sets how long Auto Reel may spend rotating downward. If the target rotation is
+not reached before this timeout, the Hyperion sequence is cancelled and the
+original fishing rod slot is restored.

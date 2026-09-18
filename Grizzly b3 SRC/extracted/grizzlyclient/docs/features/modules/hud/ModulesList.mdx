@@ -1,0 +1,165 @@
+---
+sidebar_position: 1
+---
+
+# Modules List
+
+Shows all enabled modules
+
+---
+
+### Font
+
+Font used for this element's text. **DEFAULT** follows the client font set in **Font**, and any
+other choice overrides it for this element only.
+
+### Show visuals
+
+Show modules on the list that only affect visuals, such as ESP.
+
+### Border
+
+Draw a border around the module list. Existing `left border` settings are migrated to this switch.
+
+#### Border style
+
+- **LEFT**: draw a continuous border on the list's outer edge (left when left-aligned, right when right-aligned)
+- **RIGHT**: draw a continuous border on the list's inner edge (right when left-aligned, left when right-aligned)
+- **FULL**: outline the complete stepped shape of the list
+- **DASHED**: draw a gapped border on the list's outer edge
+
+The border always uses the same color as its module name, including gradients and animated waves.
+When rounded backgrounds are enabled, only **LEFT** and **DASHED** are available. Enabling rounded backgrounds while using **RIGHT** or **FULL** changes the border to **LEFT**.
+
+#### Border size
+
+Controls the border thickness for every border style.
+
+### Background
+
+Render a background behind the module list.
+
+#### Background mode
+
+- **SOLID**: use the configured background color normally
+- **BLUR**: blur the gameplay behind each list entry and use **BG color** as a glass tint
+
+#### Blur strength
+
+Controls the Gaussian blur radius when **Background mode** is **BLUR**.
+
+### BG color
+
+Background color for the module list, with alpha support. In blur mode, alpha controls how strongly the color tints the blurred gameplay.
+
+### Drop shadow
+
+Draw a GPU-rendered soft shadow behind the module list background, following the list's
+rounded-corner setting.
+
+- **Drop shadow color** controls the shadow color and opacity
+- **Drop shadow softness** controls the Gaussian falloff width
+- **Drop shadow spread** expands the solid center before the falloff begins
+- **Drop shadow X/Y** offsets the shadow from the panel
+
+#### Drop shadow shape
+
+How the shadow's silhouette is derived from the rows.
+
+- **STEPPED**
+- **PER_ROW**
+- **TRIANGULAR**
+
+### Text color
+
+Color of enabled module names, with alpha support.
+
+### Color effect
+
+Controls how **Text color** is applied to module names and borders.
+
+- **SOLID**: use one color for every entry
+- **GRADIENT**: blend from **Text color** to **Gradient color** down the list
+- **WAVE**: smoothly animate that gradient through the list
+- **CATEGORIES**: color each entry by the category its module belongs to, from a fixed pastel
+  table. **Text color** is hidden in this mode since it no longer applies; **Config text color**
+  still does
+
+#### Gradient color
+
+The second color used by **GRADIENT** and **WAVE**.
+
+#### Wave speed
+
+Controls how quickly the wave moves through the list.
+
+#### Wave length
+
+Controls how many module entries a complete color wave spans.
+
+### Config text color
+
+Color of the configuration text shown beside module names. This option is available when **Show config** is enabled.
+
+### Sort
+
+How enabled modules are ordered.
+
+- **SIZE**: sort by width or size
+- **ALPHA**: sort alphabetically
+- **ORDER**: preserve module order
+
+### Reverse order
+
+Flip the order of the sorted module list.
+
+### Capitalize
+
+Text casing for module names and, when **Show config** is on, their configuration text.
+
+- **UPPER**: uppercase text
+- **LOWER**: lowercase text
+- **TITLE**: keep original casing
+
+### Remove spaces
+
+Strip spaces out of module names.
+
+### Shadow
+
+Render a shadow around the module names.
+
+- **NONE**: no shadow
+- **SIMPLE**: just a dropshadow on the bottom right
+- **SOFT**: a shadow that covers all sides of the text
+
+#### Shadow strength
+
+How opaque the shadow will be
+
+### Pad x
+
+Horizontal padding in pixels around each module entry.
+
+### Pad y
+
+Vertical padding in pixels around each module entry.
+
+### Width snap
+
+How many pixels apart two neighbouring rows can be and still be widened to match.
+
+### Show config
+
+Toggle display of module configuration lines in the list.
+
+#### Config format
+
+How the configuration text is wrapped.
+
+- **NONE**: no prefix or suffix, so `Speed` reads as `Speed NCP`
+- **BRACKETS**: wrap it in square brackets, so `Speed` reads as `Speed [NCP]`
+
+### Hidden modules
+
+Opens a searchable module picker. Enabled modules selected here are excluded from the list without disabling them.

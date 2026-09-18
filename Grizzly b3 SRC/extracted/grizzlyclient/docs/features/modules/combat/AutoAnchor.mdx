@@ -1,0 +1,51 @@
+---
+sidebar_position: 21
+sidebar_label: Auto Anchor
+title: Auto Anchor
+---
+import Chip from '@mui/material/Chip'
+import WarningIcon from '@mui/icons-material/Warning'
+
+# Auto Anchor <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Places, charges and detonates a respawn anchor.
+
+---
+
+### Mode
+
+- **ON BIND**: the whole sequence runs on the keybind, starting from placing the anchor. The
+  module turns itself back off when it finishes
+- **ON PLACE**: sits idle until you place an anchor yourself, then takes over from the charge and
+  returns to idle afterwards, ready for the next one
+
+### Double anchor
+
+Place a second anchor as the first one goes off, then charge that too. Needs a lower **Delay** to
+land both before you are moved.
+
+### Safe anchor
+
+Put a glowstone block between you and the anchor before charging, so the blast has something to
+eat on the way to you.
+
+### Explosion item swap
+
+Swap to a chosen hotbar item before detonating instead of holding the anchor. Handy for holding a
+totem at the moment the blast lands.
+
+#### Explosion item
+
+Which item to swap to. Falls back to the anchor slot if none is found.
+
+### Aim assist
+
+Turn towards the anchor for each step.
+
+#### Aim speed
+
+Degrees turned per tick while aiming.
+
+### Delay (ms)
+
+Time between each step of the sequence, randomised between the two bounds.

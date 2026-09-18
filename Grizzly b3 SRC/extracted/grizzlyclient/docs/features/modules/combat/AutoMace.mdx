@@ -1,0 +1,88 @@
+---
+sidebar_position: 20
+sidebar_label: Auto Mace
+title: Auto Mace
+---
+import Chip from '@mui/material/Chip'
+import WarningIcon from '@mui/icons-material/Warning'
+
+# Auto Mace <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Aims a falling mace smash at a target and swings it the tick before landing.
+
+---
+
+### Selection
+
+How the mace to use is chosen.
+
+- **AUTO**: scores every mace in your hotbar against the target's armor and your current fall
+  distance, and picks whichever would hit hardest. On the ground it prefers Breach, since Density
+  contributes nothing without a fall
+- **MANUAL**: always uses the enchantment set in **Mace type**
+
+### Mace type
+
+Which enchantment to look for in **MANUAL** selection.
+
+### Smash only
+
+Only treat a mace as usable while falling. Turning this off lets the module swing a mace on the
+ground, where it is just a slow sword.
+
+### Auto swap
+
+Swap to the chosen mace slot when a target is in range, and swap back afterwards.
+
+### Reach
+
+How close the predicted impact has to bring you to the target before the module commits.
+
+### Aim
+
+Hold your rotation on the predicted impact point while falling.
+
+#### Aim range
+
+Maximum horizontal distance to look for a target.
+
+#### Aim speed
+
+Maximum degrees turned per tick while closing on the impact point.
+
+### Attack
+
+Swing automatically once the crosshair is on a valid target and the cooldown allows it.
+
+#### Extra delay
+
+Ticks added to the attack cooldown before swinging. Negative values swing early, before the
+cooldown has fully recovered.
+
+### Stun slam
+
+When you are holding an axe and the target is blocking, hit once with the axe to break the shield
+before swapping to the mace for the follow-up.
+
+### Ignore target filter
+
+Attack any player instead of only those matching the global **Target Filter** rules.
+
+### Unequip elytra
+
+Swap a hotbar chestplate into your chest slot while gliding, so the fall actually builds distance.
+Gliding accumulates none, so a mace hit taken straight out of flight does almost nothing.
+
+#### Re-equip elytra
+
+Put the elytra back on after the smash. It waits for the upward bounce that follows a mace hit,
+so it only fires once you are actually coming back up rather than mid-drop.
+
+#### Open inventory
+
+Perform the swap through a silently opened inventory screen instead of clicking the slot
+directly. Only needed on servers that reject container clicks without an open window.
+
+#### Armor delay (ms)
+
+Time between armor swaps, randomised between the two bounds.

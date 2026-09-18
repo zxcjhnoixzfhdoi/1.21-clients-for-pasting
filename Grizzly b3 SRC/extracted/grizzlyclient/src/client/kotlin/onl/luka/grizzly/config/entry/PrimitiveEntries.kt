@@ -1,0 +1,44 @@
+package onl.luka.grizzly.config.entry
+
+import com.google.gson.JsonElement
+import com.google.gson.JsonPrimitive
+
+class BooleanEntry(name: String, default: Boolean) : ConfigEntry<Boolean>(name, default) {
+    override fun toJson(): JsonElement = JsonPrimitive(value)
+    override fun fromJson(element: JsonElement) { element.booleanOrNull?.let { value = it } }
+}
+
+class IntEntry(
+    name: String,
+    default: Int,
+    val min: Int = Int.MIN_VALUE,
+    val max: Int = Int.MAX_VALUE
+) : ConfigEntry<Int>(name, default) {
+    override fun toJson(): JsonElement = JsonPrimitive(value)
+    override fun fromJson(element: JsonElement) { element.intOrNull?.let { value = it.coerceIn(min, max) } }
+}
+
+class FloatEntry(
+    name: String,
+    default: Float,
+    val min: Float = -Float.MAX_VALUE,
+    val max: Float = Float.MAX_VALUE
+) : ConfigEntry<Float>(name, default) {
+    override fun toJson(): JsonElement = JsonPrimitive(value)
+    override fun fromJson(element: JsonElement) { element.floatOrNull?.let { value = it.coerceIn(min, max) } }
+}
+
+class DoubleEntry(
+    name: String,
+    default: Double,
+    val min: Double = -Double.MAX_VALUE,
+    val max: Double = Double.MAX_VALUE
+) : ConfigEntry<Double>(name, default) {
+    override fun toJson(): JsonElement = JsonPrimitive(value)
+    override fun fromJson(element: JsonElement) { element.doubleOrNull?.let { value = it.coerceIn(min, max) } }
+}
+
+class StringEntry(name: String, default: String) : ConfigEntry<String>(name, default) {
+    override fun toJson(): JsonElement = JsonPrimitive(value)
+    override fun fromJson(element: JsonElement) { element.stringOrNull?.let { value = it } }
+}

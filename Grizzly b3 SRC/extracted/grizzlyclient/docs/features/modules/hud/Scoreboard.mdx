@@ -1,0 +1,95 @@
+---
+sidebar_position: 6
+---
+
+# Scoreboard
+
+Replaces the vanilla scoreboard with a movable, styleable one
+
+---
+
+### Font
+
+Font used for this element's text. **DEFAULT** follows the client font set in **Font**, and any
+other choice overrides it for this element only.
+
+### Background
+
+Render a background behind the scoreboard.
+
+#### Background mode
+
+- **SOLID**: use the configured background color normally
+- **BLUR**: blur the gameplay behind the panel and use **BG color** as a glass tint
+
+#### Blur strength
+
+Controls the Gaussian blur radius when **Background mode** is **BLUR**.
+
+#### Rounded
+
+Round the panel's corners.
+
+#### Round radius
+
+Corner radius in pixels when **Rounded** is enabled.
+
+### BG color
+
+Background color for the panel, with alpha support. In blur mode, alpha controls how strongly the
+color tints the blurred gameplay.
+
+### Title bar
+
+Draw a separate band behind the objective title.
+
+#### Title bar color
+
+Color of that band, with alpha support.
+
+### Drop shadow
+
+Draw a GPU-rendered soft shadow behind the panel, following its rounded-corner setting.
+
+- **Drop shadow color** controls the shadow color and opacity
+- **Drop shadow softness** controls the Gaussian falloff width
+- **Drop shadow spread** expands the solid center before the falloff begins
+- **Drop shadow X/Y** offsets the shadow from the panel
+
+### Show title
+
+Display the objective's title above the entries. Turning this off removes the line entirely and
+shrinks the panel to match.
+
+### Show scores
+
+Display each entry's score on the right. Turning this off leaves only the names, and the panel
+narrows accordingly.
+
+### Text color
+
+Color of the title and entry names, with alpha support. Team colors on names take precedence
+where a server sets them.
+
+### Score color
+
+Color of the score values. Defaults to vanilla's red. Available when **Show scores** is enabled.
+
+### Text shadow
+
+Draw a shadow behind the scoreboard text.
+
+### Pad x
+
+Horizontal padding in pixels between the panel edge and the text.
+
+### Pad y
+
+Vertical padding in pixels above and below the entries.
+
+### Avoid modules list
+
+Slide the scoreboard clear when it would overlap the modules list. Perfect if
+your scoreboard and modules list are both on the same half of your screen,
+for example, if you have your modules list on the top right and the scoreboard
+on the middle right.

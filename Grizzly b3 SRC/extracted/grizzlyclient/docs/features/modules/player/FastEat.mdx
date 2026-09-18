@@ -1,0 +1,36 @@
+---
+sidebar_position: 2
+sidebar_label: Fast Eat
+title: Fast Eat
+---
+import Chip from '@mui/material/Chip'
+import WarningIcon from '@mui/icons-material/Warning'
+
+# Fast Eat <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Consumes food more quickly. Designed for older 1.8 servers.
+
+---
+
+### Mode
+
+- **NCP**: waits for the configured use duration, sends a movement-packet burst, and releases the food
+- **INSTANT**: sends the movement-packet burst as soon as eating starts
+- **TIMER**: increases the client timer only while eating
+- **MOSPIXEL**: 11 tick fast eat for the server Mospixel. ViaFabricPlus recommended, set to 1.8.
+
+### Use ticks
+
+Number of eating ticks before NCP mode activates.
+
+### NCP packets
+
+Number of movement packets sent by NCP mode.
+
+### Instant packets
+
+Number of movement packets sent by Instant mode.
+
+### Timer speed
+
+Client timer multiplier used by Timer mode while eating.

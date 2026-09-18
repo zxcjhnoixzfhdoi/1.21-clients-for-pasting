@@ -1,0 +1,157 @@
+---
+sidebar_position: 4
+---
+
+# Cheat Detector
+
+Detects if other players are cheating, then stores them in a local database
+and warns you if you play them in the future.
+
+Every check watches the packets the server broadcasts about other players:
+their positions, rotations, arm swings, damage events, knockback, and block
+placements. Nothing is sent anywhere, and the database lives in
+`.minecraft/config/medved/cheaters.json`.
+
+---
+
+## How a player becomes a cheater
+
+A cheater verdict is sticky. Score fades with a 45 day half-life so old evidence
+stops convicting new players, but an existing verdict is only removed by
+`,cheaters forget` or `,cheaters wipe`.
+
+---
+
+## Checks
+
+**Movement**
+
+- **Speed**
+- **Flight**
+- **No Slow**
+
+**Combat**
+
+- **Reach**
+- **Kill Aura**
+- **Silent Aim**
+- **Auto Clicker**
+- **Anti Knockback**
+- **Auto Block**
+- **Invalid Rotation**
+
+**World**
+
+- **Scaffold**
+- **Legit Scaffold**
+
+---
+
+## Settings
+
+### Sensitivity
+
+Scales both the limits each check uses and how much buffered evidence it needs
+before reporting. Strict flags sooner and tolerates less.
+
+### Protocol
+
+Legacy applies 1.8-style combat rules, where block-hitting is a normal manual
+technique and a longer unbroken run of it is needed before Auto Block reports.
+
+Auto works it out per server. The connection cannot answer this on its own: your
+client normally speaks the version it is running. When ViaFabricPlus is present,
+Cheat Detector also reads its negotiated target version and recognizes 1.7/1.8
+servers directly. Servers with legacy PvP may still accept modern clients while
+changing the combat rules, so Auto also uses two fallbacks:
+
+- A private list of known legacy-combat networks.
+- The attack speed attribute. Removing the 1.9 attack cooldown means raising it
+  far above the vanilla 4.0, and your own attributes are synced to you, so a
+  value of 16 or more is read as legacy combat.
+
+### Max Distance
+
+How far away a player can be and still be tracked.
+
+### Join Grace Ticks
+
+Suppresses checks after a player first appears.
+Teleports, velocity, damage, low TPS, packet buffering, vehicles,
+unusual surfaces, and movement effects add separate automatic exemptions.
+
+### Alert Mode
+
+Chooses persistent local chat alerts, temporary notifications, or both. Alerts
+include the check, violation level, and the evidence that crossed the
+configured threshold.
+
+### Alert Threshold
+
+The decaying violation level required before a normal alert is shown.
+Independent repeated evidence raises this value; clean time slowly lowers it.
+
+### Show All Evidence
+
+Shows each suspicious evidence event before it reaches the normal alert
+threshold. It does not print clean samples or every observed packet.
+Intended for testing and threshold tuning.
+
+### Record Detections
+
+Writes detections to the database. Turn this off to keep alerts without
+building a record. Players the server has no player-list entry for, such as
+NPCs and holograms, are never recorded.
+
+### Warn On Join
+
+Prints a warning the first time a recorded player appears in the player list,
+with their verdict, detection count, and the checks that flagged them.
+
+### Mark Suspects
+
+Whether suspects get marked alongside confirmed cheaters. Cheaters are always
+marked. Cheaters show a red icon, suspects an orange one.
+
+### Mark Tab List
+
+Puts the warning icon in front of the player's name in the tab list.
+
+### Mark Chat
+
+Puts the warning icon in front of any recorded name that appears in a chat
+message. Chat only carries text, so names are matched on word boundaries, and a
+name sitting inside a longer word is left alone. This covers server chat,
+system messages, and the client's own alerts.
+
+### Mark Nametags
+
+Puts the warning icon in front of the player's in-world nametag. Works with
+vanilla nametags and with the [Nametags](/features/modules/render/Nametags)
+module.
+
+### Warning Icon
+
+In the tab list and on nametags, hovering the icon shows why the player is on
+the list: their verdict, detection count, session count, score, and the checks
+that flagged them.
+
+### Detection VL
+
+The violation level one check has to reach before it is written to the database.
+Well above the alert threshold, and rate limited to one detection per check per
+20 seconds.
+
+### Conviction Score
+
+The accumulated, corroborated score needed for a cheater verdict. Suspect
+starts at 40% of this value.
+
+### Retention (days)
+
+Records untouched for longer than this are dropped on startup and by
+`,cheaters purge`. Manual verdicts are never pruned.
+
+### Clear Database
+
+Deletes every record.

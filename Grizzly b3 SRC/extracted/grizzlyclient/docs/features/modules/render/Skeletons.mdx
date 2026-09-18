@@ -1,0 +1,50 @@
+---
+sidebar_position: 8
+---
+
+# Skeletons
+
+Draws bone lines over player models, through walls.
+
+---
+
+### Color Mode
+
+Sets the colour used for the bones.
+
+- **TEAM**: uses the dyed colour of the target's helmet
+- **HEALTH**: shifts from green at full health through yellow to red at low health
+- **STATIC**: uses a fixed colour of your choice
+
+Humanoid mobs have no team or health colour worth reading, so they always use **Color** whichever
+mode is selected.
+
+### Team Only
+
+When enabled, players without a dyed helmet get no skeleton at all in **TEAM** mode. When
+disabled, they fall back to **Color**. Only visible in **TEAM** mode.
+
+### Render Self
+
+Draw your own skeleton. Only ever visible in third person, since your model is not rendered in
+first person.
+
+### Players Only
+
+Restrict the skeleton to players. Turn this off to draw one over any humanoid mob as well, such
+as zombies, skeletons, and piglins.
+
+### Ignore Target Filter
+
+When enabled, every other player gets a skeleton instead of only those matching the global
+**Target Filter** rules. Only visible when **Players Only** is enabled.
+
+### Line Width
+
+Thickness of the bone lines.
+
+### Color
+
+Colour of the bones in **STATIC** mode, and the fallback for helmetless players in **TEAM** mode.
+Supports theme, RGB, and chroma like every other colour in the client. Its alpha carries into
+**HEALTH** and **TEAM** too, so the transparency slider still applies in every mode.

@@ -1,0 +1,283 @@
+package onl.luka.grizzly.util
+
+import onl.luka.grizzly.module.modules.combat.AutoBlock
+import onl.luka.grizzly.module.modules.combat.Backtrack
+import onl.luka.grizzly.module.modules.combat.KnockbackDelay
+import onl.luka.grizzly.module.modules.combat.Misplace
+import onl.luka.grizzly.module.modules.combat.Velocity
+import onl.luka.grizzly.module.modules.player.Blink
+import onl.luka.grizzly.module.modules.player.FakeLag
+import net.minecraft.client.Minecraft
+import java.util.concurrent.ConcurrentLinkedQueue
+
+object LagManager {
+
+    private val outgoingQueue = ConcurrentLinkedQueue<Pair<Long, Runnable>>()
+    private val incomingQueue = ConcurrentLinkedQueue<Pair<Long, Runnable>>()
+
+    @Volatile var flushingOutgoing = false
+        private set
+    @Volatile var flushingIncoming = false
+        private set
+
+    @Volatile private var lastOutgoingDeliveryMs = 0L
+    @Volatile private var drainingOutgoing = false
+    @Volatile private var drainLimit = 0
+    @Volatile private var queuedSinceTick = 0
+    @Volatile private var lastIncomingDeliveryMs = 0L
+
+    fun getOutgoingQueueSize(): Int = outgoingQueue.size
+    fun getIncomingQueueSize(): Int = incomingQueue.size
+
+    fun shouldBufferOutgoing(): Boolean {
+        if (flushingOutgoing) return false
+        if (Minecraft.getInstance().level == null) return false
+
+        val blink    = Blink.enabled.value && Blink.holding
+        val fakeLag  = FakeLag.enabled.value && FakeLag.isCurrentlyLagging
+        val velocity = Velocity.enabled.value && Velocity.mode.value == Velocity.Mode.DELAY && Velocity.isDelayWindowActive()
+        val autoBlock = AutoBlock.isLagging
+        val misplaceLag = Misplace.enabled.value && Misplace.mode.value == Misplace.Mode.LAG && Misplace.lagActive
+        //val kbDisplaceBlink = KnockbackDisplacement.enabled.value && KnockbackDisplacement.isBlinkActive
+
+        if (!blink && !fakeLag && !velocity && !autoBlock && !misplaceLag) {// && !kbDisplaceBlink) {
+            if (outgoingQueue.isEmpty()) {
+                drainingOutgoing = false
+                return false
+            }
+
+            // Dumping a backlog in one go lands several moves in the same server tick, which
+            // is exactly the shape a simulation check looks for. Modules that ask for a rate
+            // keep the queue open instead and bleed it off over the next few ticks.
+            val limit = outgoingDrainLimit()
+            if (limit > 0) {
+                drainLimit = limit
+                drainingOutgoing = true
+                return true
+            }
+
+            flushAllOutgoing()
+            return false
+        }
+
+        drainingOutgoing = false
+        return true
+    }
+
+    private fun outgoingDrainLimit(): Int =
+        if (Misplace.enabled.value && Misplace.mode.value == Misplace.Mode.LAG) {
+            Misplace.drainPerTick.value
+        } else {
+            0
+        }
+
+    fun shouldBufferIncoming(): Boolean {
+        if (flushingIncoming) return false
+        if (Minecraft.getInstance().level == null) return false
+
+        val knockback      = KnockbackDelay.enabled.value && KnockbackDelay.isHolding()
+        val backtrackLag   = Backtrack.enabled.value && Backtrack.mode.value == Backtrack.Mode.LAG && Backtrack.lagActive
+        val backtrackManual = Backtrack.enabled.value && Backtrack.mode.value == Backtrack.Mode.MANUAL
+
+        val freezing       = Velocity.enabled.value
+                && Velocity.mode.value == Velocity.Mode.FREEZE
+                && Velocity.freezeDelayActive
+
+        if (!knockback && !backtrackLag && !backtrackManual && !freezing) {
+            if (!incomingQueue.isEmpty()) flushAllIncoming()
+            return false
+        }
+
+        return true
+    }
+
+    fun bufferOutgoing(action: Runnable) {
+        if (flushingOutgoing) {
+            try { action.run() } catch (t: Throwable) { }
+            return
+        }
+
+        val now = System.currentTimeMillis()
+
+        // Already catching up, so nothing new gets a delay of its own. It queues behind the
+        // backlog and goes out with it, in order.
+        if (drainingOutgoing) {
+            queuedSinceTick++
+            outgoingQueue.offer(now to action)
+            return
+        }
+
+        if (Blink.enabled.value && Blink.holding) {//) || (KnockbackDisplacement.enabled.value && KnockbackDisplacement.isBlinkActive)) {
+            outgoingQueue.add(Long.MAX_VALUE to action)
+            return
+        }
+
+        var delayMs = 0L
+
+        if (FakeLag.enabled.value && FakeLag.isCurrentlyLagging) {
+            val (lo, hi) = FakeLag.lagMs.value
+            val d = if (hi > lo) (lo + (Math.random() * (hi - lo + 1)).toInt()).toLong() else lo.toLong()
+            if (d > delayMs) delayMs = d
+        }
+
+        if (Velocity.enabled.value && Velocity.mode.value == Velocity.Mode.DELAY && Velocity.isDelayWindowActive()) {
+            val onGround = Minecraft.getInstance().player?.onGround() == true
+            val (lo, hi) = if (onGround) Velocity.groundDelay.value else Velocity.airDelay.value
+            val d = if (hi > lo) (lo + (Math.random() * (hi - lo + 1)).toInt()).toLong() else lo.toLong()
+            if (d > delayMs) delayMs = d
+        }
+
+        if (Misplace.enabled.value && Misplace.mode.value == Misplace.Mode.LAG && Misplace.lagActive) {
+            val d = Misplace.lagUntilMs - now
+            if (d > delayMs) delayMs = d
+        }
+
+        val active = delayMs > 0
+
+        if (!active && outgoingQueue.isEmpty()) {
+            lastOutgoingDeliveryMs = now
+        }
+
+        val deliverAt = if (active) {
+            maxOf(now + delayMs, lastOutgoingDeliveryMs)
+        } else {
+            maxOf(now, lastOutgoingDeliveryMs)
+        }
+
+        lastOutgoingDeliveryMs = deliverAt
+        outgoingQueue.offer(deliverAt to action)
+    }
+
+    fun bufferIncoming(action: Runnable) {
+        if (flushingIncoming) {
+            try { action.run() } catch (_: Throwable) {}
+            return
+        }
+
+        val now = System.currentTimeMillis()
+        var delayMs = 0L
+
+        if (KnockbackDelay.enabled.value && KnockbackDelay.isHolding()) {
+            val d = KnockbackDelay.holdPacketsUntil - now
+            if (d > delayMs) delayMs = d
+        }
+
+        if (Backtrack.enabled.value) {
+            if (Backtrack.mode.value == Backtrack.Mode.LAG && Backtrack.lagActive) {
+                val d = Backtrack.lagUntilMs - now
+                if (d > delayMs) delayMs = d
+            } else if (Backtrack.mode.value == Backtrack.Mode.MANUAL) {
+                val d = Backtrack.delay.value.toLong()
+                if (d > delayMs) delayMs = d
+            }
+        }
+
+        if (Velocity.enabled.value
+            && Velocity.mode.value == Velocity.Mode.FREEZE
+            && Velocity.freezeDelayActive
+        ) {
+            outgoingQueue
+            incomingQueue.offer(Long.MAX_VALUE to action)
+            return
+        }
+
+        val active = delayMs > 0
+
+        val deliverAt = if (active) {
+            maxOf(now + delayMs, lastIncomingDeliveryMs)
+        } else {
+            maxOf(now, lastIncomingDeliveryMs)
+        }
+
+        lastIncomingDeliveryMs = deliverAt
+        incomingQueue.offer(deliverAt to action)
+    }
+
+    fun onTick() {
+        val now = System.currentTimeMillis()
+
+        // Outgoing flush
+        flushingOutgoing = true
+        try {
+            // Whatever arrived this tick plus the drain rate on top, so the backlog shrinks by
+            // drainLimit a tick no matter how much combat is pushing into the queue. A flat cap
+            // loses to a busy tick and the queue never empties.
+            val perTick = if (drainingOutgoing) queuedSinceTick + drainLimit else 50
+            queuedSinceTick = 0
+            var processed = 0
+            while (processed < perTick) {
+                val peek = outgoingQueue.peek() ?: break
+                if (!drainingOutgoing && peek.first > now) break
+
+                val action = outgoingQueue.poll()?.second ?: break
+                try { action.run() } catch (t: Throwable) { }
+                processed++
+            }
+        } finally {
+            flushingOutgoing = false
+        }
+
+        if (outgoingQueue.isEmpty()) drainingOutgoing = false
+
+        // Nothing is worth a desync this deep, so a backlog that is still growing gets dumped.
+        if (drainingOutgoing && outgoingQueue.size > MAX_DRAIN_BACKLOG) {
+            drainingOutgoing = false
+            flushAllOutgoing()
+        }
+
+        if (outgoingQueue.isEmpty() && !shouldBufferOutgoing()) {
+            lastOutgoingDeliveryMs = 0L
+        }
+
+        // Incoming flush
+        flushingIncoming = true
+        try {
+            var processed = 0
+            while (processed < 50) {
+                val peek = incomingQueue.peek() ?: break
+                if (peek.first <= now) {
+                    val action = incomingQueue.poll()?.second ?: break
+                    try { action.run() } catch (t: Throwable) { }
+                    processed++
+                } else {
+                    break
+                }
+            }
+        } finally {
+            flushingIncoming = false
+        }
+
+        if (incomingQueue.isEmpty() && !shouldBufferIncoming()) {
+            lastIncomingDeliveryMs = 0L
+        }
+    }
+
+    private const val MAX_DRAIN_BACKLOG = 60
+
+    fun flushAllOutgoing() {
+        flushingOutgoing = true
+        try {
+            while (true) {
+                val action = outgoingQueue.poll()?.second ?: break
+                try { action.run() } catch (t: Throwable) { }
+            }
+        } finally {
+            flushingOutgoing = false
+            lastOutgoingDeliveryMs = 0L
+            queuedSinceTick = 0
+        }
+    }
+
+    fun flushAllIncoming() {
+        flushingIncoming = true
+        try {
+            while (true) {
+                val action = incomingQueue.poll()?.second ?: break
+                try { action.run() } catch (t: Throwable) { }
+            }
+        } finally {
+            flushingIncoming = false
+            lastIncomingDeliveryMs = 0L
+        }
+    }
+}

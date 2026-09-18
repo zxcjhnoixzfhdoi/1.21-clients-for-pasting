@@ -1,0 +1,76 @@
+---
+sidebar_position: 7
+---
+
+# Nuker
+
+Automatically mines selected blocks using Minecraft's normal held attack action.
+
+---
+
+Nuker selects a visible block, rotates toward it when configured, and holds the
+attack key until the block is broken. It pauses while **Powder Chest Solver** is
+working.
+
+### Blocks
+
+Controls which blocks Nuker is allowed to mine.
+
+### Range
+
+Sets the maximum distance at which blocks can be selected.
+
+### Height
+
+Sets how many blocks above the player's search origin can be selected.
+
+### Depth
+
+Sets how many blocks below the player's search origin can be selected.
+
+### FOV
+
+Limits target selection to blocks inside the configured field of view.
+
+### Shape
+
+Controls the area in which Nuker searches for blocks.
+
+- **SPHERE**: searches all visible blocks within range
+- **FACING_AXIS**: mines a straight line along the direction you are facing
+- **AXIS_TUNNELS**: mines the centre line and two parallel side lines
+- **TRIGGERBOT**: only mines blocks intersected by your crosshair
+
+### Sideways offset
+
+Moves the origin of axis-based shapes left or right.
+
+### Forwards backwards offset
+
+Moves the origin of axis-based shapes forward or backward.
+
+### Rotations
+
+Controls how Nuker aims at selected blocks.
+
+- **NONE**: does not change your rotation
+- **CLIENT**: uses client rotations with perspective movement
+
+### Priority
+
+Controls how a target is chosen when multiple blocks are available.
+
+- **CLOSEST**: selects the nearest valid block
+- **LOWEST_ROTATION**: selects the block requiring the smallest rotation
+
+### Stuck timeout ticks
+
+Drops the current target after this many ticks if it has not been broken.
+
+### Preview
+
+Highlights the block currently selected by Nuker.
+
+### Target color
+
+Sets the colour used by the target preview.

@@ -1,0 +1,42 @@
+<templates>
+    <template name="watermark-simple">
+        <panel w="{{hud.width}}" h="{{hud.height}}" bg="{{hud.background}}" radius="3">
+            <row overlay="true" relative="true"
+                 x="{{pad.x}}" y="{{pad.y}}" w="{{mark.headWidth}}" h="9"
+                 text="{{mark.head}}" fg="{{mark.headColor}}" shadow="{{hud.shadow}}" />
+            <row overlay="true" relative="true"
+                 x="{{mark.tailX}}" y="{{pad.y}}" w="{{mark.tailWidth}}" h="9"
+                 text="{{mark.tail}}" fg="{{mark.tailColor}}" shadow="{{hud.shadow}}" />
+        </panel>
+    </template>
+
+    <template name="watermark-camel">
+        <panel w="{{hud.width}}" h="{{hud.height}}" bg="#00000000">
+            <row overlay="true" relative="true"
+                 x="{{mark.nameShadowX}}" y="{{mark.nameShadowY}}" w="{{mark.nameWidth}}" h="14"
+                 text="{{mark.name}}" fg="#FF000000" textScale="{{mark.nameScale}}" />
+            <row overlay="true" relative="true"
+                 x="{{mark.buildShadowX}}" y="{{mark.buildShadowY}}" w="{{mark.buildWidth}}" h="7"
+                 text="{{mark.build}}" fg="#FF000000" textScale="{{mark.buildScale}}" />
+
+            <row overlay="true" relative="true"
+                 x="{{mark.nameX}}" y="{{mark.nameY}}" w="{{mark.nameWidth}}" h="14"
+                 text="{{mark.name}}" fg="{{mark.nameColor}}" textScale="{{mark.nameScale}}" />
+            <row overlay="true" relative="true"
+                 x="{{mark.buildX}}" y="{{mark.buildY}}" w="{{mark.buildWidth}}" h="7"
+                 text="{{mark.build}}" fg="{{mark.buildColor}}" textScale="{{mark.buildScale}}" />
+        </panel>
+    </template>
+
+    <template name="watermark-wurst">
+        <panel w="{{hud.width}}" h="{{hud.height}}" bg="#00000000">
+            <box overlay="true" relative="true"
+                 x="0" y="{{bar.top}}" w="{{bar.width}}" h="{{bar.height}}" bg="{{bar.color}}" />
+            <watermark-logo overlay="true" relative="true"
+                            x="0" y="{{logo.y}}" w="{{logo.width}}" h="{{logo.height}}" />
+            <row overlay="true" relative="true"
+                 x="{{mark.versionX}}" y="{{mark.versionY}}" w="{{mark.versionWidth}}" h="9"
+                 text="{{mark.version}}" fg="{{mark.versionColor}}" shadow="{{hud.shadow}}" />
+        </panel>
+    </template>
+</templates>

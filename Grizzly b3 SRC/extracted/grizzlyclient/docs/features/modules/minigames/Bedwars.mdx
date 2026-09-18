@@ -1,0 +1,46 @@
+---
+sidebar_position: 2
+sidebar_label: Bedwars
+title: Bedwars
+---
+
+# Bedwars
+
+An all-in-one Bedwars utility module ported from the useful parts of Meowtils. Each helper has its own settings section while sharing one module toggle and keybind.
+
+## General
+
+- **Only in bedwars**: Uses Hypixel's official location event and runs helpers only on an active Bed Wars game server, not in its lobby.
+- **Ignore teammates**: Excludes allied players from alerts and bed warnings.
+- **Edit HUD**: Positions and scales the resource and bed-distance display.
+
+## Shop Helper
+
+Highlights purchases you can afford using the color of their required resource. It can translate normal clicks into the shop's middle-click purchase action and prevents buying a sword, armor, tool, shears, or knockback stick when you already own an equal or better version.
+
+- **Highlight affordable**: Shows resource-colored slot overlays for affordable purchases.
+- **Highlight opacity**: Controls the slot-overlay opacity.
+- **Middle click purchases**: Uses the shop's direct purchase click behavior.
+- **Prevent duplicates**: Blocks duplicate and downgrade purchases.
+
+## Anti Misplace
+
+Prevents obsidian from being placed unless the destination touches a bed. This protects expensive obsidian from accidental placements without changing normal block placement.
+
+## Alerts
+
+All alert types are written to chat and share the same sound, distance, range, and cooldown controls.
+
+- **Item alerts**: Reports enemies holding important weapons, tools, potions, fireballs, TNT, pearls, obsidian, bridge eggs, and other Bedwars utility items.
+- **Consume alerts**: Reports completed golden apple, milk, speed, jump, and invisibility consumption.
+- **Pickup alerts**: Uses collection packets to report enemy resource pickups. Iron and gold are optional; diamonds and emeralds are enabled by default.
+- **Armor alerts**: Reports upgrades to chainmail, iron, and diamond armor.
+- **Trap and bed alerts**: Promotes trap triggers and your-bed destruction messages to Bedwars alerts.
+
+## Resources
+
+Displays selected iron, gold, diamond, and emerald counts in a compact HUD. Resource-change notifications are optional and disabled by default.
+
+## Bed Tracker
+
+Finds the nearest matching team bed with an incremental scan, displays your distance from it, and warns when enemy players enter the configured range. The scan is spread across ticks to avoid frame-time spikes.

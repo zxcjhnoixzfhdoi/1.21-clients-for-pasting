@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui>
+    <template name="target-hud-grizzly">
+        <panel w="150" h="{{hud.height}}" bg="{{hud.background}}" radius="5">
+            <target-face overlay="true" relative="true"
+                         x="{{face.x}}" y="{{face.y}}" w="{{face.size}}" h="{{face.size}}"
+                         radius="5" hurt="{{target.hurt}}" />
+
+            <row overlay="true" relative="true"
+                 x="54" y="5" w="86" h="9"
+                 text="{{target.name}}" fg="{{hud.text}}" shadow="{{hud.shadow}}" />
+
+            <row overlay="true" relative="true"
+                 x="54" y="{{hp.y}}" w="{{hp.labelW}}" h="9"
+                 text="HP" fg="{{hud.muted}}" shadow="{{hud.shadow}}" />
+            <box overlay="true" relative="true"
+                 x="{{hp.barX}}" y="{{hp.barY}}" w="{{hp.barW}}" h="7"
+                 bg="{{hud.barBack}}" radius="3" />
+            <box overlay="true" relative="true"
+                 x="{{hp.barX}}" y="{{hp.barY}}" w="{{hp.fillW}}" h="7"
+                 bg="{{hp.color}}" radius="3" />
+            <row overlay="true" relative="true"
+                 x="{{hp.valueX}}" y="{{hp.y}}" w="{{hp.valueW}}" h="9"
+                 text="{{hp.value}}" fg="{{hp.color}}" shadow="{{hud.shadow}}" />
+
+            <slot name="absorption" />
+
+            <row overlay="true" relative="true"
+                 x="54" y="{{distance.y}}" w="86" h="9"
+                 text="{{distance.text}}" fg="{{hud.muted}}" shadow="{{hud.shadow}}" />
+            <row overlay="true" relative="true"
+                 x="54" y="{{win.y}}" w="86" h="9"
+                 text="{{win.text}}" fg="{{win.color}}" shadow="{{hud.shadow}}" />
+        </panel>
+    </template>
+
+    <template name="target-hud-absorption">
+        <box>
+            <row overlay="true" relative="true"
+                 x="54" y="{{abs.y}}" w="{{abs.labelW}}" h="9"
+                 text="Abs" fg="#FFFFDD44" shadow="{{hud.shadow}}" />
+            <box overlay="true" relative="true"
+                 x="{{abs.barX}}" y="{{abs.barY}}" w="{{abs.barW}}" h="7"
+                 bg="{{hud.barBack}}" radius="3" />
+            <box overlay="true" relative="true"
+                 x="{{abs.barX}}" y="{{abs.barY}}" w="{{abs.fillW}}" h="7"
+                 bg="#FFFFDD44" radius="3" />
+        </box>
+    </template>
+
+    <template name="target-hud-exhibition">
+        <panel w="{{hud.width}}" h="46" bg="#FF3C3C3C" border="#FF0A0A0A" borderWidth="1">
+            <box overlay="true" relative="true" x="1" y="1" w="{{bezel.width}}" h="44"
+                 bg="#FF3C3C3C" border="#FF282828" borderWidth="2" />
+            <box overlay="true" relative="true" x="3" y="3" w="{{panel.width}}" h="40"
+                 bg="{{hud.background}}" border="#FF3C3C3C" borderWidth="1" />
+
+            <box overlay="true" relative="true" x="5" y="5" w="36" h="36"
+                 border="#FF0A0A0A" borderWidth="1" />
+            <box overlay="true" relative="true" x="6" y="6" w="34" h="34"
+                 bg="#FF111111" border="#FF303030" borderWidth="1" />
+            <target-entity overlay="true" relative="true" x="6" y="6" w="34" h="34" entityScale="17" />
+
+            <row overlay="true" relative="true"
+                 x="42" y="5" w="{{text.width}}" h="11"
+                 text="{{target.name}}" fg="{{hud.text}}" shadow="{{hud.shadow}}" />
+
+            <box overlay="true" relative="true" x="42" y="15" w="{{hp.boxW}}" h="4"
+                 border="#FF000000" borderWidth="1" />
+            <box overlay="true" relative="true" x="43" y="16" w="{{hp.trackW}}" h="2" bg="{{hp.dim}}" />
+            <box overlay="true" relative="true" x="43" y="16" w="{{hp.fillW}}" h="2" bg="{{hp.color}}" />
+            <box overlay="true" relative="true" x="{{abs.x}}" y="16" w="{{abs.width}}" h="2" bg="#FFFFAA00" />
+            <slot name="ticks" />
+
+            <row overlay="true" relative="true"
+                 x="42" y="19" w="{{text.width}}" h="8"
+                 text="{{info.text}}" fg="{{hud.text}}" shadow="{{hud.shadow}}" textScale="0.85" />
+
+            <target-equipment overlay="true" relative="true" x="41" y="26" w="{{equip.width}}" h="16" />
+        </panel>
+    </template>
+
+    <template name="target-hud-exhibition-tick">
+        <box overlay="true" relative="true" x="{{tick.x}}" y="15" w="1" h="4" bg="#FF000000" />
+    </template>
+
+    <template name="target-hud-novoline">
+        <panel w="{{hud.width}}" h="42" bg="#FF282828">
+            <row overlay="true" relative="true"
+                 x="44" y="10" w="{{text.width}}" h="9"
+                 text="{{target.name}}" fg="#FFFFFFFF" shadow="{{hud.shadow}}" />
+
+            <box overlay="true" relative="true" x="44" y="22" w="{{bar.width}}" h="11" bg="{{bar.track}}" />
+            <box overlay="true" relative="true" x="44" y="22" w="{{bar.ghostW}}" h="11" bg="{{accent.trail}}" />
+            <box overlay="true" relative="true" x="44" y="22" w="{{bar.fillW}}" h="11" bg="{{accent.color}}" />
+            <row overlay="true" relative="true"
+                 x="44" y="24" w="{{bar.width}}" h="9" align="center"
+                 text="{{hp.percent}}" fg="#FFFFFFFF" shadow="{{hud.shadow}}" />
+
+            <target-face overlay="true" relative="true"
+                         x="1" y="1" w="40" h="40" radius="0" hurt="{{target.hurt}}" />
+        </panel>
+    </template>
+
+    <template name="target-hud-wurst">
+        <panel w="{{hud.width}}" h="34" bg="#64FFFFFF">
+            <row overlay="true" relative="true"
+                 x="4" y="4" w="{{text.width}}" h="10"
+                 text="{{target.name}}" fg="#FF000000" shadow="{{hud.shadow}}" />
+            <box overlay="true" relative="true" x="4" y="16" w="{{bar.fillW}}" h="10" bg="#FFFFC800" />
+        </panel>
+    </template>
+
+    <template name="target-hud-astolfo">
+        <panel w="{{hud.width}}" h="45" bg="{{hud.background}}">
+            <target-entity overlay="true" relative="true" x="4" y="3" w="26" h="38" entityScale="18" />
+
+            <row overlay="true" relative="true"
+                 x="34" y="3" w="{{text.width}}" h="11"
+                 text="{{target.name}}" fg="#FFFFFFFF" shadow="{{hud.shadow}}" />
+
+            <row overlay="true" relative="true"
+                 x="34" y="15" w="{{text.width}}" h="17"
+                 text="{{hp.value}}" fg="{{accent.from}}" shadow="{{hud.shadow}}" textScale="1.75" />
+
+            <box overlay="true" relative="true" x="34" y="33" w="{{bar.width}}" h="7"
+                 bg="{{accent.trackFrom}}" bgEnd="{{accent.trackTo}}" />
+            <box overlay="true" relative="true" x="34" y="33" w="{{bar.ghostW}}" h="7"
+                 bg="{{accent.ghostFrom}}" bgEnd="{{accent.ghostTo}}" />
+            <box overlay="true" relative="true" x="34" y="33" w="{{bar.fillW}}" h="7"
+                 bg="{{accent.from}}" bgEnd="{{accent.to}}" />
+        </panel>
+    </template>
+
+    <template name="target-hud-camel">
+        <panel w="122" h="58" bg="{{hud.background}}" radius="8">
+            <target-entity overlay="true" relative="true" x="-4" y="4" w="46" h="54" />
+            <row overlay="true" relative="true"
+                 x="36" y="6" w="81" h="12"
+                 text="{{target.name}}" fg="{{hud.text}}" shadow="{{hud.shadow}}" textScale="1.33" />
+            <box overlay="true" relative="true"
+                 x="36" y="20" w="77" h="12" bg="{{hud.barBack}}" radius="4" />
+            <box overlay="true" relative="true"
+                 x="36" y="20" w="{{hp.fillW}}" h="12" bg="#FFFF1010" radius="4" />
+            <row overlay="true" relative="true"
+                 x="36" y="37" w="81" h="18"
+                 text="{{hp.whole}}" fg="#FFFF1010" shadow="{{hud.shadow}}" textScale="1.95" />
+        </panel>
+    </template>
+</ui>

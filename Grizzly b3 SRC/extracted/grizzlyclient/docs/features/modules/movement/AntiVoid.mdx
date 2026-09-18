@@ -1,0 +1,41 @@
+---
+sidebar_position: 4
+sidebar_label: Anti Void
+title: Anti Void
+---
+import Chip from '@mui/material/Chip'
+import WarningIcon from '@mui/icons-material/Warning'
+
+# Anti Void <sup><Chip label="Warning" color="warning" size="small" component="a" href="/guides/anticheat-safety#risk-labels" icon={<WarningIcon />}/></sup>
+
+Prevents you from falling into the void.
+
+---
+
+### Mode
+
+- **SETBACK**: returns to a recent grounded position
+- **BOUNCE**: reverses downward motion while preserving horizontal movement
+
+### Fall distance
+
+Distance the player must fall before recovery activates. Recovery only triggers
+when there is no collidable block beneath the player's footprint down to the
+bottom of the world.
+
+### Rewind ticks
+
+How far back through grounded positions Setback should recover. A few ticks of
+rewind helps avoid returning to the edge that caused the fall.
+
+### Bounce motion
+
+Upward velocity applied by Bounce mode.
+
+### Cooldown
+
+Minimum ticks between recoveries.
+
+### Disable after
+
+Disable Anti Void after a successful recovery.

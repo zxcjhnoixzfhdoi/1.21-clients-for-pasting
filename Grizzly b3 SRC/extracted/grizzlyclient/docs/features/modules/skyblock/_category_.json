@@ -1,0 +1,9 @@
+{
+  "label": "SkyBlock",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "Modules designed for Hypixel SkyBlock, including mining tools, Dojo helpers, and Glacite Mineshaft overlays."
+  },
+  "customProps": {"boxicon": "bxf bx-diamond"}
+}
