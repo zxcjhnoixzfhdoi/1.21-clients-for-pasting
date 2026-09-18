@@ -1,0 +1,15 @@
+package com.instrumentalist.mixin.injector;
+
+import net.minecraft.world.entity.LivingEntity;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
+import org.spongepowered.asm.mixin.gen.Invoker;
+
+@Mixin(LivingEntity.class)
+public interface LivingEntityAccessor {
+    @Accessor("autoSpinAttackTicks")
+    void krs$setAutoSpinAttackTicks(int ticks);
+
+    @Invoker("setLivingEntityFlag")
+    void krs$invokeSetLivingEntityFlag(int flag, boolean value);
+}

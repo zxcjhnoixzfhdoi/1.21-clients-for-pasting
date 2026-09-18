@@ -1,0 +1,19 @@
+package com.instrumentalist.krs.hacks.features.render;
+
+import com.instrumentalist.krs.hacks.Module;
+import com.instrumentalist.krs.hacks.ModuleCategory;
+import org.lwjgl.glfw.GLFW;
+
+public class WidelyPutin extends Module {
+    public WidelyPutin() {
+        super("Widely Putin", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
+    }
+
+    @Override
+    public void onDisable() {
+    }
+
+    @Override
+    public void onEnable() {
+    }
+}
