@@ -1,0 +1,12 @@
+accessWidener   v2	official
+accessible method net/minecraft/world/level/chunk/PalettedContainer get (I)Ljava/lang/Object;
+accessible field net/minecraft/client/multiplayer/ClientChunkCache storage Lnet/minecraft/client/multiplayer/ClientChunkCache$Storage;
+accessible field net/minecraft/client/multiplayer/ClientChunkCache$Storage chunks Ljava/util/concurrent/atomic/AtomicReferenceArray;
+accessible field net/minecraft/client/renderer/state/gui/GuiRenderState strata Ljava/util/List;
+accessible field net/minecraft/client/renderer/state/gui/GuiRenderState current Lnet/minecraft/client/renderer/state/gui/GuiRenderState$Node;
+accessible field net/minecraft/client/renderer/state/gui/GuiRenderState firstStratumAfterBlur I
+accessible field net/minecraft/client/renderer/state/gui/GuiRenderState itemModelIdentities Ljava/util/Set;
+accessible field net/minecraft/client/renderer/state/gui/GuiRenderState lastElementBounds Lnet/minecraft/client/gui/navigation/ScreenRectangle;
+accessible field net/minecraft/client/gui/render/GuiRenderer renderState Lnet/minecraft/client/renderer/state/gui/GuiRenderState;
+accessible method net/minecraft/client/gui/render/GuiRenderer prepare ()V
+accessible class net/minecraft/client/renderer/state/gui/GuiRenderState$Node

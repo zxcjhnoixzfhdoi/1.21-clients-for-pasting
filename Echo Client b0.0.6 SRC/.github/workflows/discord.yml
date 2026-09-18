@@ -1,0 +1,131 @@
+name: Discord Notifications
+on: [push]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Send Commit to Discord
+        run: |
+          python <<'PY' > discord-payload.json
+          import json
+          import os
+          import re
+          import subprocess
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          before_sha = "${{ github.event.before }}"
+          after_sha = "${{ github.sha }}"
+          owner = "${{ github.repository_owner }}"
+          repository = "${{ github.repository }}"
+          event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
+          commits = event.get("commits") or []
+
+          def run_git(*args: str) -> str:
+              result = subprocess.run(
+                  ["git", *args],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              return result.stdout.strip()
+
+          def get_diff_range() -> str:
+              if before_sha and set(before_sha) != {"0"}:
+                  return f"{before_sha}..{after_sha}"
+
+              if not commits:
+                  return after_sha
+
+              first_commit_sha = commits[0]["id"]
+
+              try:
+                  run_git("rev-parse", f"{first_commit_sha}^")
+              except subprocess.CalledProcessError:
+                  return after_sha
+
+              return f"{first_commit_sha}^..{after_sha}"
+
+          def get_changed_file_count(diff_range: str) -> int:
+              output = run_git("diff", "--name-only", diff_range)
+              if not output:
+                  return 0
+              return len([line for line in output.splitlines() if line.strip()])
+
+          def get_line_stats(diff_range: str) -> tuple[int, int]:
+              output = run_git("diff", "--shortstat", diff_range)
+              lines_added_match = re.search(r"(\d+) insertion", output)
+              lines_removed_match = re.search(r"(\d+) deletion", output)
+
+              lines_added = int(lines_added_match.group(1)) if lines_added_match else 0
+              lines_removed = int(lines_removed_match.group(1)) if lines_removed_match else 0
+              return lines_added, lines_removed
+
+          def get_commit_lines() -> list[str]:
+              commits_to_show = commits
+              if not commits_to_show:
+                  head_commit = event.get("head_commit")
+                  if not head_commit:
+                      return ["- No commit details were included in this push event."]
+                  commits_to_show = [head_commit]
+
+              max_commits_to_show = 6
+              commit_lines = []
+
+              for commit in commits_to_show[:max_commits_to_show]:
+                  short_sha = commit["id"][:7]
+                  first_line = commit["message"].splitlines()[0].strip()
+                  if not first_line:
+                      first_line = "(no commit message)"
+
+                  commit_lines.append(f"- **{short_sha}** {first_line}")
+
+              hidden_commit_count = len(commits_to_show) - max_commits_to_show
+              if hidden_commit_count > 0:
+                  commit_lines.append(f"- ...and {hidden_commit_count} more commits")
+
+              return commit_lines
+
+          diff_range = get_diff_range()
+          files_changed = get_changed_file_count(diff_range)
+          lines_added, lines_removed = get_line_stats(diff_range)
+          commit_count = len(commits) if commits else 1
+          commit_label = "commit" if commit_count == 1 else "commits"
+
+          description_lines = [
+              f"**{commit_count} {commit_label} pushed**",
+              f"Modified {files_changed} files.",
+              "",
+              *get_commit_lines(),
+              "",
+              f"**+{lines_added}** | **-{lines_removed}**",
+          ]
+
+          payload = {
+              "embeds": [{
+                  "author": {
+                      "name": "Echo Changelog",
+                      "icon_url": f"https://github.com/{owner}.png",
+                  },
+                  "title": f"New update to {repository}",
+                  "description": "\n".join(description_lines),
+                  "color": 5814783,
+                  "footer": {
+                      "text": "Echo GitHub Commits | "
+                      + datetime.now(timezone.utc).strftime("%m/%d/%y, %I:%M %p"),
+                  },
+              }],
+          }
+
+          print(json.dumps(payload))
+          PY
+
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d @discord-payload.json \
+               "${{ secrets.DISCORD_WEBHOOK }}"

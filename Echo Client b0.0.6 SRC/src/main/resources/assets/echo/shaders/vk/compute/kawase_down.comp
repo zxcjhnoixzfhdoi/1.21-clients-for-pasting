@@ -1,0 +1,30 @@
+#version 450
+
+layout(local_size_x = 16, local_size_y = 16) in;
+
+layout(binding = 0) uniform sampler2D inputSampler;
+layout(binding = 1, rgba8) uniform writeonly image2D outputImage;
+
+layout(push_constant) uniform PC {
+    float offset;
+    int flipY;
+};
+
+void main() {
+    ivec2 pos = ivec2(gl_GlobalInvocationID.xy);
+    ivec2 size = imageSize(outputImage);
+    if (pos.x >= size.x || pos.y >= size.y) return;
+
+    vec2 uv = (vec2(pos) + 0.5) / vec2(size);
+    if (flipY != 0) uv.y = 1.0 - uv.y;
+    vec2 texelSize = 1.0 / vec2(textureSize(inputSampler, 0));
+    vec2 halfpixel = texelSize / 2.0;
+
+    vec4 sum = texture(inputSampler, uv) * 4.0;
+    sum += texture(inputSampler, uv - halfpixel.xy * offset);
+    sum += texture(inputSampler, uv + halfpixel.xy * offset);
+    sum += texture(inputSampler, uv + vec2(halfpixel.x, -halfpixel.y) * offset);
+    sum += texture(inputSampler, uv - vec2(halfpixel.x, -halfpixel.y) * offset);
+
+    imageStore(outputImage, pos, vec4((sum / 8.0).rgb, 1.0));
+}
