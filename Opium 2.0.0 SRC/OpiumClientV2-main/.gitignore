@@ -1,0 +1,7 @@
+.gradle
+/run
+.idea
+/build
+
+a.sh
+/mappings/

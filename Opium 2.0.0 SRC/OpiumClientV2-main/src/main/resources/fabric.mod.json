@@ -1,0 +1,36 @@
+{
+	"schemaVersion": 1,
+	"id": "opium",
+	"version": "${version}",
+	"name": "Opium",
+	"description": "huh huh huh huh huh huh",
+	"authors": [
+		"Cxiy",
+		"VoidMatter",
+		"Qweru",
+		"Crystal",
+		"Heedi",
+		"Otterware"
+	],
+	"license": "CC0-1.0",
+	"accessWidener": "opium.accesswidener",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"we.devs.opium.Opium"
+		]
+	},
+	"mixins": [
+		"opium.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {},
+	"custom": {
+		"discord-rpc": "1.6.2"
+	}
+}

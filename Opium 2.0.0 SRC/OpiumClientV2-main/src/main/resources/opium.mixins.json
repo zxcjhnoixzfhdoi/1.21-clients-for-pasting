@@ -1,0 +1,43 @@
+{
+  "required": true,
+  "package": "we.devs.opium.asm.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "AbstractClientPlayerEntityMixin",
+    "CameraMixin",
+    "ChatHudMixin",
+    "ClientConnectionMixin",
+    "ClientPlayerEntityMixin",
+    "ClientPlayerInteractionManagerMixin",
+    "ClientPlayNetworkHandlerMixin",
+    "ClientTickMixin",
+    "ClientWorldMixin",
+    "EntityRendererMixin",
+    "GameMenuScreenMixin",
+    "GameOptionsMixin",
+    "GameOverlayRendererMixin",
+    "IClientPlayerEntity",
+    "IClientWorldMixin",
+    "IEntityVelocityUpdateS2CPacket",
+    "IExplosionS2CPacket",
+    "InGameHudMixin",
+    "KeyboardMixin",
+    "MinecraftClientMixin",
+    "MixinLogoDrawer",
+    "MixinSplashScreen",
+    "MusicTickerMixin",
+    "PlayerListHudMixin",
+    "SimpleOptionMixin",
+    "TitleScreenMixin",
+    "TitleScreenSplashMixin",
+    "WorldRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "EntityMixin",
+    "LimbAnimatorMixin",
+    "LivingEntityMixin"
+  ]
+}

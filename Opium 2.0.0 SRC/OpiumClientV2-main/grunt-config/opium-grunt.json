@@ -1,0 +1,356 @@
+{
+  "Settings": {
+    "Input": "build/libs/opium-2.0.0.jar",
+    "Output": "build/libs/opium-2.0.0-obf.jar",
+    "Libraries": [],
+    "Exclusions": [
+      "net/minecraft/*",
+      "me/x150/*"
+    ],
+    "MixinPackage": [
+      "we/devs/opium/asm/mixins"
+    ],
+    "DumpMappings": true,
+    "Multithreading": false,
+    "PrintTimeUsage": true,
+    "ForceUseComputeMax": false,
+    "LibsMissingCheck": true,
+    "CustomDictionaryFile": "customDictionary.txt",
+    "DictionaryStartIndex": 0,
+    "CorruptOutput": false,
+    "FileRemovePrefix": [],
+    "FileRemoveSuffix": []
+  },
+  "UI": {
+    "DarkTheme": true
+  },
+  "SourceDebugRemove": {
+    "Enabled": true,
+    "SourceDebug": true,
+    "LineDebug": true,
+    "RenameSourceDebug": true,
+    "SourceNames": [
+      "114514.java",
+      "1919810.kt",
+      "69420.java",
+      "你妈死了.kt",
+      "Creeper.java",
+      "I Love femboys.java",
+      "colonthree.java",
+      "iUseArchBTW.java"
+    ],
+    "Exclusion": []
+  },
+  "Shrinking": {
+    "Enabled": true,
+    "RemoveInnerClass": true,
+    "RemoveUnusedLabel": true,
+    "RemoveNOP": true,
+    "Exclusion": [
+      "we/devs/opium/asm/mixins"
+    ]
+  },
+  "KotlinOptimizer": {
+    "Enabled": false,
+    "Annotations": true,
+    "Intrinsics": true,
+    "IntrinsicsRemoval": [
+      "checkExpressionValueIsNotNull",
+      "checkNotNullExpressionValue",
+      "checkReturnedValueIsNotNull",
+      "checkFieldIsNotNull",
+      "checkParameterIsNotNull",
+      "checkNotNullParameter"
+    ],
+    "ReplaceLdc": true,
+    "IntrinsicsExclusion": [],
+    "MetadataExclusion": []
+  },
+  "EnumOptimize": {
+    "Enabled": false,
+    "Exclusion": []
+  },
+  "DeadCodeRemove": {
+    "Enabled": true,
+    "Exclusion": []
+  },
+  "ClonedClass": {
+    "Enabled": false,
+    "Count": 2,
+    "Suffix": "-ily-nigga",
+    "RemoveAnnotations": true,
+    "Exclusion": []
+  },
+  "TrashClass": {
+    "Enabled": false,
+    "Package": "hiiiiiiiiiiiiiiihiiiiiiiiii/iiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiih/iiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiii/iiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiiiiiiihiiiiiiiiiii/hiiiiiiiiiiiiiiihiiiiiiiiiiiiiiiiiiihiiiiiiiiiiiiiii/",
+    "Prefix": "Trash",
+    "Count": 4
+  },
+  "HWIDAuthentication": {
+    "Enabled": false,
+    "OnlineMode": true,
+    "OfflineHWID": [
+      ""
+    ],
+    "OnlineURL": "https://pastebin.com/H0f7unhN",
+    "EncryptKey": "1186118611861186",
+    "CachePools": 5,
+    "ShowHWIDWhenFailed": false,
+    "EncryptConst": true,
+    "Exclusion": []
+  },
+  "HideDeclaredFields": {
+    "Enabled": false,
+    "Exclusion": []
+  },
+  "ReflectionSupport": {
+    "Enabled": false,
+    "PrintLog": true,
+    "Class": true,
+    "Method": true,
+    "Field": true
+  },
+  "StringEncrypt": {
+    "Enabled": true,
+    "Intensity": 2,
+    "Exclusion": []
+  },
+  "NumberEncrypt": {
+    "Enabled": true,
+    "Intensity": 2,
+    "FloatingPoint": true,
+    "Arrayed": false,
+    "MaxInsnSize": 16384,
+    "Exclusion": []
+  },
+  "ArithmeticEncrypt": {
+    "Enabled": true,
+    "Intensity": 2,
+    "MaxInsnSize": 16384,
+    "Exclusion": []
+  },
+  "Controlflow": {
+    "Enabled": true,
+    "Intensity": 2,
+    "ExecuteBeforeEncrypt": false,
+    "SwitchExtractor": true,
+    "BogusConditionJump": true,
+    "GotoReplaceRate": 80,
+    "MangledCompareJump": true,
+    "IfReplaceRate": 30,
+    "IfICompareReplaceRate": 100,
+    "SwitchProtect": true,
+    "TableSwitchJump": true,
+    "SwitchReplaceRate": 30,
+    "MaxSwitchCase": 5,
+    "ReverseExistedIf": true,
+    "ReverseChance": 50,
+    "TrappedSwitchCase": true,
+    "TrapChance": 50,
+    "ArithmeticExprBuilder": true,
+    "BuilderIntensity": 1,
+    "JunkBuilderParameter": true,
+    "BuilderNativeAnnotation": false,
+    "UseLocalVar": true,
+    "JunkCode": true,
+    "MaxJunkCode": 1,
+    "ExpandedJunkCode": true,
+    "Exclusion": []
+  },
+  "ConstBuilder": {
+    "Enabled": false,
+    "NumberSwitchBuilder": true,
+    "SplitLong": true,
+    "HeavyEncrypt": false,
+    "SkipControlFlow": true,
+    "ReplacePercentage": 10,
+    "MaxCases": 5,
+    "Exclusion": []
+  },
+  "ConstPollEncrypt": {
+    "Enabled": true,
+    "Integer": true,
+    "Long": true,
+    "Float": true,
+    "Double": true,
+    "String": true,
+    "HeavyEncrypt": true,
+    "DontScramble": true,
+    "NativeAnnotation": false,
+    "Exclusion": []
+  },
+  "RedirectStringEquals": {
+    "Enabled": true,
+    "IgnoreCase": true,
+    "Exclusion": []
+  },
+  "FieldScramble": {
+    "Enabled": true,
+    "Intensity": 1,
+    "ReplacePercentage": 10,
+    "RandomName": true,
+    "GetStatic": true,
+    "tSetStatic": true,
+    "GetValue": true,
+    "SetField": true,
+    "GenerateOuterClass": false,
+    "NativeAnnotation": false,
+    "ExcludedClasses": [],
+    "ExcludedFieldName": []
+  },
+  "MethodScramble": {
+    "Enabled": true,
+    "ReplacePercentage": 10,
+    "GenerateOuterClass": true,
+    "RandomCall": true,
+    "NativeAnnotation": false,
+    "ExcludedClasses": [],
+    "ExcludedMethodName": []
+  },
+  "NativeCandidate": {
+    "Enabled": false,
+    "NativeAnnotation": "Lnet/spartanb312/example/Native;",
+    "SearchCandidate": true,
+    "UpCallLimit": 1,
+    "Exclusion": [],
+    "AnnotationGroups": [
+      "{ \"annotation\": \"Lnet/spartanb312/grunt/Native;\", \"includeRegexes\": [\"^(?:[^./\\\\[;]+/)*[^./\\\\[;]+$\"], \"excludeRegexes\": [] }",
+      "{ \"annotation\": \"Lnet/spartanb312/grunt/VMProtect;\", \"includeRegexes\": [\"^(?:[^./\\\\[;]+\\\\/)*(?:[^./\\\\[;])+\\\\.(?:[^./\\\\[;()\\\\/])+(?:\\\\(((\\\\[*L[^./\\\\[;]([^./\\\\[;]*[^.\\\\[;][^./\\\\[;])*;)|(\\\\[*[ZBCSIJFD]+))*\\\\))((\\\\[*L[^./\\\\[;]([^./\\\\[;]*[^.\\\\[;][^./\\\\[;])*;)|V|(\\\\[*[ZBCSIJFD]))$\"], \"excludeRegexes\": [] }"
+    ]
+  },
+  "SyntheticBridge": {
+    "Enabled": false,
+    "Exclusion": []
+  },
+  "LocalVariableRename": {
+    "Enabled": true,
+    "Dictionary": "Alphabet",
+    "ThisReference": false,
+    "DeleteLocalVars": false,
+    "DeleteParameters": false,
+    "Exclusion": []
+  },
+  "MethodRename": {
+    "Enabled": true,
+    "Enums": true,
+    "Interfaces": false,
+    "Dictionary": "Alphabet",
+    "HeavyOverloads": false,
+    "RandomKeywordPrefix": false,
+    "Prefix": "opium",
+    "Reversed": false,
+    "Exclusion": [],
+    "ExcludedName": [
+      "main"
+    ]
+  },
+  "FieldRename": {
+    "Enabled": true,
+    "Dictionary": "Alphabet",
+    "RandomKeywordPrefix": false,
+    "Prefix": "opium",
+    "Reversed": false,
+    "Exclusion": [],
+    "ExcludedName": [
+      "INSTANCE",
+      "Companion"
+    ]
+  },
+  "ClassRename": {
+    "Enabled": true,
+    "Dictionary": "Alphabet",
+    "Parent": "opium/on/top/typeshit/We/On/Top/Good/Luck/Deobfuscating/this/it/has/722332/Layers/",
+    "Prefix": "opium",
+    "Reversed": false,
+    "Shuffled": true,
+    "CorruptedName": false,
+    "CorruptedNameExclusion": [],
+    "Exclusion": []
+  },
+  "MixinFieldRename": {
+    "Enabled": false,
+    "Dictionary": "Alphabet",
+    "Prefix": "opium",
+    "Exclusion": [
+      "net/spartanb312/Example1",
+      "net/spartanb312/Example2.field"
+    ],
+    "ExcludedName": [
+      "INSTANCE",
+      "Companion"
+    ]
+  },
+  "MixinClassRename": {
+    "Enabled": true,
+    "Dictionary": "Alphabet",
+    "TargetMixinPackage": "we/devs/opium/asm/mixins",
+    "MixinFile": "opium.mixins.json",
+    "RefmapFile": "opium-refmap.json",
+    "Exclusion": []
+  },
+  "InvokeDynamic": {
+    "Enabled": false,
+    "ReplacePercentage": 10,
+    "HeavyProtection": true,
+    "MetadataClass": "x/y/z/a/Metadata",
+    "MassiveRandomBlank": true,
+    "Reobfuscate": true,
+    "EnhancedFlowReobf": false,
+    "BSMNativeAnnotation": true,
+    "Exclusion": []
+  },
+  "ShuffleMembers": {
+    "Enabled": false,
+    "Methods": true,
+    "Fields": true,
+    "Annotations": true,
+    "Exceptions": true,
+    "Exclusion": []
+  },
+  "Crasher": {
+    "Enabled": false,
+    "Random": false,
+    "Exclusion": []
+  },
+  "Watermark": {
+    "Enabled": true,
+    "Names": [
+      "opium on top!!!",
+      "cxiy on top",
+      "opium owns you"
+    ],
+    "Messages": [
+      "PROTECTED BY CXIY",
+      "PROTECTED BY SPARTAN EVERETT",
+      "PROTECTED BY SPARTAN 1186",
+      "PROTECTED BY NOBLE SIX"
+    ],
+    "FieldMark": true,
+    "MethodMark": true,
+    "AnnotationMark": true,
+    "Annotations": [
+      "ProtectedByGrunt",
+      "JvavMetadata"
+    ],
+    "Versions": [
+      "114514",
+      "1919810",
+      "69420"
+    ],
+    "InterfaceMark": false,
+    "FatherOfJava": "jvav/lang/YuShengJun",
+    "Exclusion": []
+  },
+  "PostProcess": {
+    "Enabled": true,
+    "Manifest": true,
+    "Plugin YML": true,
+    "Bungee YML": true,
+    "Fabric JSON": true,
+    "Velocity JSON": true,
+    "ManifestPrefix": [
+      "Main-Class:"
+    ]
+  }
+}
